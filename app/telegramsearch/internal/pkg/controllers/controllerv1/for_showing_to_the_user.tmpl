@@ -1,0 +1,15 @@
+Следующая фраза была сказана в {{ .ConversationStartedAt }} в чате про {{ .ChatID }}:
+
+{{ .ConversationStarter }}
+
+{{ if .WithAnswers }}
+В ответ на нее состоялся следующий диалог:
+
+{{ range $ind, $resp := .Responses -}}
+
+В {{ $resp.Date }}:
+{{ $resp.Text }}
+
+{{ end -}}
+
+{{ end }}

@@ -1,0 +1,32 @@
+---- tern: disable-tx ----
+SELECT 'this was skipped';
+--
+-- DO $$DECLARE
+--     rec RECORD;
+-- BEGIN
+--     LOOP
+--         CREATE temp table my_records
+--         AS SELECT em.embedding_id, ct.body
+--         FROM embeddings em JOIN chatthreads ct ON em.thread_id = ct.thread_id WHERE
+--             em.most_recent_message_at = '2020-07-29T09:45:17Z' LIMIT 100;
+--
+--         IF (SELECT COUNT(*) FROM my_records) = 0 THEN
+--             EXIT;
+--         END IF;
+--
+--         FOR rec IN SELECT * FROM my_records LOOP
+--             UPDATE embeddings
+--             SET most_recent_message_at = to_timestamp(CAST(
+--                 (rec.body->>(jsonb_array_length(rec.body) - 1))::jsonb->>'date_unixtime'
+--                 AS int)) AT TIME ZONE 'UTC'
+--             WHERE embedding_id = rec.embedding_id;
+--         end loop;
+--
+--         -- COMMIT automatically starts a new transaction afterwards
+--         -- Ref: https://www.postgresql.org/docs/current/plpgsql-transactions.html
+--         COMMIT;
+--
+--         DROP TABLE my_records;
+--     END LOOP;
+-- END$$;
+--
