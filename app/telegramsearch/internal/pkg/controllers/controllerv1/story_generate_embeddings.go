@@ -3,12 +3,12 @@ package controllerv1
 import (
 	"context"
 	"encoding/json"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/openaiclient/openaimodels"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/storage/storagemodels"
-	models "github.com/yanakipe/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/openaiclient/openaimodels"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/storagemodels"
+	models "github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
 
 	"github.com/sourcegraph/conc/pool"
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/logger"
 )
 
 func (c *Ctl) GenerateEmbeddings(ctx context.Context, req models.ReqGenerateEmbeddings) (models.RespGenerateEmbeddings, error) {

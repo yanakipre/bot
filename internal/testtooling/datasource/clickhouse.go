@@ -9,8 +9,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/yanakipe/bot/internal/chdb"
-	"github.com/yanakipe/bot/internal/projectpath"
+	"github.com/yanakipre/bot/internal/chdb"
+	"github.com/yanakipre/bot/internal/projectpath"
 )
 
 const ManagementClickHouseDB = "default"

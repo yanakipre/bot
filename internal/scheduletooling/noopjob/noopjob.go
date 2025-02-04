@@ -6,7 +6,7 @@ import (
 
 	"github.com/reugn/go-quartz/quartz"
 
-	"github.com/yanakipe/bot/internal/scheduletooling"
+	"github.com/yanakipre/bot/internal/scheduletooling"
 )
 
 type NoopJobImpl struct {

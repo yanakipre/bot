@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/yanakipe/bot/internal/encodingtooling"
+	"github.com/yanakipre/bot/internal/encodingtooling"
 )
 
 const EmbeddedStructurePrefix = "pg"

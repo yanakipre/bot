@@ -8,9 +8,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/yanakipe/bot/internal/projectpath"
-	"github.com/yanakipe/bot/internal/rdb"
-	"github.com/yanakipe/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/projectpath"
+	"github.com/yanakipre/bot/internal/rdb"
+	"github.com/yanakipre/bot/internal/secret"
 )
 
 const (

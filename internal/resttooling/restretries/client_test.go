@@ -15,8 +15,8 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/logger"
-	"github.com/yanakipe/bot/internal/testtooling"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/testtooling"
 )
 
 func Test_retryableRoundTripper_RoundTrip(t *testing.T) {

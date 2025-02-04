@@ -1,7 +1,7 @@
 // Package details provides structures for common error details used by the Status package.
 package details
 
-import "github.com/yanakipe/bot/internal/status/details/reason"
+import "github.com/yanakipre/bot/internal/status/details/reason"
 
 // ErrorDetails is a set of potential error details that can be included to provide more context to the caller.
 type ErrorDetails struct {

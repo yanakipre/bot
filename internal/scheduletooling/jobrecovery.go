@@ -7,8 +7,8 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/logger"
-	"github.com/yanakipe/bot/internal/sentrytooling"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/sentrytooling"
 )
 
 func (j *InProcessJob) handlePanic(ctx context.Context, start time.Time) func() {

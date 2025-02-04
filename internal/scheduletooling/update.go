@@ -7,7 +7,7 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/logger"
 )
 
 // updateSchedules returns function that keeps track of schedules and updates the triggers

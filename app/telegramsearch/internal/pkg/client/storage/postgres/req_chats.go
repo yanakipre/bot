@@ -2,9 +2,9 @@ package postgres
 
 import (
 	"context"
-	models "github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/storage/storagemodels"
+	models "github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/storagemodels"
 
-	"github.com/yanakipe/bot/internal/sqltooling"
+	"github.com/yanakipre/bot/internal/sqltooling"
 )
 
 var queryCreateChat = sqltooling.NewStmt(

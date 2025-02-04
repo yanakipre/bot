@@ -9,10 +9,10 @@ import (
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 	"golang.org/x/time/rate"
 
-	"github.com/yanakipe/bot/internal/resttooling/http2tooling"
-	"github.com/yanakipe/bot/internal/resttooling/ratelimiter"
-	"github.com/yanakipe/bot/internal/resttooling/restretries"
-	"github.com/yanakipe/bot/internal/resttooling/roundtripper"
+	"github.com/yanakipre/bot/internal/resttooling/http2tooling"
+	"github.com/yanakipre/bot/internal/resttooling/ratelimiter"
+	"github.com/yanakipre/bot/internal/resttooling/restretries"
+	"github.com/yanakipre/bot/internal/resttooling/roundtripper"
 )
 
 // WithHTTP2Support adds support for HTTP2 protocol retries.

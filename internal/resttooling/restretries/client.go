@@ -7,7 +7,7 @@ import (
 
 	"github.com/kamilsk/retry/v5"
 
-	"github.com/yanakipe/bot/internal/resttooling/http2tooling"
+	"github.com/yanakipre/bot/internal/resttooling/http2tooling"
 )
 
 var _ http.RoundTripper = &retryableRoundTripper{}

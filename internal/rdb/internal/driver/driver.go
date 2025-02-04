@@ -8,8 +8,8 @@ import (
 
 	"go.uber.org/zap/zapcore"
 
-	"github.com/yanakipe/bot/internal/rdb/internal/driver/internal/hooks"
-	"github.com/yanakipe/bot/internal/rdb/internal/driver/internal/wrapper"
+	"github.com/yanakipre/bot/internal/rdb/internal/driver/internal/hooks"
+	"github.com/yanakipre/bot/internal/rdb/internal/driver/internal/wrapper"
 )
 
 type openOptions struct {

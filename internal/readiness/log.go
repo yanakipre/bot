@@ -3,7 +3,7 @@ package readiness
 import (
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/logger"
 )
 
 type Log interface {

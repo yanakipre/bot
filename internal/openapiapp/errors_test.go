@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"golang.org/x/xerrors"
 
-	"github.com/yanakipe/bot/internal/semerr"
+	"github.com/yanakipre/bot/internal/semerr"
 )
 
 // connectError to test dns errors

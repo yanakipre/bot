@@ -5,8 +5,8 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/client/otlp"
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/client/otlp"
+	"github.com/yanakipre/bot/internal/logger"
 )
 
 type Option func(a *Application)

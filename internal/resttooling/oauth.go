@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/yanakipe/bot/internal/secret"
-	"github.com/yanakipe/bot/internal/semerr"
+	"github.com/yanakipre/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/semerr"
 )
 
 const (

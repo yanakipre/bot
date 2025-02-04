@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yanakipe/bot/internal/encodingtooling"
+	"github.com/yanakipre/bot/internal/encodingtooling"
 )
 
 var (
@@ -67,7 +67,7 @@ type Config struct {
 //   - MaxIdleConnsPerHost is explicitly set to the value that it
 //     defaults to in the current net/http/transport code.
 //
-// There are two additional setting which is custom to neon:
+// There are two additional setting which is custom to yanakipre:
 //
 //   - MaxIdleConns, is usually unset (zero) which means unlimited. It
 //     now has a limit, the exact value of which is arbitrary.

@@ -1,8 +1,8 @@
 package controllerv1
 
 import (
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/openaiclient/httpopenaiclient"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/storage/postgres"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/openaiclient/httpopenaiclient"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/postgres"
 	"time"
 
 	"github.com/jellydator/ttlcache/v3"

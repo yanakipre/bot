@@ -5,7 +5,7 @@ import (
 
 	"github.com/rekby/fixenv"
 
-	"github.com/yanakipe/bot/internal/testtooling/container"
+	"github.com/yanakipre/bot/internal/testtooling/container"
 )
 
 func ContainerNetwork(ctx context.Context, e fixenv.Env) *container.Network {

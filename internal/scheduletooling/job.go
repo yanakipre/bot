@@ -8,8 +8,8 @@ import (
 	"github.com/reugn/go-quartz/quartz"
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/concurrent"
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/concurrent"
+	"github.com/yanakipre/bot/internal/logger"
 )
 
 type Job interface {

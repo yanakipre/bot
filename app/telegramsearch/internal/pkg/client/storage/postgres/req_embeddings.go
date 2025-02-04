@@ -2,12 +2,12 @@ package postgres
 
 import (
 	"context"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/storage/postgres/internal/dbmodels"
-	models "github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/storage/storagemodels"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/postgres/internal/dbmodels"
+	models "github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/storagemodels"
 
 	"github.com/pgvector/pgvector-go"
 	"github.com/samber/lo"
-	"github.com/yanakipe/bot/internal/sqltooling"
+	"github.com/yanakipre/bot/internal/sqltooling"
 )
 
 var querySimilaritySearch = sqltooling.NewStmt(

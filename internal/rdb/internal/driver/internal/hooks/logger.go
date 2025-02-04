@@ -11,9 +11,9 @@ import (
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 
-	"github.com/yanakipe/bot/internal/logger"
-	"github.com/yanakipe/bot/internal/rdb/internal/driver/internal/wrapper"
-	"github.com/yanakipe/bot/internal/rdb/internal/driver/sqldata"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/rdb/internal/driver/internal/wrapper"
+	"github.com/yanakipre/bot/internal/rdb/internal/driver/sqldata"
 )
 
 // NewLogger create new LoggerHook.

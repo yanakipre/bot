@@ -3,7 +3,7 @@ package rdb
 import (
 	"database/sql"
 
-	"github.com/yanakipe/bot/internal/metrics"
+	"github.com/yanakipre/bot/internal/metrics"
 )
 
 func sendMetrics(stats sql.DBStats, destinationType string) {

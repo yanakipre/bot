@@ -8,7 +8,7 @@ import (
 	"gopkg.in/dnaeon/go-vcr.v3/cassette"
 	"gopkg.in/dnaeon/go-vcr.v3/recorder"
 
-	"github.com/yanakipe/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/secret"
 )
 
 var excludeReqHeaders = []string{

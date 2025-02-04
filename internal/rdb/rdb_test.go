@@ -13,8 +13,8 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/logger"
-	"github.com/yanakipe/bot/internal/rdb/rdbtesttooling"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/rdb/rdbtesttooling"
 )
 
 // TestMain is required to setup rdb test package

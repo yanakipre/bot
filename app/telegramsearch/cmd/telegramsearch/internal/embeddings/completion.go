@@ -2,7 +2,7 @@ package embeddings
 
 import (
 	"fmt"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
 
 	"github.com/spf13/cobra"
 )

@@ -2,10 +2,10 @@ package embeddings
 
 import (
 	"fmt"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
 
 	"github.com/spf13/cobra"
-	"github.com/yanakipe/bot/internal/yamlfromstruct"
+	"github.com/yanakipre/bot/internal/yamlfromstruct"
 )
 
 var generate = &cobra.Command{

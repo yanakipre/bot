@@ -15,7 +15,7 @@ const HeaderName = "x-request-id"
 
 // we return request id back to user
 // to ease debugging problems
-const ReturnRequestIDHeader = "X-Neon-Ret-Request-ID"
+const ReturnRequestIDHeader = "X-Yanakipre-Ret-Request-ID"
 
 // NewReqID returns new random request ID
 func NewReqID() string {

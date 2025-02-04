@@ -2,7 +2,7 @@ package telegram
 
 import (
 	"fmt"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/transport/bottransport"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/transport/bottransport"
 	"os"
 	"os/signal"
 

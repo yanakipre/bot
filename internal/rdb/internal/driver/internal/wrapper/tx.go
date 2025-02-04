@@ -4,7 +4,7 @@ import (
 	"context"
 	"database/sql/driver"
 
-	"github.com/yanakipe/bot/internal/rdb/internal/driver/sqldata"
+	"github.com/yanakipre/bot/internal/rdb/internal/driver/sqldata"
 )
 
 // wrTx implements driver.Tx

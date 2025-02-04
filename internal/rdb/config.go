@@ -3,9 +3,9 @@ package rdb
 import (
 	"time"
 
-	"github.com/yanakipe/bot/internal/encodingtooling"
-	"github.com/yanakipe/bot/internal/secret"
-	"github.com/yanakipe/bot/internal/semerr"
+	"github.com/yanakipre/bot/internal/encodingtooling"
+	"github.com/yanakipre/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/semerr"
 )
 
 type Config struct {

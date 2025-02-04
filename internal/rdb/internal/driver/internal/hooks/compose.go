@@ -3,7 +3,7 @@ package hooks
 import (
 	"context"
 
-	"github.com/yanakipe/bot/internal/rdb/internal/driver/internal/wrapper"
+	"github.com/yanakipre/bot/internal/rdb/internal/driver/internal/wrapper"
 )
 
 func Compose(hooks ...wrapper.Hook) wrapper.Hook {

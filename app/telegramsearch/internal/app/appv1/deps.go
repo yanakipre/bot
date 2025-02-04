@@ -2,7 +2,7 @@ package appv1
 
 import (
 	"github.com/gotd/td/telegram"
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/logger"
 )
 
 type Deps struct {

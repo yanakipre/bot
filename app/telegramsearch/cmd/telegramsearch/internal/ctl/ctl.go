@@ -3,10 +3,10 @@ package ctl
 import (
 	"context"
 	"fmt"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/openaiclient/httpopenaiclient"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/storage/postgres"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/controllers/controllerv1"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/staticconfig"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/openaiclient/httpopenaiclient"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/postgres"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/staticconfig"
 )
 
 func Init(ctx context.Context, staticConfig *staticconfig.Config) (*controllerv1.Ctl, error) {

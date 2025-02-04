@@ -7,10 +7,10 @@ import (
 	"github.com/rekby/fixenv"
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/chdb"
-	"github.com/yanakipe/bot/internal/logger"
-	"github.com/yanakipe/bot/internal/testtooling/container"
-	"github.com/yanakipe/bot/internal/testtooling/datasource"
+	"github.com/yanakipre/bot/internal/chdb"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/testtooling/container"
+	"github.com/yanakipre/bot/internal/testtooling/datasource"
 )
 
 func FixtureClickhouseContainer(ctx context.Context, e fixenv.Env) *container.Clickhouse {

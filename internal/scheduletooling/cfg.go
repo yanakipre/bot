@@ -6,7 +6,7 @@ import (
 
 	"github.com/reugn/go-quartz/quartz"
 
-	"github.com/yanakipe/bot/internal/encodingtooling"
+	"github.com/yanakipre/bot/internal/encodingtooling"
 )
 
 // Config declares options supported by cronjob.

@@ -1,6 +1,6 @@
 package ratelimiter
 
-import "github.com/yanakipe/bot/internal/encodingtooling"
+import "github.com/yanakipre/bot/internal/encodingtooling"
 
 // RateLimitConfig is a config for a single rate limiter
 // This package uses golang.org/x/time/rate

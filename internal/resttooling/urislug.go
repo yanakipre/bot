@@ -3,7 +3,7 @@ package resttooling
 import (
 	"context"
 
-	"github.com/yanakipe/bot/internal/resttooling/roundtripper"
+	"github.com/yanakipre/bot/internal/resttooling/roundtripper"
 )
 
 type uriSlug string

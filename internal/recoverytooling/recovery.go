@@ -7,7 +7,7 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/logger"
 )
 
 // RecoverOrStop either block and executes again if panic.

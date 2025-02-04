@@ -9,9 +9,9 @@ import (
 	"github.com/mitchellh/hashstructure/v2"
 	"golang.org/x/time/rate"
 
-	"github.com/yanakipe/bot/internal/logger"
-	"github.com/yanakipe/bot/internal/recoverytooling"
-	"github.com/yanakipe/bot/internal/resttooling/ratelimiter"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/recoverytooling"
+	"github.com/yanakipre/bot/internal/resttooling/ratelimiter"
 )
 
 type Manager interface {

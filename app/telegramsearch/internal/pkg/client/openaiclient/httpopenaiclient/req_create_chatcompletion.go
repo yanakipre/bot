@@ -3,7 +3,7 @@ package httpopenaiclient
 import (
 	"context"
 	"fmt"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/openaiclient/openaimodels"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/openaiclient/openaimodels"
 	"strings"
 
 	"github.com/sashabaranov/go-openai"

@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/yanakipe/bot/internal/encodingtooling"
-	"github.com/yanakipe/bot/internal/rdb"
+	"github.com/yanakipre/bot/internal/encodingtooling"
+	"github.com/yanakipre/bot/internal/rdb"
 )
 
 type Storage struct {

@@ -3,11 +3,11 @@ package controllerv1
 import (
 	"context"
 	_ "embed"
-	models "github.com/yanakipe/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
+	models "github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/logger"
 )
 
 //go:embed fixtures/cylimassol.json

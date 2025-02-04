@@ -3,7 +3,7 @@ package metrics
 import (
 	"github.com/prometheus/client_golang/prometheus"
 
-	"github.com/yanakipe/bot/internal/promtooling"
+	"github.com/yanakipre/bot/internal/promtooling"
 )
 
 var (

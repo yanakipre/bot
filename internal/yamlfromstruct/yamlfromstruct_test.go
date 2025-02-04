@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/yanakipe/bot/internal/testtooling"
+	"github.com/yanakipre/bot/internal/testtooling"
 )
 
 func TestGenerate(t *testing.T) {

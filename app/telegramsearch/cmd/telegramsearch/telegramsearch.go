@@ -2,7 +2,7 @@ package main
 
 import (
 	_ "embed"
-	"github.com/yanakipe/bot/app/telegramsearch/cmd/telegramsearch/internal"
+	"github.com/yanakipre/bot/app/telegramsearch/cmd/telegramsearch/internal"
 )
 
 func main() {

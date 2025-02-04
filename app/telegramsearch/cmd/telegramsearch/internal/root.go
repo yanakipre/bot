@@ -2,11 +2,11 @@ package internal
 
 import (
 	"github.com/spf13/cobra"
-	"github.com/yanakipe/bot/app/telegramsearch/cmd/telegramsearch/internal/embeddings"
-	"github.com/yanakipe/bot/app/telegramsearch/cmd/telegramsearch/internal/rootcmd"
-	"github.com/yanakipe/bot/app/telegramsearch/cmd/telegramsearch/internal/telegram"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/staticconfig"
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/app/telegramsearch/cmd/telegramsearch/internal/embeddings"
+	"github.com/yanakipre/bot/app/telegramsearch/cmd/telegramsearch/internal/rootcmd"
+	"github.com/yanakipre/bot/app/telegramsearch/cmd/telegramsearch/internal/telegram"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/staticconfig"
+	"github.com/yanakipre/bot/internal/logger"
 	"go.uber.org/zap"
 )
 

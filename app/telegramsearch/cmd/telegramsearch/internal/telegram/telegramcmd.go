@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 	"github.com/spf13/cobra"
-	ctl2 "github.com/yanakipe/bot/app/telegramsearch/cmd/telegramsearch/internal/ctl"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/controllers/controllerv1"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/staticconfig"
-	"github.com/yanakipe/bot/internal/clitooling"
+	ctl2 "github.com/yanakipre/bot/app/telegramsearch/cmd/telegramsearch/internal/ctl"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/staticconfig"
+	"github.com/yanakipre/bot/internal/clitooling"
 )
 
 var (

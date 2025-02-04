@@ -8,8 +8,8 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/logger"
-	"github.com/yanakipe/bot/internal/semerr"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/semerr"
 )
 
 type (

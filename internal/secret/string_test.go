@@ -10,7 +10,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"gopkg.in/yaml.v2"
 
-	"github.com/yanakipe/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/secret"
 )
 
 const secretValue = "admin"

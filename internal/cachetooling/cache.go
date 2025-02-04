@@ -7,10 +7,10 @@ import (
 	"github.com/lithammer/shortuuid/v4"
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/encodingtooling"
-	"github.com/yanakipe/bot/internal/logger"
-	"github.com/yanakipe/bot/internal/recoverytooling"
-	"github.com/yanakipe/bot/internal/scheduletooling"
+	"github.com/yanakipre/bot/internal/encodingtooling"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/recoverytooling"
+	"github.com/yanakipre/bot/internal/scheduletooling"
 )
 
 // Cache is a struct that contains all the necessary information to update the cache periodically.

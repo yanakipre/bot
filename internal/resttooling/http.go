@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/yanakipe/bot/internal/encodingtooling"
+	"github.com/yanakipre/bot/internal/encodingtooling"
 )
 
 type Option func(cfg optionsConfig) optionsConfig

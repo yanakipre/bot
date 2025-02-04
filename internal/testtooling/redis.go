@@ -7,9 +7,9 @@ import (
 	"github.com/orlangure/gnomock"
 	gnomockredis "github.com/orlangure/gnomock/preset/redis"
 
-	"github.com/yanakipe/bot/internal/logger"
-	"github.com/yanakipe/bot/internal/redis"
-	"github.com/yanakipe/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/redis"
+	"github.com/yanakipre/bot/internal/secret"
 )
 
 func StartRedis(ctx context.Context) (*gnomock.Container, *redis.Redis) {
@@ -26,7 +26,7 @@ func StartRedis(ctx context.Context) (*gnomock.Container, *redis.Redis) {
 		URL: secret.NewString(
 			fmt.Sprintf("redis://%s:%d", container.Host, container.DefaultPort()),
 		),
-		ClientName: "neon-test",
+		ClientName: "yanakipre-test",
 	}, ctx)
 	if err != nil {
 		panic(err)

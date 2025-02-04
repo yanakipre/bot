@@ -1,7 +1,7 @@
 package controllerv1models
 
 import (
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/storage/storagemodels"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/storagemodels"
 )
 
 type ReqTryEmbedding struct {
