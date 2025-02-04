@@ -7,7 +7,7 @@ import (
 
 	"github.com/rs/cors"
 
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/logger"
 )
 
 type Config struct {
@@ -20,7 +20,6 @@ type Config struct {
 func DefaultConfig() Config {
 	return Config{
 		AllowedOrigins: []string{
-			"https://neon.tech",
 			"http://localhost:8080",
 		},
 	}

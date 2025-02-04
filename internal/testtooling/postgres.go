@@ -10,12 +10,12 @@ import (
 	"github.com/jackc/pgx/v4"
 	"github.com/rekby/fixenv"
 
-	"github.com/yanakipe/bot/internal/encodingtooling"
-	"github.com/yanakipe/bot/internal/rdb"
-	"github.com/yanakipe/bot/internal/rdb/rdbtesttooling"
-	"github.com/yanakipe/bot/internal/secret"
-	"github.com/yanakipe/bot/internal/testtooling/container"
-	"github.com/yanakipe/bot/internal/testtooling/datasource"
+	"github.com/yanakipre/bot/internal/encodingtooling"
+	"github.com/yanakipre/bot/internal/rdb"
+	"github.com/yanakipre/bot/internal/rdb/rdbtesttooling"
+	"github.com/yanakipre/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/testtooling/container"
+	"github.com/yanakipre/bot/internal/testtooling/datasource"
 )
 
 var testDBIdx uint32

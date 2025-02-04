@@ -11,7 +11,7 @@ import (
 	"github.com/reugn/go-quartz/quartz"
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/logger"
 )
 
 // Scheduler is a wrapper around quartz.Scheduler.

@@ -165,7 +165,7 @@ func (c Code) HTTP() int {
 	case PermissionDenied:
 		// Just like semerr, we "hide" 403s from the user to prevent information leakage.
 		// Additionally, some clients rely on the existing error-to-status-code mapping.
-		// See https://github.com/yanakipe/bot/pull/13481#discussion_r1611086997 for more context.
+		// See https://github.com/yanakipre/bot/pull/13481#discussion_r1611086997 for more context.
 		return http.StatusNotFound
 	case TooManyRequests:
 		return http.StatusTooManyRequests

@@ -7,7 +7,7 @@ import (
 
 	"github.com/gorilla/sessions"
 
-	"github.com/yanakipe/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/secret"
 )
 
 const secondsPerYear = 60 /*s*/ * 60 /*m*/ * 24 /*h*/ * 365 /*d*/

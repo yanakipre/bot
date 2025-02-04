@@ -5,11 +5,11 @@ import (
 
 	"github.com/getsentry/sentry-go"
 
-	"github.com/yanakipe/bot/internal/sentrytooling"
+	"github.com/yanakipre/bot/internal/sentrytooling"
 )
 
 func (j *InProcessJob) sentryHub(ctx context.Context, traceID string) (context.Context, func()) {
-	ctx = sentrytooling.InitCtx(ctx, "Neon Scheduled Job")
+	ctx = sentrytooling.InitCtx(ctx, "Yanakipre Scheduled Job")
 	sCtx := sentrytooling.FromContext(ctx)
 	sCtx["Trace ID"] = traceID
 

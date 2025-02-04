@@ -12,9 +12,9 @@ import (
 	"github.com/kamilsk/retry/v5/strategy"
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/logger"
-	"github.com/yanakipe/bot/internal/readiness"
-	"github.com/yanakipe/bot/internal/scheduletooling"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/readiness"
+	"github.com/yanakipre/bot/internal/scheduletooling"
 )
 
 type Application struct {

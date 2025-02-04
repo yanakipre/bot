@@ -16,7 +16,7 @@ type WorkloadSplitConfig struct {
 
 // GetWorkerIndex calculates worker index based on hostname
 // We rely on kubernetes giving pods in stateful set numeric indexes in hostnames
-// like neon-console-api-{0,1, ...}.
+// like yanakipre-console-api-{0,1, ...}.
 // When called from the staticconfig package, no logger is available yet.
 func GetWorkerIndex(ctx context.Context, hostname string) (uint64, error) {
 	splitParts := strings.Split(hostname, "-")

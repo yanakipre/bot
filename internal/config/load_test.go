@@ -9,8 +9,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/yanakipe/bot/internal/encodingtooling"
-	"github.com/yanakipe/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/encodingtooling"
+	"github.com/yanakipre/bot/internal/secret"
 )
 
 type EmptyMap struct {

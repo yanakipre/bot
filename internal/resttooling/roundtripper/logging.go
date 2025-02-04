@@ -9,7 +9,7 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/logger"
 )
 
 func LoggingRoundTripper(rt http.RoundTripper, clientName string, logBody bool) http.RoundTripper {

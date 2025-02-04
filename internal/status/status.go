@@ -4,9 +4,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/yanakipe/bot/internal/status/codes"
-	"github.com/yanakipe/bot/internal/status/details"
-	"github.com/yanakipe/bot/internal/status/details/reason"
+	"github.com/yanakipre/bot/internal/status/codes"
+	"github.com/yanakipre/bot/internal/status/details"
+	"github.com/yanakipre/bot/internal/status/details/reason"
 )
 
 // Status represents the status code, error message, and details.

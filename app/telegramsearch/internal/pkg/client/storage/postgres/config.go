@@ -1,6 +1,6 @@
 package postgres
 
-import "github.com/yanakipe/bot/internal/rdb"
+import "github.com/yanakipre/bot/internal/rdb"
 
 type Config struct {
 	RDB rdb.Config

@@ -1,7 +1,7 @@
 package scheduletooling
 
 import (
-	"github.com/yanakipe/bot/internal/semerr"
+	"github.com/yanakipre/bot/internal/semerr"
 )
 
 func (j *InProcessJob) toSemanticErr(err error) *semerr.Error {

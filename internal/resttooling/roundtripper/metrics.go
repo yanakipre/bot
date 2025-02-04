@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/yanakipe/bot/internal/metrics"
+	"github.com/yanakipre/bot/internal/metrics"
 )
 
 type metricEvent struct {

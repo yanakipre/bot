@@ -17,10 +17,10 @@ import (
 	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/zap/zapcore"
 
-	"github.com/yanakipe/bot/internal/logger"
-	"github.com/yanakipe/bot/internal/rdb/internal/driver"
-	"github.com/yanakipe/bot/internal/rdb/internal/driver/sqldata"
-	"github.com/yanakipe/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/rdb/internal/driver"
+	"github.com/yanakipre/bot/internal/rdb/internal/driver/sqldata"
+	"github.com/yanakipre/bot/internal/secret"
 )
 
 type DB struct {

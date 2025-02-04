@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/yanakipe/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/secret"
 )
 
 func TestConnStringKV_kvConnectionString(t *testing.T) {
@@ -22,13 +22,13 @@ func TestConnStringKV_kvConnectionString(t *testing.T) {
 			args: args{
 				kv: ConnStringKV{
 					Host:     `thost`,
-					Database: `injective db\\; drop database neondb; :`,
+					Database: `injective db\\; drop database yanakipredb; :`,
 					User:     `tuser`,
 					Password: secret.NewString("tpass"),
 					Port:     0,
 				},
 			},
-			expected: `host='thost' database='injective db\\\\; drop database neondb; :' user='tuser' password='tpass' port='0' sslmode='disable' client_encoding='UTF8'`,
+			expected: `host='thost' database='injective db\\\\; drop database yanakipredb; :' user='tuser' password='tpass' port='0' sslmode='disable' client_encoding='UTF8'`,
 		},
 		{
 			name: "empty values work",
@@ -108,22 +108,22 @@ func TestConnectionURI_ConnectionURI(t *testing.T) {
 			fields: fields{
 				Host:     "test.host",
 				Database: "test",
-				User:     "injective role\\; drop database neondb;",
+				User:     "injective role\\; drop database yanakipredb;",
 				Password: secret.NewString(""),
 				Port:     5432,
 			},
-			want: "postgresql://injective%20role%5C;%20drop%20database%20neondb;@test.host/test?sslmode=require",
+			want: "postgresql://injective%20role%5C;%20drop%20database%20yanakipredb;@test.host/test?sslmode=require",
 		},
 		{
 			name: "simple case",
 			fields: fields{
-				Host:     "fancy-pine-693566.cloud.neon.tech",
+				Host:     "fancy-pine-693566.cloud.yanakipre.tech",
 				Database: "testdatabase",
 				User:     "alice",
 				Password: secret.NewString("password"),
 				Port:     5432,
 			},
-			want: "postgresql://alice:password@fancy-pine-693566.cloud.neon.tech/testdatabase?sslmode=require",
+			want: "postgresql://alice:password@fancy-pine-693566.cloud.yanakipre.tech/testdatabase?sslmode=require",
 		},
 	}
 	for _, tt := range tests {

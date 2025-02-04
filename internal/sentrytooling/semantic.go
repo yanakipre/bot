@@ -9,8 +9,8 @@ import (
 	"go.uber.org/zap"
 	"golang.org/x/exp/slices"
 
-	"github.com/yanakipe/bot/internal/logger"
-	"github.com/yanakipe/bot/internal/semerr"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/semerr"
 )
 
 // these semantic errors will be sent to Sentry.

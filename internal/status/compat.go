@@ -7,8 +7,8 @@ import (
 
 	"github.com/ogen-go/ogen/ogenerrors"
 
-	"github.com/yanakipe/bot/internal/semerr"
-	"github.com/yanakipe/bot/internal/status/codes"
+	"github.com/yanakipre/bot/internal/semerr"
+	"github.com/yanakipre/bot/internal/status/codes"
 )
 
 // FromError tries to create a new Status from an error, converting it if possible.

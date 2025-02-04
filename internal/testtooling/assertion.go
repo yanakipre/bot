@@ -6,7 +6,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/stretchr/testify/require"
 
-	"github.com/yanakipe/bot/internal/semerr"
+	"github.com/yanakipre/bot/internal/semerr"
 )
 
 // CompareEqual compares, respecting Equal method of types.

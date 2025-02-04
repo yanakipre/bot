@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/yanakipe/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/secret"
 )
 
 type ConnStringKV struct {

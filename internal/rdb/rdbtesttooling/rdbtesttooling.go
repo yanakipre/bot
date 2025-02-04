@@ -8,8 +8,8 @@ import (
 
 	"github.com/orlangure/gnomock"
 	"github.com/rekby/fixenv"
-	"github.com/yanakipe/bot/internal/secret"
-	"github.com/yanakipe/bot/internal/testtooling/container"
+	"github.com/yanakipre/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/testtooling/container"
 )
 
 const DsnEnvVar = "TEST_DATABASE_URL"

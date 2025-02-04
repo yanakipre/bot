@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
-	"github.com/yanakipe/bot/internal/buildtooling"
-	"github.com/yanakipe/bot/internal/yamlfromstruct"
+	"github.com/yanakipre/bot/internal/buildtooling"
+	"github.com/yanakipre/bot/internal/yamlfromstruct"
 )
 
 // configgenCmd represents the init command

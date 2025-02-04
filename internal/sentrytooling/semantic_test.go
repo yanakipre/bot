@@ -9,8 +9,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/yanakipe/bot/internal/openapiapp"
-	"github.com/yanakipe/bot/internal/semerr"
+	"github.com/yanakipre/bot/internal/openapiapp"
+	"github.com/yanakipre/bot/internal/semerr"
 )
 
 func Test_shouldSkipSentry(t *testing.T) {

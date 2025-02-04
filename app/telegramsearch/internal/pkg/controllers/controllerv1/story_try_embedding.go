@@ -3,15 +3,15 @@ package controllerv1
 import (
 	"context"
 	"errors"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/openaiclient/openaimodels"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/storage/storagemodels"
-	models "github.com/yanakipe/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/openaiclient/openaimodels"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/storagemodels"
+	models "github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
 	"sync"
 	"time"
 
 	"github.com/samber/lo"
 	"github.com/sourcegraph/conc/pool"
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/logger"
 	"go.uber.org/zap"
 )
 

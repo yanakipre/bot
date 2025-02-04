@@ -5,8 +5,8 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/logger"
-	"github.com/yanakipe/bot/internal/resttooling/requestid"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/resttooling/requestid"
 )
 
 func RequestIDRoundTripper(rt http.RoundTripper) http.RoundTripper {

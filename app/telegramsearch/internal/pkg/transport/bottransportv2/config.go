@@ -3,7 +3,7 @@ package bottransportv2
 import (
 	"errors"
 
-	"github.com/yanakipe/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/secret"
 )
 
 type Config struct {

@@ -11,10 +11,10 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/yanakipe/bot/internal/logger"
-	"github.com/yanakipe/bot/internal/openapiapp"
-	"github.com/yanakipe/bot/internal/testtooling"
-	"github.com/yanakipe/bot/internal/timer"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/openapiapp"
+	"github.com/yanakipre/bot/internal/testtooling"
+	"github.com/yanakipre/bot/internal/timer"
 )
 
 func TestGracefulShutdown(t *testing.T) {

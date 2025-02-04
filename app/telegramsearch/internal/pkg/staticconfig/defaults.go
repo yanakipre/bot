@@ -1,10 +1,10 @@
 package staticconfig
 
 import (
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/openaiclient/httpopenaiclient"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/storage/postgres"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/controllers/controllerv1"
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/openaiclient/httpopenaiclient"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/postgres"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1"
+	"github.com/yanakipre/bot/internal/logger"
 )
 
 func (c *Config) DefaultConfig() {

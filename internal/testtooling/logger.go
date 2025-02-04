@@ -1,6 +1,6 @@
 package testtooling
 
-import "github.com/yanakipe/bot/internal/logger"
+import "github.com/yanakipre/bot/internal/logger"
 
 // SetNewGlobalLoggerQuietly sets global logger once per application and does not panic if already
 // set.

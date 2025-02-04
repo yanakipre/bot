@@ -5,10 +5,10 @@ import (
 	"time"
 
 	"github.com/sashabaranov/go-openai"
-	"github.com/yanakipe/bot/internal/encodingtooling"
-	"github.com/yanakipe/bot/internal/resttooling"
-	"github.com/yanakipe/bot/internal/resttooling/ratelimiter"
-	"github.com/yanakipe/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/encodingtooling"
+	"github.com/yanakipre/bot/internal/resttooling"
+	"github.com/yanakipre/bot/internal/resttooling/ratelimiter"
+	"github.com/yanakipre/bot/internal/secret"
 )
 
 type Config struct {

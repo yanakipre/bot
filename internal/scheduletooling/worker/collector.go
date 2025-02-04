@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yanakipe/bot/internal/scheduletooling"
+	"github.com/yanakipre/bot/internal/scheduletooling"
 )
 
 var _ scheduletooling.MetricsCollector = &wellKnownMetricsCollector{}

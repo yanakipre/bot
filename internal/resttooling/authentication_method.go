@@ -8,7 +8,7 @@ import (
 
 type AuthInCtx string
 
-const authMethodContextKey AuthInCtx = "neonauthmethod"
+const authMethodContextKey AuthInCtx = "yanakipreauthmethod"
 
 type AuthMethod string
 

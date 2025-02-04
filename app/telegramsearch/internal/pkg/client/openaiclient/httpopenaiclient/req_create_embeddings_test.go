@@ -2,12 +2,12 @@ package httpopenaiclient
 
 import (
 	"context"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/openaiclient/openaimodels"
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"github.com/yanakipe/bot/internal/secret"
-	"github.com/yanakipe/bot/internal/testtooling"
-	"github.com/yanakipe/bot/telegramsearch/internal/client/openaiclient/openaimodels"
+	"github.com/yanakipre/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/testtooling"
 )
 
 func TestClient_CreateEmbeddings(t *testing.T) {

@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/sashabaranov/go-openai"
-	"github.com/yanakipe/bot/internal/resttooling"
-	"github.com/yanakipe/bot/internal/resttooling/restretries"
+	"github.com/yanakipre/bot/internal/resttooling"
+	"github.com/yanakipre/bot/internal/resttooling/restretries"
 )
 
 type Client struct {

@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/yanakipe/bot/internal/semerr"
+	"github.com/yanakipre/bot/internal/semerr"
 )
 
 type ErrorHandler func(w http.ResponseWriter, r *http.Request, appErr error)

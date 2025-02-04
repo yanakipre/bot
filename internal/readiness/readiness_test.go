@@ -10,7 +10,7 @@ import (
 	"github.com/kamilsk/retry/v5/strategy"
 	"github.com/stretchr/testify/require"
 
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/logger"
 )
 
 type ready struct{}

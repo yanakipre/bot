@@ -3,7 +3,7 @@ package status
 import (
 	"fmt"
 
-	"github.com/yanakipe/bot/internal/status/codes"
+	"github.com/yanakipre/bot/internal/status/codes"
 )
 
 // Constructor helpers

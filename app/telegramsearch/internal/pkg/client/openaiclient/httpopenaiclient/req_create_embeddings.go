@@ -2,7 +2,7 @@ package httpopenaiclient
 
 import (
 	"context"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/client/openaiclient/openaimodels"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/openaiclient/openaimodels"
 
 	"github.com/sashabaranov/go-openai"
 )

@@ -3,7 +3,7 @@ package controllerv1
 import (
 	"time"
 
-	"github.com/yanakipe/bot/internal/encodingtooling"
+	"github.com/yanakipre/bot/internal/encodingtooling"
 )
 
 type Config struct {

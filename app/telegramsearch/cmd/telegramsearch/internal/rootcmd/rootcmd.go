@@ -3,9 +3,9 @@ package rootcmd
 import (
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/staticconfig"
-	"github.com/yanakipe/bot/internal/config"
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/staticconfig"
+	"github.com/yanakipre/bot/internal/config"
+	"github.com/yanakipre/bot/internal/logger"
 	"go.uber.org/zap"
 	"gopkg.in/yaml.v3"
 )

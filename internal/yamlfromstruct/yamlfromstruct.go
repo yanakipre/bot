@@ -9,8 +9,8 @@ import (
 	"go.uber.org/zap"
 	yaml2 "sigs.k8s.io/yaml"
 
-	"github.com/yanakipe/bot/internal/encodingtooling"
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/encodingtooling"
+	"github.com/yanakipre/bot/internal/logger"
 )
 
 // Regexp definitions

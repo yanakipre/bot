@@ -3,8 +3,8 @@ package cachetooling
 import (
 	"time"
 
-	"github.com/yanakipe/bot/internal/metrics"
-	"github.com/yanakipe/bot/internal/scheduletooling"
+	"github.com/yanakipre/bot/internal/metrics"
+	"github.com/yanakipre/bot/internal/scheduletooling"
 )
 
 var _ scheduletooling.MetricsCollector = &CacheMetricsCollector{}

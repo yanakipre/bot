@@ -1,7 +1,7 @@
 package clitooling
 
 import (
-	"github.com/yanakipe/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/secret"
 )
 
 // SecretFlag represents command line flag with secret data

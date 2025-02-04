@@ -1,6 +1,6 @@
 package bottransport
 
-import "github.com/yanakipe/bot/internal/secret"
+import "github.com/yanakipre/bot/internal/secret"
 
 type Config struct {
 	Token    secret.String `yaml:"token"`

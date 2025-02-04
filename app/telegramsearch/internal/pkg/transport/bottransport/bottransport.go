@@ -2,12 +2,12 @@ package bottransport
 
 import (
 	"context"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/controllers/controllerv1"
-	"github.com/yanakipe/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
 	"time"
 
 	"github.com/tucnak/telebot"
-	"github.com/yanakipe/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/logger"
 	"go.uber.org/zap"
 )
 

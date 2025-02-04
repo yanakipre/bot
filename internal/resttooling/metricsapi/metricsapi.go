@@ -5,9 +5,9 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/yanakipe/bot/internal/openapiapp"
-	"github.com/yanakipe/bot/internal/promtooling"
-	"github.com/yanakipe/bot/internal/resttooling"
+	"github.com/yanakipre/bot/internal/openapiapp"
+	"github.com/yanakipre/bot/internal/promtooling"
+	"github.com/yanakipre/bot/internal/resttooling"
 )
 
 func NewMetricsHandler(logSubjField resttooling.SubjectIdentityLogFieldFunc) http.Handler {

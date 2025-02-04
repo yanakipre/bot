@@ -15,11 +15,11 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.uber.org/zap"
 
-	"github.com/yanakipe/bot/internal/logger"
-	"github.com/yanakipe/bot/internal/projectpath"
-	"github.com/yanakipe/bot/internal/rdb/rdbtesttooling"
-	"github.com/yanakipe/bot/internal/secret"
-	"github.com/yanakipe/bot/internal/testtooling"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/projectpath"
+	"github.com/yanakipre/bot/internal/rdb/rdbtesttooling"
+	"github.com/yanakipre/bot/internal/secret"
+	"github.com/yanakipre/bot/internal/testtooling"
 )
 
 func TestFormattedPgDump(t *testing.T) {
