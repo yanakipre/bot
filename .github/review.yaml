@@ -1,0 +1,22 @@
+labeled: true
+groups:
+  - name: reviewers
+    members:
+      - oblassov
+      - chaporgin
+  - name: owners
+    members:
+      - chaporgin
+rules:
+  - approves: 1
+    reviewers: 1
+    groups:
+      - owners
+    path:
+      - review.yaml
+  - approves: 1
+    reviewers: 1
+    groups:
+      - reviewers
+    path:
+      - "**"
