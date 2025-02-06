@@ -17,9 +17,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "chaporgin",
+      "name": "Anton Chaporgin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/367067?v=4",
+      "profile": "https://github.com/chaporgin",
+      "contributions": [
+        "code"
+      ]
     }
   ],
-  "contributorsPerLine": 7,
   "skipCi": true,
   "repoType": "github",
   "repoHost": "https://github.com",
