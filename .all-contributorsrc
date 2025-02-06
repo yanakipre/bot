@@ -6,6 +6,8 @@
   "commit": false,
   "commitType": "docs",
   "commitConvention": "angular",
+  "contributorsPerLine": 7,
+  "contributorsSortAlphabetically": false,
   "contributors": [
     {
       "login": "oblassov",
