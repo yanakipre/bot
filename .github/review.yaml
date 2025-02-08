@@ -2,6 +2,7 @@ labeled: true
 groups:
   - name: reviewers
     members:
+      - personaljs
       - oblassov
       - chaporgin
   - name: owners
