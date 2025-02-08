@@ -1,4 +1,6 @@
-This bot provides information about various aspects of life in Cyprus. Examples: places to swim with turtles, dantist recommenations, places to shop for music intstruments, etc.
+This bot provides information about various aspects of life in Cyprus. Examples include places to swim with turtles, dentist recommendations, and places to shop for music instruments.
+
+40-minute video introduction (in Russian) is [here](https://drive.google.com/file/d/1gqla7MJCKCdYiTEjdcMuZsg78GsWweup/view).
 
 ## Contributors
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
