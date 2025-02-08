@@ -1,3 +1,5 @@
+This bot provides information about various aspects of life in Cyprus. Examples: places to swim with turtles, dantis recommenations, places to shop for music intstruments, etc.
+
 ## Contributors
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
