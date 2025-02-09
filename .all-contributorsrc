@@ -26,6 +26,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Noiidor",
+      "name": "Rodion",
+      "avatar_url": "https://avatars.githubusercontent.com/u/53438196?v=4",
+      "profile": "https://github.com/Noiidor",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "skipCi": true,
