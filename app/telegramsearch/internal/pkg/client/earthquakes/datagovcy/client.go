@@ -6,7 +6,6 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
-	"io"
 	"net/http"
 	"strings"
 	"time"
@@ -109,15 +108,10 @@ func (c *client) LatestNEarthquakes(ctx context.Context, n int, minMagnitude flo
 		return nil, fmt.Errorf("get earthquakes, unexpected status code: %d", res.StatusCode)
 	}
 
-	// Loooong
-	resBytes, err := io.ReadAll(res.Body)
-	if err != nil {
-		return nil, fmt.Errorf("read response bytes: %w", err)
-	}
 	var feed rssFeed
-	err = xml.Unmarshal(resBytes, &feed)
+	err = xml.NewDecoder(res.Body).Decode(&feed)
 	if err != nil {
-		return nil, fmt.Errorf("unmarshal xml feed: %w", err)
+		return nil, fmt.Errorf("decoding xml response body: %w", err)
 	}
 
 	eqs := make([]earthquakes.Earthquake, 0, n)
