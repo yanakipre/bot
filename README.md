@@ -3,6 +3,9 @@ This bot provides information about various aspects of life in Cyprus. Examples 
 40-minute video introduction (in Russian) is [here](https://drive.google.com/file/d/1gqla7MJCKCdYiTEjdcMuZsg78GsWweup/view).
 
 ## Contributors
+
+See [CONTRIBUTING](CONTRIBUTING.md) to understand how to contribute.
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
