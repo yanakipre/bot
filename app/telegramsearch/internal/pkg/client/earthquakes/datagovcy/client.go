@@ -75,7 +75,6 @@ func NewClient(cfg earthquakes.Config) *client {
 	client := &client{
 		httpClient: &http.Client{
 			Transport: cfg.HTTPTransport.Resolve(),
-			Timeout:   cfg.Timeout.Duration,
 		},
 		cfg: cfg,
 	}
@@ -89,9 +88,6 @@ func (c *client) LatestNEarthquakes(ctx context.Context, n int, minMagnitude flo
 	if n < 0 {
 		return nil, ErrNegativeEarthquakes
 	}
-
-	ctx, cancel := context.WithTimeout(ctx, c.cfg.Timeout.Duration)
-	defer cancel()
 
 	req, err := http.NewRequestWithContext(ctx, "GET", c.cfg.ApiURL, nil)
 	if err != nil {

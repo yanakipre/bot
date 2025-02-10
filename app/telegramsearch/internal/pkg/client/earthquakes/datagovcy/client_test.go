@@ -9,11 +9,9 @@ import (
 	"net/http/httptest"
 	"os"
 	"testing"
-	"time"
 
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/earthquakes"
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/earthquakes/datagovcy"
-	"github.com/yanakipre/bot/internal/encodingtooling"
 	"github.com/yanakipre/bot/internal/resttooling"
 )
 
@@ -68,10 +66,11 @@ func testLatestNEarthQuakes(t *testing.T, client earthquakes.Earthquaker) {
 }
 
 func TestIntegrationLatestEarthquakes(t *testing.T) {
-	client := datagovcy.NewClient(earthquakes.DefaultConfig())
+	cfg := earthquakes.Config{}
+	cfg.Default()
+	client := datagovcy.NewClient(cfg)
 
 	testLatestNEarthQuakes(t, client)
-
 }
 
 func TestLatestNEarthQuakes(t *testing.T) {
@@ -90,7 +89,6 @@ func TestLatestNEarthQuakes(t *testing.T) {
 
 	client := datagovcy.NewClient(earthquakes.Config{
 		ApiURL:        srv.URL,
-		Timeout:       encodingtooling.NewDuration(100 * time.Second),
 		HTTPTransport: resttooling.DefaultTransportConfig(),
 	})
 
