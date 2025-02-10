@@ -19,7 +19,7 @@ type Earthquake struct {
 	Position Coordinate
 }
 
-// TODO: Extract to common package
+// TODO: #5 Extract to common package
 type Coordinate struct {
 	Latitude, Longitude float64
 }

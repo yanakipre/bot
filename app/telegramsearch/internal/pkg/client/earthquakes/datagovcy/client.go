@@ -25,7 +25,7 @@ type client struct {
 	cfg        earthquakes.Config
 }
 
-// NOTE: Extract to common package?
+// NOTE: #5 Extract to common package?
 type rssFeed struct {
 	XMLName xml.Name   `xml:"rss"`
 	Channel rssChannel `xml:"channel"`
