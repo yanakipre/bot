@@ -16,6 +16,11 @@ var (
 	//
 	// Background jobs
 	//
+	CloudBackgroundJobStatus = promtooling.NewGaugeVec(
+		"cloud_background_job_status",
+		"Number of background job finished with status, per job type",
+		[]string{"background_job_name", "status"},
+	)
 	CloudBackgroundJobSkips = promtooling.NewCounterVec(
 		"cloud_background_job_skips",
 		"Number of skipped background job, per job type",
@@ -44,6 +49,7 @@ var (
 
 func cloudBackgroundJobMetrics() []prometheus.Collector {
 	return []prometheus.Collector{
+		CloudBackgroundJobStatus,
 		CloudBackgroundJobSkips,
 		CloudBackgroundJobRuns,
 		CloudBackgroundJobDurationSec,

@@ -7,13 +7,16 @@ import (
 
 	"go.uber.org/zap"
 
+	"github.com/yanakipre/bot/internal/clouderr"
 	"github.com/yanakipre/bot/internal/logger"
 )
 
 // updateSchedules returns function that keeps track of schedules and updates the triggers
+//
+
 func (s *Scheduler) updateSchedules(ctx context.Context) func(context.Context) {
 	s.jobsMutex.Lock()
-	oldConfigs := map[int]Config{}
+	oldConfigs := map[string]Config{}
 	for _, job := range s.jobs {
 		newConfig, err := job.GetConfig()
 		if err != nil {
@@ -23,7 +26,7 @@ func (s *Scheduler) updateSchedules(ctx context.Context) func(context.Context) {
 				jobLogKeys(job, zap.Error(err))...)
 		}
 		logger.Debug(ctx, "remembered", jobLogKeys(job)...)
-		oldConfigs[job.Key()] = newConfig
+		oldConfigs[job.Key().String()] = newConfig
 	}
 	s.jobsMutex.Unlock()
 
@@ -48,11 +51,14 @@ func (s *Scheduler) updateSchedules(ctx context.Context) func(context.Context) {
 						if err != nil {
 							logger.Error(
 								ctx,
-								"could not get config, skipping job",
-								jobLogKeys(job, zap.Error(err))...)
+								clouderr.WrapWithFields(
+									fmt.Errorf("could not get config, skipping job: %w", err),
+									jobLogKeys(job)...,
+								),
+							)
 						}
-						oldConfig, ok := oldConfigs[job.Key()]
-						oldConfigs[job.Key()] = newConfig
+						oldConfig, ok := oldConfigs[job.Key().String()]
+						oldConfigs[job.Key().String()] = newConfig
 						if !ok {
 							// apply all settings, because it might have already executed with another
 							// config

@@ -26,6 +26,7 @@ const (
 
 	// Canceled indicates the operation was canceled (typically by the caller).
 	//
+	//nolint:misspell
 	// Note on the spelling: "cancelled" is the British spelling, and "canceled" is the American spelling.
 	// Since we tend to use the American spelling in our code, we use "canceled" here, as does Go itself.
 	Canceled
@@ -89,7 +90,7 @@ const (
 	// Included mostly for compatibility with the `semerr` package.
 	Unprocessable
 
-	// NotAcceptable indicates that the server cannot fulfil the request due to the client's Accept headers.
+	// NotAcceptable indicates that the server cannot fulfill the request due to the client's Accept headers.
 	// Prefer to use a different error code if the request is rejected because of the state of the system or because
 	// of the request parameters.
 	// Included mostly for compatibility with the `semerr` package.

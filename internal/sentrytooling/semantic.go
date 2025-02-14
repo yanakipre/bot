@@ -3,21 +3,29 @@ package sentrytooling
 import (
 	"context"
 	"errors"
+	"fmt"
+	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/semerr"
+	"github.com/yanakipre/bot/internal/status"
+	"github.com/yanakipre/bot/internal/status/codes"
+	"slices"
 	"syscall"
 
 	"github.com/getsentry/sentry-go"
-	"go.uber.org/zap"
-	"golang.org/x/exp/slices"
-
-	"github.com/yanakipre/bot/internal/logger"
-	"github.com/yanakipre/bot/internal/semerr"
+	"github.com/ogen-go/ogen/ogenerrors"
 )
 
-// these semantic errors will be sent to Sentry.
-var noSkipSentryForSemerrs = []semerr.Semantic{
-	semerr.SemanticUnknown,
-	semerr.SemanticInternal,
-}
+// These types of errors will be sent to Sentry
+var (
+	noSkipSentryForSemerrs = []semerr.Semantic{
+		semerr.SemanticInternal,
+		semerr.SemanticUnknown,
+	}
+	noSkipSentryForStatusCodes = []codes.Code{
+		codes.Internal,
+		codes.Unknown,
+	}
+)
 
 var errSkipSentry = errors.New("this skips sentry")
 
@@ -29,15 +37,16 @@ func SkipSentry(err error) error {
 // shouldSkipSentry
 //
 // Sentry is to see business logic problems.
-// So we restrict the scope of errors that is to be send to Sentry.
+// So we restrict the scope of errors that are to be sent to Sentry.
 func shouldSkipSentry(err error) bool {
 	if errors.Is(err, errSkipSentry) {
 		return true
 	}
 
-	serr := semerr.AsSemanticError(err)
-	if serr == nil {
-		return false
+	var oerr ogenerrors.Error
+	if ok := errors.As(err, &oerr); ok {
+		// Skip errors that are due to request decoding, e.g., missing fields in the request.
+		return true
 	}
 
 	switch {
@@ -48,22 +57,32 @@ func shouldSkipSentry(err error) bool {
 	case errors.Is(err, context.DeadlineExceeded):
 		// Do not report events of timeouts waiting for some other applications.
 		// They happen and we expect them to affect SLO.
-		// If they don't affect SLO they do not matter at all.
+		// If they don't affect SLO, they do not matter at all.
 		return true
 
 	case errors.Is(err, syscall.ECONNRESET):
 		fallthrough
 	case errors.Is(err, syscall.EPIPE):
 		// Don't report broken pipes or connection resets - the other party in a connection disconnected.
-		// There's not much we can do and it usually appears when the client disconnects before reading the whole response.
+		// There's little we can do,
+		// and it usually appears when the client disconnects before reading the whole response.
 		return true
-
-	default:
-		return !slices.Contains(noSkipSentryForSemerrs, serr.Semantic)
 	}
+
+	var st *status.Error
+	if ok := errors.As(err, &st); ok {
+		return !slices.Contains(noSkipSentryForStatusCodes, st.Status().Code())
+	}
+
+	serr := semerr.AsSemanticError(err)
+	if serr == nil {
+		return false
+	}
+
+	return !slices.Contains(noSkipSentryForSemerrs, serr.Semantic)
 }
 
-// Report is like Sentry, but accepts any errors.
+// Report is a helper function that reports semantic errors to Sentry.
 func Report(ctx context.Context, err error) {
 	if shouldSkipSentry(err) {
 		return
@@ -72,11 +91,9 @@ func Report(ctx context.Context, err error) {
 	if hub := sentry.GetHubFromContext(ctx); hub != nil {
 		hub.CaptureException(err)
 	} else {
-		logger.Error(ctx, "could not get sentry hub from context", zap.Error(err))
+		logger.Error(
+			ctx,
+			fmt.Errorf("could not get sentry hub from context: %w", err),
+		)
 	}
-}
-
-// Sentry is a helper function that reports semantic errors to Sentry.
-func Sentry(ctx context.Context, err *semerr.Error) {
-	Report(ctx, err)
 }

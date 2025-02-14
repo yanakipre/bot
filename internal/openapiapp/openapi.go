@@ -2,12 +2,14 @@ package openapiapp
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"net"
 	"net/http"
 
 	"go.uber.org/zap"
 
+	"github.com/yanakipre/bot/internal/clouderr"
 	"github.com/yanakipre/bot/internal/logger"
 )
 
@@ -24,7 +26,7 @@ type App struct {
 // StartServer binds server to a port and waits for it to finish.
 // It is expected to be run in separate goroutine.
 func (a *App) StartServer(ctx context.Context) {
-	// we want values from context but not the cncellation
+	// we want values from context but not the cancellation
 	// this should be long living context for graceful shutdown to work
 	baseCtx := context.WithoutCancel(ctx)
 	a.s.BaseContext = func(net.Listener) context.Context { return baseCtx }
@@ -35,8 +37,14 @@ func (a *App) StartServer(ctx context.Context) {
 }
 
 func (a *App) ShutdownServer(ctx context.Context) {
-	if err := a.s.Shutdown(ctx); err != nil && err != ctx.Err() {
-		logger.Error(ctx, fmt.Sprintf("could not shutdown %s server", a.cfg.Name), zap.Error(err))
+	if err := a.s.Shutdown(ctx); err != nil && !errors.Is(err, ctx.Err()) {
+		logger.Error(
+			ctx,
+			clouderr.WrapWithFields(
+				fmt.Errorf("could not shutdown server: %w", err),
+				zap.String("server", a.cfg.Name),
+			),
+		)
 	}
 }
 

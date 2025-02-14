@@ -3,7 +3,7 @@ package recoverytooling
 import (
 	"context"
 	"fmt"
-	"runtime/debug"
+	"github.com/yanakipre/bot/internal/semerr"
 
 	"go.uber.org/zap"
 
@@ -21,26 +21,9 @@ func RecoverOrStop(ctx context.Context, exec func()) {
 			restart := false
 			func() {
 				defer func() {
-					if rvr := recover(); rvr != nil {
+					if p := recover(); p != nil {
 						restart = true
-						err, ok := rvr.(error)
-						if !ok {
-							logger.Error(
-								ctx,
-								fmt.Sprintf(
-									"recovering from panic without an error: %s",
-									debug.Stack(),
-								),
-								zap.Any("panic", rvr),
-							)
-							return
-						} else {
-							logger.Error(
-								ctx,
-								fmt.Sprintf("recovering from panic: %s", debug.Stack()),
-								zap.Error(err),
-							)
-						}
+						logger.Panic(ctx, p)
 					}
 				}()
 				exec()
@@ -61,24 +44,8 @@ func Loop(ctx context.Context, loop func()) {
 		default:
 			func() {
 				defer func() {
-					if rvr := recover(); rvr != nil {
-						err, ok := rvr.(error)
-						if !ok {
-							logger.Error(
-								ctx,
-								fmt.Sprintf(
-									"recovering from panic without an error: %s",
-									debug.Stack(),
-								),
-								zap.Any("panic", rvr),
-							)
-							return
-						}
-						logger.Error(
-							ctx,
-							fmt.Sprintf("recovering from panic: %s", debug.Stack()),
-							zap.Error(err),
-						)
+					if p := recover(); p != nil {
+						logger.Panic(ctx, p)
 					}
 				}()
 				loop()
@@ -90,13 +57,14 @@ func Loop(ctx context.Context, loop func()) {
 
 // SuppressPanic logs fact of a panic if it occurred.
 func SuppressPanic(lg logger.Logger, exec func()) {
-	lg = lg.Named("suppress_panic")
 	defer func() {
-		if rvr := recover(); rvr != nil {
-			lg.Error("got panic, will not repeat this automatically", zap.Any("panic", rvr))
+		lg = lg.Named("suppress_panic")
+		if p := recover(); p != nil {
+			logger.Panic(logger.WithLogger(context.Background(), lg), p)
+			lg.Error("panic suppressed, won't retry", zap.Error(semerr.UnwrapPanic(p)))
 		}
-		exec()
 	}()
+	exec()
 }
 
 // DoUntilSuccess is a helper function to run a function until it succeeds.
@@ -109,31 +77,14 @@ func DoUntilSuccess(ctx context.Context, f func() error) {
 		default:
 			func() {
 				defer func() {
-					if rvr := recover(); rvr != nil {
+					if p := recover(); p != nil {
 						success = false
-
-						err, ok := rvr.(error)
-						if !ok {
-							logger.Error(
-								ctx,
-								fmt.Sprintf(
-									"recovering from panic without an error: %s",
-									debug.Stack(),
-								),
-								zap.Any("panic", rvr),
-							)
-							return
-						}
-						logger.Error(
-							ctx,
-							fmt.Sprintf("recovering from panic: %s", debug.Stack()),
-							zap.Error(err),
-						)
+						logger.Panic(ctx, p)
 					}
 				}()
 				err := f()
 				if err != nil {
-					logger.Error(ctx, "error while executing function, retrying", zap.Error(err))
+					logger.Error(ctx, fmt.Errorf("retrying error from function execution: %w", err))
 					success = false
 				}
 			}()

@@ -128,7 +128,7 @@ func (c *Ctl) TryCompletion(ctx context.Context, req models.ReqTryCompletion) (m
 
 	// update cache
 	if err := c.saveCacheItem(req.SenderID, searchResults); err != nil {
-		logger.Error(ctx, "failed to save cache item", zap.Error(err))
+		logger.Error(ctx, fmt.Errorf("failed to save cache item: %w", err))
 	}
 
 	return models.RespTryCompletion{

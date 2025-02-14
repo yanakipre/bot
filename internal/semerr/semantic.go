@@ -3,6 +3,8 @@ package semerr
 import (
 	"errors"
 	"fmt"
+	"github.com/yanakipre/bot/internal/clouderr"
+	"strings"
 
 	"github.com/samber/lo"
 	"go.uber.org/zap"
@@ -25,7 +27,7 @@ const (
 	SemanticFailedPrecondition
 	SemanticNotFound
 	SemanticAlreadyExists
-	SemanticCancelled
+	SemanticCanceled
 	SemanticUnprocessable
 	SemanticNotAcceptable
 	SemanticResourceLocked
@@ -36,13 +38,15 @@ const (
 
 // Error with semantic info
 type Error struct {
-	stack *stack
-
-	Message  string
 	Semantic Semantic
-	Details  any
+	err      error
+	fields   []zap.Field
+	message  string
+	stack    *stack
+}
 
-	err error
+func (e *Error) Fields() []zap.Field {
+	return e.fields
 }
 
 func (e *Error) StackTrace() StackTrace {
@@ -66,29 +70,33 @@ func errFmt(text string, args ...any) error {
 	return xerrors.Errorf(text, args...) // only xerrors return type as we need
 }
 
-func newError(s Semantic, text string) *Error {
+func newError(s Semantic, text string, fields ...zap.Field) *Error {
 	return &Error{
 		Semantic: s,
-		Message:  text,
+		message:  text,
+		fields:   fields,
 		err:      errFmt(text),
 		stack:    callers(),
 	}
 }
 
 // newErrorf constructs error with formatting
+//
+//nolint:deadcode,unused
 func newErrorf(s Semantic, format string, a ...any) *Error {
 	return &Error{
 		Semantic: s,
-		Message:  fmt.Sprintf(format, a...),
+		message:  fmt.Sprintf(format, a...),
 		err:      errFmt(format, a...),
 		stack:    callers(),
 	}
 }
 
-func wrapError(s Semantic, err error, text string) *Error {
+func wrapError(s Semantic, err error, text string, fields ...zap.Field) *Error {
 	return &Error{
 		Semantic: s,
-		Message:  text,
+		message:  text,
+		fields:   fields,
 		err:      errFmt(text+": %w", err),
 		stack:    callers(),
 	}
@@ -99,7 +107,7 @@ func wrapErrorf(s Semantic, err error, format string, a ...any) *Error {
 	args = append(args, err)
 	return &Error{
 		Semantic: s,
-		Message:  fmt.Sprintf(format, a...),
+		message:  fmt.Sprintf(format, a...),
 		err:      errFmt(format+": %w", args...),
 		stack:    callers(),
 	}
@@ -125,6 +133,21 @@ func (e *Error) As(target any) bool {
 // Unwrap implements Wrapper interface
 func (e *Error) Unwrap() error {
 	return e.err
+}
+
+func (e *Error) Message() string {
+	return e.message
+}
+
+func (e *Error) MessageWithFields() string {
+	ff := clouderr.UnwrapFields(e)
+	if len(ff) == 0 {
+		return e.Message()
+	}
+	ss := lo.Map(ff, func(f zap.Field, _ int) string {
+		return clouderr.FieldToString(f)
+	})
+	return fmt.Sprintf("%s; %s", e.Message(), strings.Join(ss, ", "))
 }
 
 // IsSemanticError returns true if target error is specified semantic error
@@ -162,13 +185,15 @@ func unknownf(format string, a ...any) *Error {
 }
 
 // wrapWithUnknown constructs Unknown error which wraps provided error
+//
+//nolint:deadcode,unused
 func wrapWithUnknown(err error, text string) *Error {
 	return wrapError(SemanticUnknown, err, text)
 }
 
-// wrapWithCancelled constructs Cancelled error which wraps provided error
-func WrapWithCancelled(err error, text string) *Error {
-	return wrapError(SemanticCancelled, err, text)
+// wrapWithCancelled constructs Canceled error which wraps provided error
+func WrapWithCanceled(err error, text string, fields ...zap.Field) *Error {
+	return wrapError(SemanticCanceled, err, text, fields...)
 }
 
 // wrapWithUnknownf constructs Unknown error with formatting which wraps provided error
@@ -186,55 +211,23 @@ func isUnknown(err error) bool {
 }
 
 // Internal constructs Internal error
-func Internal(text string) *Error {
-	return newError(SemanticInternal, text)
-}
-
-// Internalf constructs Internal error with formatting
-func Internalf(format string, a ...any) *Error {
-	return newErrorf(SemanticInternal, format, a...)
-}
-
-// InternalWithFields constructs Internal error with fields
-func InternalWithFields(text string, fields ...zap.Field) *Error {
-	return wrapError(SemanticInternal, WithFields(text, fields...), "internal")
+func Internal(text string, fields ...zap.Field) *Error {
+	return newError(SemanticInternal, text, fields...)
 }
 
 // WrapWithInternal constructs Internal error which wraps provided error
-func WrapWithInternal(err error, text string) *Error {
-	return wrapError(SemanticInternal, err, text)
-}
-
-// WrapWithInternal constructs Internal error with formatting which wraps provided
-// error
-func WrapWithInternalf(err error, format string, a ...any) *Error {
-	return wrapErrorf(SemanticInternal, err, format, a...)
+func WrapWithInternal(err error, text string, fields ...zap.Field) *Error {
+	return wrapError(SemanticInternal, err, text, fields...)
 }
 
 // NotImplemented constructs NotImplemented error
-func NotImplemented(text string) *Error {
-	return newError(SemanticNotImplemented, text)
-}
-
-// NotImplementedf constructs NotImplemented error with formatting
-func NotImplementedf(format string, a ...any) *Error {
-	return newErrorf(SemanticNotImplemented, format, a...)
-}
-
-// NotImplementedWithFields constructs NotImplemented error with fields
-func NotImplementedWithFields(text string, fields ...zap.Field) *Error {
-	return wrapError(SemanticNotImplemented, WithFields(text, fields...), "not implemented")
+func NotImplemented(text string, fields ...zap.Field) *Error {
+	return newError(SemanticNotImplemented, text, fields...)
 }
 
 // WrapWithNotImplemented constructs NotImplemented error which wraps provided error
-func WrapWithNotImplemented(err error, text string) *Error {
-	return wrapError(SemanticNotImplemented, err, text)
-}
-
-// WrapWithNotImplementedf constructs NotImplemented error with formatting which wraps provided
-// error
-func WrapWithNotImplementedf(err error, format string, a ...any) *Error {
-	return wrapErrorf(SemanticNotImplemented, err, format, a...)
+func WrapWithNotImplemented(err error, text string, fields ...zap.Field) *Error {
+	return wrapError(SemanticNotImplemented, err, text, fields...)
 }
 
 // IsNotImplemented returns true if target error is NotImplemented semantic error
@@ -243,55 +236,33 @@ func IsNotImplemented(err error) bool {
 }
 
 // Unavailable constructs Unavailable error
-func Unavailable(text string) *Error {
-	return newError(SemanticUnavailable, text)
-}
-
-// Unavailablef constructs Unavailable error with formatting
-func Unavailablef(format string, a ...any) *Error {
-	return newErrorf(SemanticUnavailable, format, a...)
-}
-
-// UnavailableWithFields constructs Unavailable error with fields
-func UnavailableWithFields(text string, fields ...zap.Field) *Error {
-	return wrapError(SemanticUnavailable, WithFields(text, fields...), "unavailable")
+func Unavailable(text string, fields ...zap.Field) *Error {
+	return newError(SemanticUnavailable, text, fields...)
 }
 
 // WrapWithUnavailable constructs Unavailable error which wraps provided error
-func WrapWithUnavailable(err error, text string) *Error {
-	return wrapError(SemanticUnavailable, err, text)
-}
-
-// Timeout constructs Timeout error
-func Timeout(text string) *Error {
-	return newError(SemanticTimeout, text)
-}
-
-func Timeoutf(format string, a ...any) *Error {
-	return newErrorf(SemanticTimeout, format, a...)
-}
-
-// TimeoutWithFields constructs Unavailable error with fields
-func TimeoutWithFields(text string, fields ...zap.Field) *Error {
-	return wrapError(SemanticTimeout, WithFields(text, fields...), "timeout")
+func WrapWithUnavailable(err error, text string, fields ...zap.Field) *Error {
+	return wrapError(SemanticUnavailable, err, text, fields...)
 }
 
 // WrapWithTimeout constructs Timeout error which wraps provided error
-func WrapWithTimeout(err error, text string) *Error {
-	return wrapError(SemanticTimeout, err, text)
+func WrapWithTimeout(err error, text string, fields ...zap.Field) *Error {
+	return wrapError(SemanticTimeout, err, text, fields...)
 }
 
-func IsTimeout(err error) bool {
-	return IsSemanticError(err, SemanticTimeout)
-}
-
-func ResourceLocked(text string) *Error {
-	return newError(SemanticResourceLocked, text)
+// ResourceLocked constructs ResourceLocked error
+func ResourceLocked(text string, fields ...zap.Field) *Error {
+	return newError(SemanticResourceLocked, text, fields...)
 }
 
 // WrapWithResourceLocked constructs ResourceLocked error which wraps provided error
-func WrapWithResourceLocked(err error, text string) *Error {
-	return wrapError(SemanticResourceLocked, err, text)
+func WrapWithResourceLocked(err error, text string, fields ...zap.Field) *Error {
+	return wrapError(SemanticResourceLocked, err, text, fields...)
+}
+
+// WrapWithTooManRequests constructs TooManyRequests error which wraps provided error
+func WrapWithTooManyRequests(err error, text string, fields ...zap.Field) *Error {
+	return wrapError(SemanticTooManyRequests, err, text, fields...)
 }
 
 func IsResourceLocked(err error) bool {
@@ -309,28 +280,13 @@ func IsInternal(err error) bool {
 }
 
 // InvalidInput constructs InvalidInput error
-func InvalidInput(text string) *Error {
-	return newError(SemanticInvalidInput, text)
-}
-
-// InvalidInputf constructs InvalidInput error with formatting
-func InvalidInputf(format string, a ...any) *Error {
-	return newErrorf(SemanticInvalidInput, format, a...)
-}
-
-// InvalidInputWithFields constructs InvalidInput error with fields
-func InvalidInputWithFields(text string, fields ...zap.Field) *Error {
-	return wrapError(SemanticInvalidInput, WithFields(text, fields...), "invalid input")
+func InvalidInput(text string, fields ...zap.Field) *Error {
+	return newError(SemanticInvalidInput, text, fields...)
 }
 
 // WrapWithInvalidInput constructs InvalidInput error which wraps provided error
-func WrapWithInvalidInput(err error, text string) *Error {
-	return wrapError(SemanticInvalidInput, err, text)
-}
-
-// WrapWithInvalidInputf constructs InvalidInput error with formatting which wraps provided error
-func WrapWithInvalidInputf(err error, format string, a ...any) *Error {
-	return wrapErrorf(SemanticInvalidInput, err, format, a...)
+func WrapWithInvalidInput(err error, text string, fields ...zap.Field) *Error {
+	return wrapError(SemanticInvalidInput, err, text, fields...)
 }
 
 // IsInvalidInput returns true if target error is InvalidInput semantic error
@@ -339,29 +295,13 @@ func IsInvalidInput(err error) bool {
 }
 
 // Authentication constructs Authentication error
-func Authentication(text string) *Error {
-	return newError(SemanticAuthentication, text)
-}
-
-// Authenticationf constructs Authentication error with formatting
-func Authenticationf(format string, a ...any) *Error {
-	return newErrorf(SemanticAuthentication, format, a...)
-}
-
-// AuthenticationWithFields constructs Authentication error with fields
-func AuthenticationWithFields(text string, fields ...zap.Field) *Error {
-	return wrapError(SemanticAuthentication, WithFields(text, fields...), "authentication")
+func Authentication(text string, fields ...zap.Field) *Error {
+	return newError(SemanticAuthentication, text, fields...)
 }
 
 // WrapWithAuthentication constructs Authentication error which wraps provided error
-func WrapWithAuthentication(err error, text string) *Error {
-	return wrapError(SemanticAuthentication, err, text)
-}
-
-// WrapWithAuthenticationf constructs Authentication error with formatting which wraps provided
-// error
-func WrapWithAuthenticationf(err error, format string, a ...any) *Error {
-	return wrapErrorf(SemanticAuthentication, err, format, a...)
+func WrapWithAuthentication(err error, text string, fields ...zap.Field) *Error {
+	return wrapError(SemanticAuthentication, err, text, fields...)
 }
 
 // IsAuthentication returns true if target error is Authentication semantic error
@@ -370,28 +310,13 @@ func IsAuthentication(err error) bool {
 }
 
 // Forbidden constructs Forbidden error
-func Forbidden(text string) *Error {
-	return newError(SemanticForbidden, text)
-}
-
-// Forbiddenf constructs Forbidden error with formatting
-func Forbiddenf(format string, a ...any) *Error {
-	return newErrorf(SemanticForbidden, format, a...)
-}
-
-// ForbiddenWithFields constructs Forbidden error with fields
-func ForbiddenWithFields(text string, fields ...zap.Field) *Error {
-	return wrapError(SemanticForbidden, WithFields(text, fields...), "forbidden")
+func Forbidden(text string, fields ...zap.Field) *Error {
+	return newError(SemanticForbidden, text, fields...)
 }
 
 // WrapWithForbidden constructs Forbidden error which wraps provided error
-func WrapWithForbidden(err error, text string) *Error {
-	return wrapError(SemanticForbidden, err, text)
-}
-
-// WrapWithForbiddenf constructs Forbidden error with formatting which wraps provided error
-func WrapWithForbiddenf(err error, format string, a ...any) *Error {
-	return wrapErrorf(SemanticForbidden, err, format, a...)
+func WrapWithForbidden(err error, text string, fields ...zap.Field) *Error {
+	return wrapError(SemanticForbidden, err, text, fields...)
 }
 
 // IsForbidden returns true if target error is Forbidden semantic error
@@ -400,29 +325,13 @@ func IsForbidden(err error) bool {
 }
 
 // FailedPrecondition constructs FailedPrecondition error
-func FailedPrecondition(text string) *Error {
-	return newError(SemanticFailedPrecondition, text)
-}
-
-// FailedPreconditionf constructs FailedPrecondition error with formatting
-func FailedPreconditionf(format string, a ...any) *Error {
-	return newErrorf(SemanticFailedPrecondition, format, a...)
-}
-
-// FailedPreconditionWithFields constructs FailedPrecondition error with fields
-func FailedPreconditionWithFields(text string, fields ...zap.Field) *Error {
-	return wrapError(SemanticFailedPrecondition, WithFields(text, fields...), "failed precondition")
+func FailedPrecondition(text string, fields ...zap.Field) *Error {
+	return newError(SemanticFailedPrecondition, text, fields...)
 }
 
 // WrapWithFailedPrecondition constructs FailedPrecondition error which wraps provided error
-func WrapWithFailedPrecondition(err error, text string) *Error {
-	return wrapError(SemanticFailedPrecondition, err, text)
-}
-
-// WrapWithFailedPreconditionf constructs FailedPrecondition error
-// with formatting which wraps provided error
-func WrapWithFailedPreconditionf(err error, format string, a ...any) *Error {
-	return wrapErrorf(SemanticFailedPrecondition, err, format, a...)
+func WrapWithFailedPrecondition(err error, text string, fields ...zap.Field) *Error {
+	return wrapError(SemanticFailedPrecondition, err, text, fields...)
 }
 
 // IsFailedPrecondition returns true if target error is FailedPrecondition semantic error
@@ -431,28 +340,13 @@ func IsFailedPrecondition(err error) bool {
 }
 
 // NotFound constructs NotFound error
-func NotFound(text string) *Error {
-	return newError(SemanticNotFound, text)
-}
-
-// NotFoundf constructs NotFound error with formatting
-func NotFoundf(format string, a ...any) *Error {
-	return newErrorf(SemanticNotFound, format, a...)
-}
-
-// NotFoundWithFields constructs NotFound error with fields
-func NotFoundWithFields(text string, fields ...zap.Field) *Error {
-	return wrapError(SemanticNotFound, WithFields(text, fields...), "not found")
+func NotFound(text string, fields ...zap.Field) *Error {
+	return newError(SemanticNotFound, text, fields...)
 }
 
 // WrapWithNotFound constructs NotFound error which wraps provided error
-func WrapWithNotFound(err error, text string) *Error {
-	return wrapError(SemanticNotFound, err, text)
-}
-
-// WrapWithNotFoundf constructs NotFound error with formatting which wraps provided error
-func WrapWithNotFoundf(err error, format string, a ...any) *Error {
-	return wrapErrorf(SemanticNotFound, err, format, a...)
+func WrapWithNotFound(err error, text string, fields ...zap.Field) *Error {
+	return wrapError(SemanticNotFound, err, text, fields...)
 }
 
 // IsNotFound returns true if target error is NotFound semantic error
@@ -461,28 +355,13 @@ func IsNotFound(err error) bool {
 }
 
 // AlreadyExists constructs AlreadyExists error
-func AlreadyExists(text string) *Error {
-	return newError(SemanticAlreadyExists, text)
-}
-
-// AlreadyExistsf constructs AlreadyExists error with formatting
-func AlreadyExistsf(format string, a ...any) *Error {
-	return newErrorf(SemanticAlreadyExists, format, a...)
-}
-
-// AlreadyExistsWithFields constructs AlreadyExists error with fields
-func AlreadyExistsWithFields(text string, fields ...zap.Field) *Error {
-	return wrapError(SemanticAlreadyExists, WithFields(text, fields...), "already exists")
+func AlreadyExists(text string, fields ...zap.Field) *Error {
+	return newError(SemanticAlreadyExists, text, fields...)
 }
 
 // WrapWithAlreadyExists constructs AlreadyExists error which wraps provided error
-func WrapWithAlreadyExists(err error, text string) *Error {
-	return wrapError(SemanticAlreadyExists, err, text)
-}
-
-// WrapWithAlreadyExistsf constructs AlreadyExists error with formatting which wraps provided error
-func WrapWithAlreadyExistsf(err error, format string, a ...any) *Error {
-	return wrapErrorf(SemanticAlreadyExists, err, format, a...)
+func WrapWithAlreadyExists(err error, text string, fields ...zap.Field) *Error {
+	return wrapError(SemanticAlreadyExists, err, text, fields...)
 }
 
 // IsAlreadyExists returns true if target error is AlreadyExists semantic error
@@ -490,46 +369,14 @@ func IsAlreadyExists(err error) bool {
 	return IsSemanticError(err, SemanticAlreadyExists)
 }
 
-// WhitelistErrors provided in argument, convert others into unknown errors
-func WhitelistErrors(err error, semantics ...Semantic) error {
-	se := AsSemanticError(err)
-	if se == nil {
-		return err
-	}
-
-	for _, sem := range semantics {
-		if se.Semantic == sem {
-			return err
-		}
-	}
-
-	// Do not return any semantic error beyond those specified above
-	return wrapWithUnknown(err, "unknown")
-}
-
 // Unprocessable constructs Unprocessable error
-func Unprocessable(text string) *Error {
-	return newError(SemanticUnprocessable, text)
-}
-
-// Unprocessablef constructs Unprocessable error with formatting
-func Unprocessablef(format string, a ...any) *Error {
-	return newErrorf(SemanticUnprocessable, format, a...)
-}
-
-// UnprocessableWithFields constructs Unprocessable error with fields
-func UnprocessableWithFields(text string, fields ...zap.Field) *Error {
-	return wrapError(SemanticUnprocessable, WithFields(text, fields...), "unprocessable")
+func Unprocessable(text string, fields ...zap.Field) *Error {
+	return newError(SemanticUnprocessable, text, fields...)
 }
 
 // WrapWithUnprocessable constructs Unprocessable error which wraps provided error
-func WrapWithUnprocessable(err error, text string) *Error {
-	return wrapError(SemanticUnprocessable, err, text)
-}
-
-// WrapWithUnprocessablef constructs Unprocessable error with formatting which wraps provided error
-func WrapWithUnprocessablef(err error, format string, a ...any) *Error {
-	return wrapErrorf(SemanticUnprocessable, err, format, a...)
+func WrapWithUnprocessable(err error, text string, fields ...zap.Field) *Error {
+	return wrapError(SemanticUnprocessable, err, text, fields...)
 }
 
 // IsUnprocessable returns true if target error is Unprocessable semantic error
@@ -538,28 +385,13 @@ func IsUnprocessable(err error) bool {
 }
 
 // NotAcceptable constructs NotAcceptable error
-func NotAcceptable(text string) *Error {
-	return newError(SemanticNotAcceptable, text)
-}
-
-// NotAcceptablef constructs NotAcceptable error with formatting
-func NotAcceptablef(format string, a ...any) *Error {
-	return newErrorf(SemanticNotAcceptable, format, a...)
-}
-
-// NotAcceptableWithFields constructs NotAcceptable error with fields
-func NotAcceptableWithFields(text string, fields ...zap.Field) *Error {
-	return wrapError(SemanticNotAcceptable, WithFields(text, fields...), "not acceptable")
+func NotAcceptable(text string, fields ...zap.Field) *Error {
+	return newError(SemanticNotAcceptable, text, fields...)
 }
 
 // WrapWithNotAcceptable constructs NotAcceptable error which wraps provided error
-func WrapWithNotAcceptable(err error, text string) *Error {
-	return wrapError(SemanticNotAcceptable, err, text)
-}
-
-// WrapWithNotAcceptablef constructs NotAcceptable error with formatting which wraps provided error
-func WrapWithNotAcceptablef(err error, format string, a ...any) *Error {
-	return wrapErrorf(SemanticNotAcceptable, err, format, a...)
+func WrapWithNotAcceptable(err error, text string, fields ...zap.Field) *Error {
+	return wrapError(SemanticNotAcceptable, err, text, fields...)
 }
 
 // IsNotAcceptable returns true if target error is NotAcceptable semantic error
@@ -568,29 +400,8 @@ func IsNotAcceptable(err error) bool {
 }
 
 // TooManyRequests constructs TooManyRequests error
-func TooManyRequests(text string) *Error {
-	return newError(SemanticTooManyRequests, text)
-}
-
-// TooManyRequestsf constructs TooManyRequests error with formatting
-func TooManyRequestsf(format string, a ...any) *Error {
-	return newErrorf(SemanticTooManyRequests, format, a...)
-}
-
-// TooManyRequestsWithFields constructs TooManyRequests error with fields
-func TooManyRequestsWithFields(text string, fields ...zap.Field) *Error {
-	return wrapError(SemanticTooManyRequests, WithFields(text, fields...), "too many requests")
-}
-
-// WrapWithTooManyRequests constructs TooManyRequests error which wraps provided error
-func WrapWithTooManyRequests(err error, text string) *Error {
-	return wrapError(SemanticTooManyRequests, err, text)
-}
-
-// WrapWithTooManyRequestsf constructs TooManyRequests error with formatting which wraps provided
-// error
-func WrapWithTooManyRequestsf(err error, format string, a ...any) *Error {
-	return wrapErrorf(SemanticTooManyRequests, err, format, a...)
+func TooManyRequests(text string, fields ...zap.Field) *Error {
+	return newError(SemanticTooManyRequests, text, fields...)
 }
 
 // IsTooManyRequests returns true if target error is TooManyRequests semantic error
@@ -598,75 +409,18 @@ func IsTooManyRequests(err error) bool {
 	return IsSemanticError(err, SemanticTooManyRequests)
 }
 
-func IsSkipError(err error) bool {
-	return IsSemanticError(err, SemanticSkipError)
+func WrapWithSkipError(err error, fields ...zap.Field) *Error {
+	return wrapError(SemanticSkipError, err, err.Error(), fields...)
 }
 
-func WrapWithSkipError(err error) *Error {
-	return wrapError(SemanticSkipError, err, err.Error())
-}
-
-// PartialSuccessf constructs PartialSuccess error with formatting
-func PartialSuccessf(format string, a ...any) *Error {
-	return newErrorf(SemanticPartialSuccess, format, a...)
-}
-
-// PartialSuccessWithFields constructs PartialSuccess error with fields
-func PartialSuccessWithFields(text string, fields ...zap.Field) *Error {
-	return wrapError(SemanticPartialSuccess, WithFields(text, fields...), "partial success")
+// PartialSuccess constructs PartialSuccess error
+func PartialSuccess(text string, fields ...zap.Field) *Error {
+	return newError(SemanticPartialSuccess, text, fields...)
 }
 
 // IsPartialSuccess returns true if target error is PartialSuccessf semantic error
 func IsPartialSuccess(err error) bool {
 	return IsSemanticError(err, SemanticPartialSuccess)
-}
-
-type errorWithFields struct {
-	error
-	fields []zap.Field
-}
-
-func (err errorWithFields) Unwrap() error {
-	return err.error
-}
-
-func WithFields(text string, fields ...zap.Field) error {
-	return WrapWithFields(errors.New(text), fields...)
-}
-
-func WrapWithFields(err error, fields ...zap.Field) error {
-	if len(fields) == 0 {
-		return err
-	}
-	return errorWithFields{
-		error:  err,
-		fields: fields,
-	}
-}
-
-func UnwrapFields(err error) []zap.Field {
-	fields := make(map[string]zap.Field)
-	errs := []error{err}
-	for len(errs) > 0 {
-		e := errs[0]
-		errs = errs[1:]
-		if withFields, ok := e.(errorWithFields); ok {
-			// deduplicate keys added at different call tree levels
-			// first write wins, i.e. write at the lowest wrapping level
-			for _, f := range withFields.fields {
-				fields[f.Key] = f
-			}
-		}
-		if uw, ok := e.(interface{ Unwrap() error }); ok {
-			errs = append(errs, uw.Unwrap())
-		}
-		if uw, ok := e.(interface{ Unwrap() []error }); ok {
-			errs = append(errs, uw.Unwrap()...)
-		}
-	}
-	return lo.MapToSlice(fields, func(_ string, f zap.Field) zap.Field {
-		return f
-	})
 }
 
 func UnwrapPanic(p any) error {

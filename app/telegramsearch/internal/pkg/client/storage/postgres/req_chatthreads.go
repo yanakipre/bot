@@ -19,15 +19,8 @@ SELECT * FROM chatthreads WHERE thread_id NOT IN (SELECT thread_id FROM embeddin
 )
 
 func (s *Storage) FetchChatThreadToGenerateEmbedding(ctx context.Context, req models.ReqFetchChatThreadToGenerateEmbedding) (models.RespFetchChatThreadToGenerateEmbedding, error) {
-	query, err := s.db.PrepareNamedContext(ctx,
-		queryFetchChatThreadToGenerateEmbedding.Query,
-		queryFetchChatThreadToGenerateEmbedding.Name)
-	if err != nil {
-		return models.RespFetchChatThreadToGenerateEmbedding{}, err
-	}
-
 	rows := []dbmodels.ChatThread{}
-	if err = query.SelectContext(ctx, &rows, map[string]any{}); err != nil {
+	if err := s.db.SelectContext(ctx, &rows, queryFetchChatThreadToGenerateEmbedding.Query, map[string]any{}); err != nil {
 		return models.RespFetchChatThreadToGenerateEmbedding{}, err
 	}
 	return models.RespFetchChatThreadToGenerateEmbedding{
@@ -54,19 +47,12 @@ VALUES (
 )
 
 func (s *Storage) CreateChatThread(ctx context.Context, req models.ReqCreateChatThread) (models.RespCreateChatThread, error) {
-	query, err := s.db.PrepareNamedContext(ctx,
-		queryCreateChatThread.Query,
-		queryCreateChatThread.Name)
-	if err != nil {
-		return models.RespCreateChatThread{}, err
-	}
-
 	marshal, err := json.Marshal(req.Body)
 	if err != nil {
 		return models.RespCreateChatThread{}, err
 	}
 
-	_, err = query.ExecContext(ctx, map[string]any{
+	_, err = s.db.ExecContext(ctx, queryCreateChatThread.Query, map[string]any{
 		"chat_id": req.ChatID,
 		"body":    marshal,
 	})
