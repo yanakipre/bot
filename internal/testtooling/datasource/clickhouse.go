@@ -4,8 +4,13 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/docker/docker/api/types/container"
+	"github.com/testcontainers/testcontainers-go"
+	"github.com/testcontainers/testcontainers-go/wait"
+	"github.com/yanakipre/bot/internal/clouderr"
+	"go.uber.org/zap"
+	"io"
 	"net/url"
-	"os"
 	"path/filepath"
 	"strings"
 
@@ -34,11 +39,11 @@ func NewClickHouse(host string) *Clickhouse {
 func (c *Clickhouse) Connect(ctx context.Context, dbName string) (*chdb.DB, error) {
 	connCfg := chdb.DefaultConfig()
 	connCfg.Database = dbName
-	connCfg.Addr = c.host
+	connCfg.ChcAddr = c.host
 	connCfg.Enabled = true
 	connCfg.UseTls = false
 
-	c.conn = chdb.NewDB(connCfg)
+	c.conn = chdb.NewDB(connCfg, false)
 	if err := c.conn.Ready(ctx); err != nil {
 		return nil, fmt.Errorf("db is not ready: %w", err)
 	}
@@ -78,38 +83,87 @@ func (c *Clickhouse) Close() error {
 	return c.conn.Close()
 }
 
-func (c *Clickhouse) InitDBSchema(ctx context.Context, pgDSN string) error {
+func (c *Clickhouse) InitDBSchema(ctx context.Context, pgDSN string, dbName string) error {
 	if c.conn == nil {
 		return errors.New("not connected")
 	}
 
-	expectedDbState, err := os.ReadFile(
-		filepath.Join(projectpath.RootPath, "/db-clickhouse/", "db.sql"),
-	)
+	chPort := strings.Split(c.host, ":")[1]
+
+	if pgDSN == "" {
+		pgDSN = "postgres://postgres:password@db:5432/yanakipre"
+	}
+
+	u, err := url.Parse(pgDSN)
+	if err != nil {
+		return fmt.Errorf("cannot parse dsn: %w", err)
+	}
+	pwd, _ := u.User.Password()
+
+	req := testcontainers.ContainerRequest{
+		FromDockerfile: testcontainers.FromDockerfile{
+			Context:    filepath.Join(projectpath.RootPath, "/db-clickhouse/"),
+			Dockerfile: "migrations.Dockerfile",
+			KeepImage:  true,
+			Tag:        "yanakipre-ch-migration",
+		},
+		WaitingFor: wait.ForExit(),
+		Cmd: []string{
+			"--clickhouse-url",
+			fmt.Sprintf(
+				"clickhouse://host.docker.internal:%s?database=%s&x-multi-statement=true",
+				chPort,
+				dbName,
+			),
+			"--console-postgres-conn",
+			fmt.Sprintf(
+				"postgres://%s:%s@db:5432/%s",
+				u.User.Username(),
+				pwd,
+				u.Path[1:],
+			),
+		},
+		HostConfigModifier: func(config *container.HostConfig) {
+			config.ExtraHosts = []string{"host.docker.internal:host-gateway"}
+		},
+	}
+
+	ct, err := testcontainers.GenericContainer(ctx, testcontainers.GenericContainerRequest{
+		ContainerRequest: req,
+		Started:          true,
+	})
 	if err != nil {
 		return err
 	}
 
-	sql := string(expectedDbState)
-	if pgDSN != "" {
-		u, err := url.Parse(pgDSN)
-		if err != nil {
-			return fmt.Errorf("cannot parse dsn: %w", err)
-		}
+	defer func() {
+		_ = ct.Terminate(ctx)
+	}()
 
-		pwd, _ := u.User.Password()
-
-		old := `PostgreSQL('db:5432', 'postgres', 'projects', 'postgres', '[HIDDEN]')`
-		replace := fmt.Sprintf(
-			`PostgreSQL('db:5432', '%s', 'projects', '%s', '%s')`,
-			u.Path[1:],
-			u.User.Username(),
-			pwd,
-		)
-		sql = strings.ReplaceAll(sql, old, replace)
+	state, err := ct.State(ctx)
+	if err != nil {
+		return err
 	}
 
-	return c.conn.ExecMultiContext(ctx, sql)
+	if state.ExitCode != 0 {
+		logs, err := ct.Logs(ctx)
+		if err != nil {
+			return err
+		}
+
+		logsString, err := io.ReadAll(logs)
+		if err != nil {
+			return err
+		}
+
+		return clouderr.WithFields(
+			"container exited with a non-zero exit code",
+			zap.String("logs", string(logsString)),
+			zap.Int("exit_code", state.ExitCode),
+		)
+	}
+
+	return nil
 }
 
 func (c *Clickhouse) createDB(ctx context.Context, db *chdb.DB, name string) error {

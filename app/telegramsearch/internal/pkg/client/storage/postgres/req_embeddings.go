@@ -30,15 +30,8 @@ SELECT * FROM
 )
 
 func (s *Storage) FetchSimilaritySearch(ctx context.Context, req models.ReqSimilaritySearch) ([]models.RespSimilaritySearch, error) {
-	query, err := s.db.PrepareNamedContext(ctx,
-		querySimilaritySearch.Query,
-		querySimilaritySearch.Name)
-	if err != nil {
-		return nil, err
-	}
-
 	rows := []dbmodels.PGSimilarity{}
-	if err = query.SelectContext(ctx, &rows, map[string]any{
+	if err := s.db.SelectContext(ctx, &rows, querySimilaritySearch.Query, map[string]any{
 		"threshold": req.CutThreshold,
 		"since":     req.Since,
 		"upto":      req.UpTo,
@@ -72,14 +65,7 @@ ON CONFLICT (thread_id) DO UPDATE
 )
 
 func (s *Storage) UpsertEmbedding(ctx context.Context, req models.ReqUpsertEmbedding) (models.RespUpsertEmbedding, error) {
-	query, err := s.db.PrepareNamedContext(ctx,
-		queryUpsertEmbedding.Query,
-		queryUpsertEmbedding.Name)
-	if err != nil {
-		return models.RespUpsertEmbedding{}, err
-	}
-
-	if _, err = query.ExecContext(ctx, map[string]any{
+	if _, err := s.db.ExecContext(ctx, queryUpsertEmbedding.Query, map[string]any{
 		"thread_id": req.ThreadID,
 		"chat_id":   req.ChatID,
 		"message":   req.Message,

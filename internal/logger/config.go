@@ -2,7 +2,9 @@ package logger
 
 import (
 	"fmt"
+	"github.com/yanakipre/bot/internal/clouderr"
 
+	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
 
@@ -56,9 +58,8 @@ func (c *FilterConfig) validate() error {
 		level, err := zapcore.ParseLevel(c.FullNameFilter[i].Level)
 		if err != nil {
 			return fmt.Errorf(
-				"cannot parse FullNameFilter of %q: %w",
-				c.FullNameFilter[i].Level,
-				err,
+				"cannot parse FullNameFilter: %w",
+				clouderr.WrapWithFields(err, zap.String("level", c.FullNameFilter[i].Level)),
 			)
 		}
 		c.FullNameFilter[i].parsedLevel = level
@@ -75,7 +76,10 @@ type Config struct {
 	LogLevel string `yaml:"log_level"`
 	Format   Format `yaml:"log_format"`
 	// Filters allow filter out some log lines based on conditions
-	Filters FilterConfig
+	Filters         FilterConfig
+	Caller          bool          `yaml:"-"`
+	CallerSkip      int           `yaml:"-"`
+	StackTraceLevel zapcore.Level `yaml:"-"`
 }
 
 func (c *Config) Validate() error {
@@ -87,9 +91,12 @@ func (c *Config) Validate() error {
 
 func DefaultConfig() Config {
 	return Config{
-		Sink:     sinkSTDOUT,
-		LogLevel: "DEBUG",
-		Format:   FormatJSON,
-		Filters:  DefaultFilterConfig(),
+		Sink:            sinkSTDOUT,
+		LogLevel:        "DEBUG",
+		Format:          FormatJSON,
+		Filters:         DefaultFilterConfig(),
+		Caller:          true,
+		CallerSkip:      1,
+		StackTraceLevel: zapcore.ErrorLevel,
 	}
 }

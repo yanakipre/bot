@@ -2,6 +2,7 @@ package logger
 
 import (
 	"context"
+	"github.com/yanakipre/bot/internal/clouderr"
 
 	"go.uber.org/zap"
 )
@@ -20,7 +21,12 @@ func WithFields(ctx context.Context, fields ...zap.Field) context.Context {
 		panic("logger has not been configured")
 	}
 	l = l.With(fields...)
-	return context.WithValue(ctx, loggerContextKey, l)
+	withLogger := context.WithValue(ctx, loggerContextKey, l)
+
+	return clouderr.ContextWithFields(
+		withLogger,
+		fields...,
+	)
 }
 
 // WithName puts a named logger into context.

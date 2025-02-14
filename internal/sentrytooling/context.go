@@ -15,7 +15,6 @@ func FromContext(ctx context.Context) sentry.Context {
 	return ctx.Value(sentryCtxKey).(sentry.Context)
 }
 
-// InitCtx initializes sentry hub and puts Yanakipre-specific data into ctx.
 // Ctx can be retrieved and modified later on with FromContext
 // keyName should contain "Yanakipre ", e.g. "Yanakipre HTTP" to catch eye of a developer in the UI.
 func InitCtx(ctx context.Context, keyName string) context.Context {

@@ -14,8 +14,8 @@ import (
 
 type metricsCollector struct{}
 
-func (m metricsCollector) JobStarted(_ string) (finished func()) {
-	return func() {
+func (m metricsCollector) JobStarted(_ string) (finished func(error)) {
+	return func(err error) {
 	}
 }
 

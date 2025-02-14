@@ -3,14 +3,12 @@ package sentrytooling
 import (
 	"context"
 	"errors"
+	"github.com/yanakipre/bot/internal/semerr"
 	"net"
 	"syscall"
 	"testing"
 
 	"github.com/stretchr/testify/require"
-
-	"github.com/yanakipre/bot/internal/openapiapp"
-	"github.com/yanakipre/bot/internal/semerr"
 )
 
 func Test_shouldSkipSentry(t *testing.T) {
@@ -72,13 +70,6 @@ func Test_shouldSkipSentry(t *testing.T) {
 			name:        "doesn't skip internal errors otherwise",
 			err:         semerr.Internal("foo"),
 			skipsSentry: false,
-		},
-		{
-			name: "skips DNS errors",
-			err: openapiapp.WrapWithSemantic(
-				&net.DNSError{Err: "dial udp 172.20.0.10:53: operation was canceled"},
-			),
-			skipsSentry: true,
 		},
 	}
 	for _, tt := range tests {

@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/yanakipre/bot/internal/clouderr"
 	"os"
 	"os/exec"
 	"strconv"
@@ -22,7 +23,7 @@ import (
 )
 
 var (
-	ErrLockNotAcquired  = errors.New("lock not acquired within given time")
+	ErrLockNotAcquired  = errors.New("database lock not acquired")
 	ErrDbVersionIsNewer = errors.New("database version is newer than image database version")
 )
 
@@ -49,11 +50,21 @@ func Migrate(
 			bvErr := migrate.BadVersionError("")
 			switch {
 			case errors.As(err, &pgErr):
-				if pgErr.Code == "55P03" {
+				switch {
+				case pgErr.Code == "55P03":
 					// 55P03 	lock_not_available
 					// https://www.postgresql.org/docs/current/errcodes-appendix.html
 					lg.Warn(
 						"lock not acquired",
+						zap.String("migration_name", pgErr.MigrationName),
+						zap.String("stmt", pgErr.Sql),
+					)
+					return errors.Join(ErrLockNotAcquired, bvErr) // retry error when lock cannot be taken
+				case pgErr.Code == "40P01":
+					// 40P01 	deadlock_detected
+					// https://www.postgresql.org/docs/current/errcodes-appendix.html
+					lg.Warn(
+						"deadlock detected",
 						zap.String("migration_name", pgErr.MigrationName),
 						zap.String("stmt", pgErr.Sql),
 					)
@@ -76,13 +87,34 @@ func Migrate(
 	return returnErr
 }
 
+// errPgDumpNoConnection signals that pg_dump could not connect to the postgres
+var errPgDumpNoConnection = errors.New("connection error")
+
 func pgDump(args ...string) (string, error) {
-	cmdArgs := []string{"run", "--network", "host", "postgres:14-alpine", "pg_dump"}
+	// version is 14-alpine
+	cmdArgs := []string{
+		"run",
+		"--network",
+		"host",
+		"--add-host=host.docker.internal:host-gateway",
+		"postgres@sha256:51ce26e4463d434049b4b83e72eaaa008047a6a6cc65f2f3ee2ff3c183da0621",
+		"pg_dump",
+	}
 	cmdArgs = append(cmdArgs, args...)
 	cmd := exec.Command("docker", cmdArgs...)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		return "", fmt.Errorf("pg_dump failed with: %v\noutput:\n%v\n%w", err, string(output), err)
+		err = clouderr.WrapWithFields(fmt.Errorf("pg_dump failed: %w", err), zap.ByteString("output", output))
+		if strings.Contains(
+			string(output),
+			// There are multiple strings pg_dump can return:
+			//  * Is the server running on that host and accepting TCP/IP connections?
+			//  * Is the server running locally and accepting connections on that socket?
+			"Is the server running",
+		) {
+			return "", errors.Join(errPgDumpNoConnection, err)
+		}
+		return "", err
 	}
 	return string(output), nil
 }
@@ -138,10 +170,7 @@ func FormattedPgDump(dsn secret.String) (string, error) {
 		"--no-tablespaces",
 	)
 	if err != nil {
-		if strings.Contains(
-			err.Error(),
-			"Is the server running on that host and accepting TCP/IP connections?",
-		) {
+		if errors.Is(err, errPgDumpNoConnection) {
 			// try "host.docker.internal"
 			if attemptedDump, attemptedErr := pgDump(
 				"--dbname",
@@ -174,6 +203,8 @@ type MigrateOpts struct {
 	// Retry strategy for cases when it's possible.
 	// Especially, when lock cannot be acquired after LockTimeout.
 	Retry retry.How
+	// The name of the table where the migration version is stored.
+	SchemaVersionTable string
 }
 
 func (m *MigrateOpts) SetDefaults() {
@@ -189,6 +220,10 @@ func (m *MigrateOpts) SetDefaults() {
 			strategy.Backoff(backoff.Incremental(time.Millisecond*500, time.Millisecond*500)),
 			strategy.Limit(10),
 		}
+	}
+
+	if m.SchemaVersionTable == "" {
+		m.SchemaVersionTable = "public.schema_version"
 	}
 }
 
@@ -214,14 +249,14 @@ func migrateWithTern(
 		}
 	}()
 
-	migrator, err := migrate.NewMigrator(ctx, conn, "public.schema_version")
+	migrator, err := migrate.NewMigrator(ctx, conn, opts.SchemaVersionTable)
 	if err != nil {
 		return fmt.Errorf("could not create migrator: %w", err)
 	}
 	pathToMigrations := strings.TrimRight(opts.PathToDBDir, "/") + "/migrations/"
 	err = migrator.LoadMigrations(os.DirFS(pathToMigrations))
 	if err != nil {
-		return fmt.Errorf("could not load migrations in %q: %w", pathToMigrations, err)
+		return fmt.Errorf("could not load migrations: %w", err)
 	}
 	if len(migrator.Migrations) == 0 {
 		return errors.New("no migrations found")

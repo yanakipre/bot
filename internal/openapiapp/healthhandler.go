@@ -3,9 +3,8 @@ package openapiapp
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/http"
-
-	"go.uber.org/zap"
 
 	"github.com/yanakipre/bot/internal/logger"
 )
@@ -21,17 +20,17 @@ func (h healthCheckHandler) ServeHTTP(writer http.ResponseWriter, request *http.
 	ctx := request.Context()
 	check, err := h.getHealth(ctx)
 	if err != nil {
-		logger.Error(ctx, "cannot get healthcheck", zap.Error(err))
+		logger.Error(ctx, fmt.Errorf("cannot get healthcheck: %w", err))
 		return
 	}
 	marshal, err := json.Marshal(check)
 	if err != nil {
-		logger.Error(ctx, "cannot marshal healthcheck", zap.Error(err))
+		logger.Error(ctx, fmt.Errorf("cannot marshal healthcheck: %w", err))
 		return
 	}
 	writer.WriteHeader(http.StatusOK)
 	_, err = writer.Write(marshal)
 	if err != nil {
-		logger.Error(ctx, "cannot write response", zap.Error(err))
+		logger.Error(ctx, fmt.Errorf("cannot write response: %w", err))
 	}
 }

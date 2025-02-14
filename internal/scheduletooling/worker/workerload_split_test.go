@@ -19,7 +19,7 @@ func TestGetWorkerIndex(t *testing.T) {
 	}{
 		{
 			name: "in k8s",
-			args: args{hostname: "yanakipre-console-api-1"},
+			args: args{hostname: "yanakipre-api-1"},
 			want: 1,
 		},
 		{

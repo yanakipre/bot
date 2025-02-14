@@ -1,13 +1,13 @@
 package internal
 
 import (
+	"fmt"
 	"github.com/spf13/cobra"
 	"github.com/yanakipre/bot/app/telegramsearch/cmd/telegramsearch/internal/embeddings"
 	"github.com/yanakipre/bot/app/telegramsearch/cmd/telegramsearch/internal/rootcmd"
 	"github.com/yanakipre/bot/app/telegramsearch/cmd/telegramsearch/internal/telegram"
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/staticconfig"
 	"github.com/yanakipre/bot/internal/logger"
-	"go.uber.org/zap"
 )
 
 var rootCmd *cobra.Command
@@ -16,7 +16,7 @@ func Execute() {
 	err := rootCmd.Execute()
 	if err != nil {
 		logger.SetNewGlobalLoggerQuietly(logger.DefaultConfig())
-		logger.Error(rootCmd.Context(), "finished with error", zap.Error(err))
+		logger.Error(rootCmd.Context(), fmt.Errorf("error executing root command: %w", err))
 	}
 	cobra.CheckErr(err)
 }

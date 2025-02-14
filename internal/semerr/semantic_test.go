@@ -7,7 +7,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"go.uber.org/zap"
 )
 
@@ -131,30 +130,19 @@ func TestWrapErrorfFormatting(t *testing.T) {
 	assert.Equal(t, "foo: bar: EOF", err.Error())
 }
 
-func TestWrapWithFields(t *testing.T) {
-	err := WithFields("origin", zap.String("k1", "v1"))
-	err = fmt.Errorf("wrapped1: %w", err)
-	err = WrapWithFields(err)
-	err = WrapWithFields(err, zap.String("k1", "ignored1"), zap.String("k2", "v2"))
-	err = fmt.Errorf(
-		"wrapped2: %w",
-		WrapWithFields(err, zap.String("k1", "ignored2"), zap.String("k3", "v3"), zap.String("k4", "v4")),
-	)
-	err = WrapWithInternal(err, "internal error")
-	err = WrapWithFields(WrapWithFields(err, zap.String("k1", "ignored3")), zap.String("k1", "ignored4"))
-	err = errors.Join(err, WithFields("joined", zap.String("k5", "v5")))
+func TestToString(t *testing.T) {
+	{
+		err := AsSemanticError(NotFound("origin", zap.String("k1", "v1")))
+		assert.Equal(t, `origin; k1:"v1"`, err.MessageWithFields())
+	}
 
-	require.True(t, IsSemanticError(err, SemanticInternal))
-	require.Equal(t, "internal error: wrapped2: wrapped1: origin\njoined", err.Error())
-
-	require.Len(t, UnwrapFields(err), 5)
-	require.Contains(
-		t,
-		UnwrapFields(err),
-		zap.String("k1", "v1"),
-		zap.String("k2", "v2"),
-		zap.String("k3", "v3"),
-		zap.String("k4", "v4"),
-		zap.String("k5", "v5"),
-	)
+	{
+		err := AsSemanticError(Internal("origin", zap.String("k1", "v1"), zap.String("k2", "v2")))
+		// Order of fields is not guaranteed
+		expect := []string{
+			`origin; k1:"v1", k2:"v2"`,
+			`origin; k2:"v2", k1:"v1"`,
+		}
+		assert.Contains(t, expect, err.MessageWithFields())
+	}
 }

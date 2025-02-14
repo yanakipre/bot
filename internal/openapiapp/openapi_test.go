@@ -23,7 +23,7 @@ func TestGracefulShutdown(t *testing.T) {
 	// it is needed to ensure the contexts are used correctly because we messs with server.BaseContext
 	// it creates a fake openapi.App with a fake healthcheck route with sleep
 	// then it sends a request and cancels the context and initates the server shtudown while the server is sleeping before response
-	// the expected behaviour is that we should still get the expected response after sleeping and the handler context is not cancelled
+	// the expected behavior is that we should still get the expected response after sleeping and the handler context is not canceled
 	logger.SetNewGlobalLoggerQuietly(logger.DefaultConfig())
 	appCtx, cancel := context.WithCancel(context.Background())
 	requestGot := make(chan bool)
@@ -37,7 +37,7 @@ func TestGracefulShutdown(t *testing.T) {
 			defer timer.StopTimer(timeout)
 			select {
 			case <-ctx.Done(): // this is important, check that no one canceled the context while we sleep
-				return map[string]string{}, fmt.Errorf("cancelled")
+				return map[string]string{}, fmt.Errorf("canceled")
 			case <-timeout.C:
 				return map[string]string{"response": "after sleep"}, nil
 			}

@@ -57,6 +57,9 @@ const (
 	// ConcurrencyLimitReached indicates that the concurrency limit for an action was reached.
 	ConcurrencyLimitReached = Reason("CONCURRENCY_LIMIT_REACHED")
 
-	// LockAlreadyTaken indicates that the we attempted to take a lock that was already taken.
+	// LockAlreadyTaken indicates that we attempted to take a lock that was already taken.
 	LockAlreadyTaken = Reason("LOCK_ALREADY_TAKEN")
+
+	// ActiveEndpointsLimitExceeded indicates that the limit of concurrently active endpoints was exceeded.
+	ActiveEndpointsLimitExceeded = Reason("ACTIVE_ENDPOINTS_LIMIT_EXCEEDED")
 )

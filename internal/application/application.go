@@ -2,7 +2,7 @@ package application
 
 import (
 	"context"
-	"os"
+	"fmt"
 	"sync"
 	"time"
 
@@ -82,9 +82,6 @@ func (a *Application) Start(ctx context.Context) {
 		// SENTRY_RELEASE
 		Debug:            false,
 		AttachStacktrace: true,
-		EnableTracing:    true,
-		TracesSampleRate: 0.1,
-		Environment:      os.Getenv("CONSOLE_ENV"),
 	}); err != nil {
 		logger.Fatal(ctx, "could not setup sentry", zap.Error(err))
 	}
@@ -146,7 +143,7 @@ func (a *Application) Shutdown(shutdownWait time.Duration) {
 		go func() {
 			defer wg.Done()
 			if err := a.otelShutdown(shutdownCtx); err != nil {
-				logger.Error(shutdownCtx, "could not shut down tracing", zap.Error(err))
+				logger.Error(shutdownCtx, fmt.Errorf("could not shut down tracing: %w", err))
 			}
 		}()
 	}

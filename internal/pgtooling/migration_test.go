@@ -3,6 +3,7 @@ package pgtooling
 import (
 	"context"
 	"fmt"
+	"net"
 	"os"
 	"path"
 	"testing"
@@ -23,7 +24,9 @@ import (
 )
 
 func TestFormattedPgDump(t *testing.T) {
+	testtooling.SetNewGlobalLoggerQuietly()
 	testtooling.SkipShort(t)
+
 	type args struct {
 		ddl string
 	}
@@ -43,7 +46,7 @@ func TestFormattedPgDump(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
 			defer cancel()
-			container, err := rdbtesttooling.StartPGContainer(ctx)
+			container, err := rdbtesttooling.StartPGContainer("14-alpine")
 			require.NoError(t, err)
 			defer gnomock.Stop(container)
 			dsn := secret.NewString(fmt.Sprintf(
@@ -154,7 +157,7 @@ func TestMigrate(t *testing.T) {
 
 				var unlockStrategy strategy.Strategy = func(breaker retry.Breaker, attempt uint, err error) bool {
 					// allows one retry, then releases the lock
-					logger.Info(ctx, "attempt", zap.Any("number", attempt), zap.Error(err))
+					logger.Info(ctx, "attempt", zap.Uint("number", attempt), zap.Error(err))
 					switch {
 					case attempt == 2:
 						lockConn.Close(ctx)
@@ -204,7 +207,7 @@ func TestMigrate(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
 			defer cancel()
-			container, err := rdbtesttooling.StartPGContainer(ctx)
+			container, err := rdbtesttooling.StartPGContainer("14-alpine")
 			require.NoError(t, err)
 			defer gnomock.Stop(container)
 			dsn := fmt.Sprintf(
@@ -217,4 +220,23 @@ func TestMigrate(t *testing.T) {
 			logger.Info(ctx, "finished", zap.Duration("took", time.Since(now)))
 		})
 	}
+}
+
+func getFreePort() (port int, err error) {
+	var a *net.TCPAddr
+	if a, err = net.ResolveTCPAddr("tcp", "localhost:0"); err == nil {
+		var l *net.TCPListener
+		if l, err = net.ListenTCP("tcp", a); err == nil {
+			defer l.Close()
+			return l.Addr().(*net.TCPAddr).Port, nil
+		}
+	}
+	return
+}
+
+func Test_pgDumpErrorsOutOnConnectionError(t *testing.T) {
+	freePort, err := getFreePort()
+	require.NoError(t, err)
+	_, err = pgDump(fmt.Sprintf("postgres://127.0.0.1:%d?connect_timeout=3", freePort))
+	require.ErrorIs(t, err, errPgDumpNoConnection)
 }

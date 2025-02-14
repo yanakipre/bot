@@ -1,7 +1,11 @@
 // Package application provides the application configuration for standard cases.
 package openapiapp
 
-import "time"
+import (
+	"errors"
+	"fmt"
+	"time"
+)
 
 type Config struct {
 	// BaseURL
@@ -17,7 +21,21 @@ type Config struct {
 	// ReadHeaderTimeout
 	//
 	// Timeout of http server reading the headers, as in the stdlib http.Server.
-	ReadHeaderTimeout time.Duration `yaml:"read_header_timeout"`
+	ReadHeaderTimeout time.Duration `                yaml:"read_header_timeout"`
+}
+
+func (c *Config) Validate() error {
+	var errs []error
+	if c.Addr == "" {
+		errs = append(
+			errs,
+			errors.New("using zero addr leads to binding to default port which is 80, be explicit if you want that"),
+		)
+	}
+	if len(errs) > 0 {
+		return fmt.Errorf("openapi config validation failed: %w", errors.Join(errs...))
+	}
+	return nil
 }
 
 // DefaultConfig returns default configuration for application.

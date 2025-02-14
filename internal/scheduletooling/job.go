@@ -2,19 +2,21 @@ package scheduletooling
 
 import (
 	"context"
-	"time"
 
-	"github.com/lithammer/shortuuid/v4"
 	"github.com/reugn/go-quartz/quartz"
 	"go.uber.org/zap"
 
+	"github.com/yanakipre/bot/internal/clouderr"
 	"github.com/yanakipre/bot/internal/concurrent"
 	"github.com/yanakipre/bot/internal/logger"
+	"github.com/yanakipre/bot/internal/scheduletooling/worker"
+	"github.com/yanakipre/bot/internal/sentrytooling"
 )
 
 type Job interface {
 	quartz.Job
 	quartz.Trigger
+	Key() *quartz.JobKey
 	GetConfig() (Config, error)
 	SetTrigger(quartz.Trigger)
 	Close(ctx context.Context) error
@@ -25,7 +27,7 @@ type InProcessJob struct {
 	runningCount    *concurrent.Value[int64]
 	maxRunningCount int64
 	trigger         quartz.Trigger
-	key             *int
+	key             *quartz.JobKey
 	name            string
 	exec            func(context.Context) error
 	getFreshConfig  GetFreshConfig
@@ -55,22 +57,8 @@ func (j *InProcessJob) GetConfig() (Config, error) {
 	return cfg, nil
 }
 
-// loggerContext configures logger in context for background worker.
-func loggerContext(ctx context.Context, name string, traceID string) context.Context {
-	return logger.WithFields(logger.WithName(ctx, name),
-		zap.String("trace_id", traceID),
-		zap.String("source", "background_worker"),
-		zap.String("worker_type", name),
-	)
-}
-
-func (j *InProcessJob) Execute(ctx context.Context) {
-	start := time.Now()
-	traceID := shortuuid.New()
-	// setup the logging so that the error messages get associated
-	// with the appropriate log instances
-	ctx = loggerContext(ctx, j.name, traceID)
-
+func (j *InProcessJob) Execute(ctx context.Context) error {
+	ctx = logger.WithFields(ctx, zap.String("trigger", j.trigger.Description()))
 	// attempt to take the latch:
 	canRun := false
 	j.runningCount.Update(func(runningCount int64) int64 {
@@ -82,49 +70,44 @@ func (j *InProcessJob) Execute(ctx context.Context) {
 	})
 	if !canRun {
 		j.metrics.SkippedJob(j.name)
-		logger.Warn(ctx, "job skipped because max concurrent running jobs reached",
-			zap.Int("job_id", j.Key()),
+		msg := "job skipped because max concurrent running jobs reached"
+		fields := []zap.Field{
 			zap.Int64("max_running", j.maxRunningCount),
-			zap.Duration("runtime", time.Since(start)),
-			zap.String("trigger", j.trigger.Description()),
-		)
-		return
+		}
+		logger.Warn(ctx, msg, fields...)
+		return clouderr.WithFields(msg, fields...)
 	}
+	defer func() {
+		p := recover()
+		j.runningCount.Update(func(i int64) int64 {
+			isPanic := p != nil
+			fields := []zap.Field{
+				zap.Int64("running_count", i),
+				zap.Bool("panic", isPanic),
+			}
+			if i <= 0 {
+				// this should never happen
+				err := clouderr.WithFields(
+					"update job running count: running count is non-positive",
+					fields...,
+				)
+				logger.Error(ctx, err)
+				sentrytooling.Report(ctx, err)
+				return 0
+			}
+			return i - 1
+		})
+	}()
 
-	logger.Info(ctx, "job started")
-
-	// create a context before our defer so we can report if the
-	// context was canceled externally, given LIFO defer
-	ctx, cancel := context.WithCancel(ctx)
-	defer cancel()
-
-	ctx, stopSentry := j.sentryHub(ctx, traceID)
-	defer stopSentry()
-
-	// always execute the following after a job, to prevent process from crashing
-	handlePanic := j.handlePanic(ctx, start)
-	defer handlePanic()
-
-	finished := j.metrics.JobStarted(j.name)
-	defer finished() // record metrics exactly after j.exec returns
-	if err := j.exec(ctx); err != nil {
-		logger.Error(
-			ctx,
-			"job finished with error",
-			zap.Error(err),
-			zap.Duration("duration", time.Since(start)),
-		)
-		return
-	}
-	logger.Info(ctx, "job finished", zap.Duration("duration", time.Since(start)))
+	return j.exec(ctx)
 }
 
 func (j *InProcessJob) Description() string {
 	return j.name
 }
 
-func (j *InProcessJob) Key() int {
-	return *j.key
+func (j *InProcessJob) Key() *quartz.JobKey {
+	return j.key
 }
 
 func (j *InProcessJob) NextFireTime(prev int64) (int64, error) {
@@ -147,16 +130,16 @@ func NewConcurrentInProcessJobWithCloser(
 	metrics MetricsCollector,
 	maxRunningCount int64,
 ) Job {
-	k := quartz.HashCode(cfg.UniqueName)
+	mw := worker.NewMiddleware()
 	return &InProcessJob{
 		close:           closeFunc,
 		metrics:         metrics,
 		runningCount:    concurrent.NewValue[int64](0),
 		maxRunningCount: maxRunningCount,
 		trigger:         cfg.GetTriggerValidated(),
-		key:             &k,
+		key:             quartz.NewJobKey(cfg.UniqueName),
 		name:            cfg.UniqueName,
-		exec:            execFunc,
+		exec:            func(ctx context.Context) error { return mw.Execute(ctx, cfg.UniqueName, execFunc) },
 		getFreshConfig:  getFreshConfig,
 	}
 }

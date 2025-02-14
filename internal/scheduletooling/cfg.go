@@ -5,7 +5,9 @@ import (
 	"fmt"
 
 	"github.com/reugn/go-quartz/quartz"
+	"go.uber.org/zap"
 
+	"github.com/yanakipre/bot/internal/clouderr"
 	"github.com/yanakipre/bot/internal/encodingtooling"
 )
 
@@ -26,6 +28,18 @@ type Config struct {
 	// CronExpression sets cron expression this job will run at
 	// It has precedence over Interval
 	CronExpression string `yaml:"cron_expression,omitempty" json:"cron_expression,omitempty"`
+	// RunOnStart is supported for yanakipreriver.PeriodicJob only.
+	//
+	// RunOnStart can be used to indicate that a periodic job should run an
+	// initial job as a new scheduler is started. This can be used as a hedge
+	// for jobs with longer scheduled durations that may not get to expiry
+	// before a new scheduler is elected.
+	RunOnStart bool `yaml:"run_on_start,omitempty"`
+	// Timeout is supported for yanakipreriver.PeriodicJob only.
+	//
+	// If Timeout has elapsed, then the river job rescuer
+	// retries or discards the job, based on number of retries left.
+	Timeout encodingtooling.Duration `yaml:"timeout"`
 }
 
 func (c *Config) Validate() error {
@@ -38,7 +52,9 @@ func (c *Config) Validate() error {
 	if c.CronExpression != "" {
 		_, err := quartz.NewCronTrigger(c.CronExpression)
 		if err != nil {
-			return fmt.Errorf("error validating cron expression '%s': %w", c.CronExpression, err)
+			return fmt.Errorf("error validating cron expression: %w",
+				clouderr.WrapWithFields(err, zap.String("cron_expression", c.CronExpression)),
+			)
 		}
 	}
 

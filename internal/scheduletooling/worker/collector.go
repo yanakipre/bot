@@ -1,17 +1,16 @@
 package worker
 
 import (
+	"errors"
 	"sync"
 	"time"
 
-	"github.com/yanakipre/bot/internal/scheduletooling"
+	"golang.org/x/net/context"
 )
-
-var _ scheduletooling.MetricsCollector = &wellKnownMetricsCollector{}
 
 var metricsRegistered = sync.Once{}
 
-func NewWellKnownMetricsCollector() scheduletooling.MetricsCollector {
+func NewWellKnownMetricsCollector() *wellKnownMetricsCollector {
 	metricsRegistered.Do(func() {
 		registerMetrics()
 	})
@@ -21,12 +20,38 @@ func NewWellKnownMetricsCollector() scheduletooling.MetricsCollector {
 // wellKnownMetricsCollector uses metrics package to report metrics.
 type wellKnownMetricsCollector struct{}
 
-func (w *wellKnownMetricsCollector) JobStarted(name string) (finished func()) {
+const (
+	statusUNHANDLED = "unhandled"
+	statusPanic     = "panic"
+	statusTimeout   = "timeout"
+	statusCancelled = "canceled"
+	statusSuccess   = "success"
+)
+
+func errToStatus(err error) string {
+	switch {
+	case err == nil:
+		return statusSuccess
+	case errors.Is(err, context.DeadlineExceeded):
+		return statusTimeout
+	case errors.Is(err, context.Canceled):
+		return statusCancelled
+	default:
+		return statusUNHANDLED
+	}
+}
+
+func (w *wellKnownMetricsCollector) JobStarted(name string) (finished func(error)) {
 	CloudBackgroundJobsRunning.WithLabelValues(name).Inc()
 	CloudBackgroundJobRuns.WithLabelValues(name).Inc()
 
 	jobStartTime := time.Now()
-	return func() {
+	return func(err error) {
+		if p := recover(); p != nil {
+			CloudBackgroundJobStatus.WithLabelValues(name, statusPanic).Inc()
+			panic(p) // pass it further for handling
+		}
+		CloudBackgroundJobStatus.WithLabelValues(name, errToStatus(err)).Inc()
 		CloudBackgroundJobsRunning.WithLabelValues(name).Dec()
 		CloudBackgroundJobDurationSec.WithLabelValues(name).
 			Observe(time.Since(jobStartTime).Seconds())

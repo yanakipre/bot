@@ -2,15 +2,18 @@ package scheduletooling
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"io"
 	"log"
 	"sync"
 	"time"
 
+	quartzlogger "github.com/reugn/go-quartz/logger"
 	"github.com/reugn/go-quartz/quartz"
 	"go.uber.org/zap"
 
+	"github.com/yanakipre/bot/internal/clouderr"
 	"github.com/yanakipre/bot/internal/logger"
 )
 
@@ -24,7 +27,7 @@ type Scheduler struct {
 	collectedJobsToSchedule []Job
 	jobUpdateInterval       time.Duration
 	jobsMutex               *sync.Mutex
-	jobs                    map[int]Job
+	jobs                    map[string]Job
 	scheduler               quartz.Scheduler
 	configReapplyInterval   time.Duration //nolint:unused,structcheck
 	started                 *sync.Once
@@ -39,14 +42,20 @@ func (s *Scheduler) Add(ctx context.Context, job Job) error {
 		// reuse scheduleCollectedJobs here and add a test.
 		return fmt.Errorf("already running, can't add job")
 	}
-	if cfg, err := job.GetConfig(); err != nil {
-		logger.Error(ctx, "could not get config", jobLogKeys(job, zap.Error(err))...)
+	cfg, err := job.GetConfig()
+	if err != nil {
+		logger.Error(
+			ctx,
+			clouderr.WrapWithFields(
+				fmt.Errorf("could not get config: %w", err),
+				jobLogKeys(job)...,
+			),
+		)
 		return err
-	} else {
-		if !cfg.Enabled {
-			logger.Info(ctx, "job is disabled", jobLogKeys(job)...)
-			return nil
-		}
+	}
+	if !cfg.Enabled {
+		logger.Info(ctx, "job is disabled", jobLogKeys(job)...)
+		return nil
 	}
 	s.collectedJobsToSchedule = append(s.collectedJobsToSchedule, job)
 	return nil
@@ -70,13 +79,16 @@ func jobLogKeys(j Job, fields ...zap.Field) []zap.Field {
 func (s *Scheduler) scheduleSilently(ctx context.Context, job Job) {
 	s.stopScheduling(ctx, job)
 
-	s.jobs[job.Key()] = job
+	s.jobs[job.Key().String()] = job
 
-	if err := s.scheduler.ScheduleJob(ctx, job, job); err != nil {
+	if err := s.scheduler.ScheduleJob(quartz.NewJobDetail(job, job.Key()), job); err != nil {
 		logger.Error(
 			ctx,
-			"could not schedule job, skipping",
-			jobLogKeys(job, zap.Error(err))...)
+			clouderr.WrapWithFields(
+				fmt.Errorf("could not schedule job, skipping: %w", err),
+				jobLogKeys(job)...,
+			),
+		)
 		return
 	}
 }
@@ -84,14 +96,23 @@ func (s *Scheduler) scheduleSilently(ctx context.Context, job Job) {
 // stopScheduling removes job from scheduling, so it's not executed anymore
 func (s *Scheduler) stopScheduling(ctx context.Context, job Job) {
 	if err := s.scheduler.DeleteJob(job.Key()); err != nil {
-		if err.Error() == "no Job with the given Key found" {
+		// The following happens during application start,
+		// when we try to delete a job before scheduling it first time.
+		//
+		// That behavior is intentional, because we do the rescheduling,
+		// when live config changes without application restart: we want to delete
+		// the existing job, then schedule it again with new config.
+		if errors.Is(err, quartz.ErrJobNotFound) {
 			// we allow deleting non-existent jobs.
 			return
 		}
 		logger.Error(
 			ctx,
-			"could not stop job, skipping",
-			jobLogKeys(job, zap.Error(err))...)
+			clouderr.WrapWithFields(
+				fmt.Errorf("could not stop job, skipping: %w", err),
+				jobLogKeys(job)...,
+			),
+		)
 	}
 }
 
@@ -119,15 +140,20 @@ func (s *Scheduler) Wait(ctx context.Context) {
 	ctx = logger.WithName(ctx, "closer")
 
 	s.jobsMutex.Lock()
-	for k := range s.jobs {
-		job := s.jobs[k]
+	for _, job := range s.jobs {
 		wg.Add(1)
 		go func(job func()) {
 			defer wg.Done()
 			job()
 		}(func() {
 			if err := job.Close(ctx); err != nil {
-				logger.Error(ctx, "could not close job", zap.String("job_description", job.Description()))
+				logger.Error(
+					ctx,
+					clouderr.WrapWithFields(
+						fmt.Errorf("could not close job: %w", err),
+						jobLogKeys(job)...,
+					),
+				)
 			}
 			logger.Info(ctx, "closed job", zap.String("job_description", job.Description()))
 		})
@@ -145,10 +171,21 @@ func (s *Scheduler) Wait(ctx context.Context) {
 	}
 }
 
+// quartzBuiltinLogger makes built-in quartz logger comply to our .
+// Based on example from go-quartz tests.
+// Prevents lines like:
+// WARN 2024/10/31 12:11:00 scheduler.go:538: Job default::transactional_outbox terminated with error: ... omitted
+func quartzBuiltinLogger() {
+	quartzlogger.SetDefault(&quartzLog{
+		l: logger.FromContext(context.Background()).Named("quartz"),
+	})
+}
+
 func NewScheduler(jobUpdateInterval time.Duration) *Scheduler {
+	quartzBuiltinLogger()
 	return &Scheduler{
 		started:           &sync.Once{},
-		jobs:              map[int]Job{},
+		jobs:              map[string]Job{},
 		jobUpdateInterval: jobUpdateInterval,
 		scheduler:         quartz.NewStdScheduler(),
 		jobsMutex:         &sync.Mutex{},

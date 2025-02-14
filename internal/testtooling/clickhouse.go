@@ -5,7 +5,6 @@ import (
 	"fmt"
 
 	"github.com/rekby/fixenv"
-	"go.uber.org/zap"
 
 	"github.com/yanakipre/bot/internal/chdb"
 	"github.com/yanakipre/bot/internal/logger"
@@ -14,60 +13,61 @@ import (
 )
 
 func FixtureClickhouseContainer(ctx context.Context, e fixenv.Env) *container.Clickhouse {
-	cacheKey := "clickhouse-container"
-	return e.CacheWithCleanup(cacheKey, &fixenv.FixtureOptions{
-		Scope: fixenv.ScopePackage,
-	}, func() (any, fixenv.FixtureCleanupFunc, error) {
+	return fixenv.CacheResult(e, func() (*fixenv.GenericResult[*container.Clickhouse], error) {
 		net := ContainerNetwork(ctx, e)
 
 		ch, cleanup, err := RunClickhouseContainer(ctx, net.Name())
 		if err != nil {
 			e.T().Fatalf("cannot run clickhouse container: %v", err)
-			return nil, nil, err
+			return nil, err
 		}
 
-		return ch, cleanup, nil
-	}).(*container.Clickhouse)
+		return fixenv.NewGenericResultWithCleanup(ch, cleanup), nil
+	}, fixenv.CacheOptions{
+		Scope:    fixenv.ScopePackage,
+		CacheKey: "clickhouse-container",
+	})
 }
 
 func FixtureEmptyClickHouseDB(ctx context.Context, e fixenv.Env, pgDSN string) *chdb.DB {
-	cacheKey := "clickhouse-db"
-	return e.CacheWithCleanup(cacheKey, &fixenv.FixtureOptions{
-		Scope: fixenv.ScopeTest,
-	}, func() (any, fixenv.FixtureCleanupFunc, error) {
+	return fixenv.CacheResult(e, func() (*fixenv.GenericResult[*chdb.DB], error) {
 		chContainer := FixtureClickhouseContainer(ctx, e)
 
 		t := e.T()
-		randName := DbName("", t.Name())
+		randDbName := DbName("", t.Name())
 
 		ch := datasource.NewClickHouse(chContainer.ExposedAddr().StringWithoutProto())
-		if err := ch.CreateDatabase(ctx, randName); err != nil {
+
+		if err := ch.CreateDatabase(ctx, randDbName); err != nil {
 			e.T().Fatalf("cannot create a new Clickhouse DB: %v", err)
-			return nil, nil, err
+			return nil, err
 		}
 
-		chConn, err := ch.Connect(ctx, randName)
+		chConn, err := ch.Connect(ctx, randDbName)
 		if err != nil {
 			e.T().Fatalf("cannot connect to Clickhouse: %v", err)
-			return nil, nil, err
+			return nil, err
 		}
 
-		if err = ch.InitDBSchema(ctx, pgDSN); err != nil {
+		if err = ch.InitDBSchema(ctx, pgDSN, randDbName); err != nil {
 			e.T().Fatalf("cannot initialize Clickhouse schema: %v", err)
-			return nil, nil, err
+			return nil, err
 		}
 
 		cleanup := func() {
 			if err = ch.Close(); err != nil {
 				e.T().Fatalf("cannot close Clickhouse connection: %v", err)
 			}
-			if err = ch.DropDatabase(ctx, randName); err != nil {
+			if err = ch.DropDatabase(ctx, randDbName); err != nil {
 				e.T().Fatalf("cannot drop Clickhouse database: %v", err)
 			}
 		}
 
-		return chConn, cleanup, nil
-	}).(*chdb.DB)
+		return fixenv.NewGenericResultWithCleanup(chConn, cleanup), nil
+	}, fixenv.CacheOptions{
+		Scope:    fixenv.ScopeTest,
+		CacheKey: "clickhouse-db",
+	})
 }
 
 func RunClickhouseContainer(
@@ -76,27 +76,19 @@ func RunClickhouseContainer(
 ) (*container.Clickhouse, func(), error) {
 	chParams := chdb.DefaultConfig()
 
-	zk := container.NewZookeeper(container.WithNetworks(networkName))
-	if err := zk.Run(ctx); err != nil {
-		return nil, nil, fmt.Errorf("cannot initialize zookeeper container: %w", err)
-	}
-
 	ch := container.NewClickhouse(
 		datasource.ManagementClickHouseDB,
 		chParams.Username,
-		chParams.Password.Unmask(),
+		chParams.ChcPassword.Unmask(),
 		container.WithNetworks(networkName),
 	)
 	if err := ch.Run(ctx); err != nil {
-		return nil, nil, fmt.Errorf("cannot run zookeeper container: %w", err)
+		return nil, nil, fmt.Errorf("cannot run ch container: %w", err)
 	}
 
 	cleanup := func() {
 		if err := ch.Stop(ctx); err != nil {
-			logger.Error(ctx, "cannot stop clickhouse container", zap.Error(err))
-		}
-		if err := zk.Stop(ctx); err != nil {
-			logger.Error(ctx, "cannot stop zookeeper container", zap.Error(err))
+			logger.Error(ctx, fmt.Errorf("cannot stop clickhouse container: %w", err))
 		}
 	}
 

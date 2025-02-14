@@ -9,14 +9,11 @@ import (
 )
 
 func ContainerNetwork(ctx context.Context, e fixenv.Env) *container.Network {
-	cacheKey := "container-network"
-	return e.CacheWithCleanup(cacheKey, &fixenv.FixtureOptions{
-		Scope: fixenv.ScopePackage,
-	}, func() (any, fixenv.FixtureCleanupFunc, error) {
+	return fixenv.CacheResult(e, func() (*fixenv.GenericResult[*container.Network], error) {
 		net, err := container.NewNetwork(ctx)
 		if err != nil {
 			e.T().Fatalf("cannot create network: %v", err)
-			return nil, nil, err
+			return nil, err
 		}
 
 		cleanup := func() {
@@ -26,6 +23,9 @@ func ContainerNetwork(ctx context.Context, e fixenv.Env) *container.Network {
 			}
 		}
 
-		return net, cleanup, nil
-	}).(*container.Network)
+		return fixenv.NewGenericResultWithCleanup(net, cleanup), nil
+	}, fixenv.CacheOptions{
+		Scope:    fixenv.ScopePackage,
+		CacheKey: "container-network",
+	})
 }

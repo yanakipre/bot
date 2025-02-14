@@ -35,7 +35,7 @@ func Test_stack_Format(t *testing.T) {
 			args: args{
 				verb: "%+v",
 			},
-			want: "cloud/internal/semerr/stack_test.go:11",
+			want: "bot/internal/semerr/stack_test.go:11",
 		},
 	}
 	for _, tt := range tests {

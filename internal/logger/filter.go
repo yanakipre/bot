@@ -1,10 +1,10 @@
 package logger
 
 import (
+	"slices"
 	"strings"
 
 	"go.uber.org/zap/zapcore"
-	"k8s.io/utils/strings/slices"
 	"moul.io/zapfilter"
 )
 
