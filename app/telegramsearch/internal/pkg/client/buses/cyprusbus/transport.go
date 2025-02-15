@@ -17,9 +17,9 @@ type Client struct {
 	boxSize   float64
 }
 
-func NewClient(cfg buses.Config, fetcher buses.BusFetcher) *Client {
+func NewClient(cfg Config) *Client {
 	return &Client{
-		fetcher:   fetcher,
+		fetcher:   newProtobufFetcher(cfg),
 		sleepFunc: time.Sleep,
 		timer:     cfg.Timer.Duration,
 		boxSize:   cfg.BoxSizeMeters,

@@ -25,7 +25,7 @@ type protobufFetcher struct {
 	routeCache *routeCache
 }
 
-func NewProtobufFetcher(cfg buses.Config) buses.BusFetcher {
+func newProtobufFetcher(cfg Config) *protobufFetcher {
 	return &protobufFetcher{
 		baseURL:    cfg.BaseURL,
 		httpClient: resttooling.NewHTTPClientFromConfig(cfg.HTTPTransport),

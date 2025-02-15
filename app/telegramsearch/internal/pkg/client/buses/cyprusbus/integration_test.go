@@ -1,17 +1,17 @@
-package buses_test
+package cyprusbus
 
 import (
 	"context"
+	"github.com/yanakipre/bot/internal/testtooling"
 	"testing"
 
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/buses"
-	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/buses/cyprusbus"
 )
 
 func TestFullWorkflow(t *testing.T) {
-	cfg := buses.DefaultConfig()
-	fetcher := cyprusbus.NewProtobufFetcher(cfg)
-	client := cyprusbus.NewClient(cfg, fetcher)
+	testtooling.SetNewGlobalLoggerQuietly()
+	cfg := DefaultConfig()
+	client := NewClient(cfg)
 
 	testDot := buses.Dot{
 		Lat:  34.700474470158184,
@@ -28,7 +28,7 @@ func TestFullWorkflow(t *testing.T) {
 		t.Logf("Found %d buses approaching the area", len(nearestBuses))
 		for _, bus := range nearestBuses {
 			t.Logf("Route %s %s (ID: %s, Route: %s) - Distance: %1.fm\n",
-				bus.Route.ShortName, bus.Route.LongName, bus.ID, bus.Route.ID, cyprusbus.CalculateDistance(testDot, bus.Position))
+				bus.Route.ShortName, bus.Route.LongName, bus.ID, bus.Route.ID, CalculateDistance(testDot, bus.Position))
 		}
 	} else {
 		t.Log("No approaching buses found (might be expected behavior)")

@@ -7,8 +7,6 @@ import (
 	"strings"
 	"testing"
 	"time"
-
-	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/buses"
 )
 
 func TestRoutesFileEmbedding(t *testing.T) {
@@ -106,8 +104,8 @@ func TestNewRouteCache(t *testing.T) {
 }
 
 func TestProtobufFetcher(t *testing.T) {
-	cfg := buses.DefaultConfig()
-	fetcher := NewProtobufFetcher(cfg)
+	cfg := DefaultConfig()
+	fetcher := newProtobufFetcher(cfg)
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
@@ -134,7 +132,7 @@ func TestProtobufFetcher(t *testing.T) {
 
 	t.Run("should handle server errors", func(t *testing.T) {
 		cfg.BaseURL += "/invalid-endpoint"
-		invalidFetcher := NewProtobufFetcher(cfg)
+		invalidFetcher := newProtobufFetcher(cfg)
 		_, err := invalidFetcher.FetchBuses(ctx)
 
 		if err == nil {

@@ -1,4 +1,4 @@
-package buses
+package cyprusbus
 
 import (
 	"time"
@@ -17,10 +17,12 @@ type Config struct {
 const BaseUrl string = "http://20.19.98.194:8328/Api"
 
 func DefaultConfig() Config {
+	tr := resttooling.DefaultTransportConfig()
+	tr.ClientName = "cyprusbus"
 	return Config{
 		Timer:         encodingtooling.NewDuration(20 * time.Second),
 		BoxSizeMeters: 1000,
 		BaseURL:       BaseUrl,
-		HTTPTransport: resttooling.DefaultTransportConfig(),
+		HTTPTransport: tr,
 	}
 }
