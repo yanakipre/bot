@@ -131,9 +131,10 @@ func TestGetNearest_MovementScenarios(t *testing.T) {
 				make([]error, len(tt.mockResponses)),
 			)
 
-			cfg := buses.DefaultConfig()
+			cfg := DefaultConfig()
 
-			client := NewClient(cfg, mockFetcher)
+			client := NewClient(cfg)
+			client.fetcher = mockFetcher
 			client.sleepFunc = func(time.Duration) {}
 
 			result, err := client.GetNearest(context.Background(), testDot)
