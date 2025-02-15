@@ -6,38 +6,27 @@ import (
 	"math"
 	"sort"
 	"time"
+
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/buses"
 )
 
-type BusFetcher interface {
-	FetchBuses(ctx context.Context) ([]Bus, error)
-}
-
-type Dot struct {
-	Lat  float64
-	Long float64
-}
-
-type Bus struct {
-	ID       string
-	Route    string
-	Position Dot
-}
-
 type Client struct {
-	fetcher   BusFetcher
+	fetcher   buses.BusFetcher
 	sleepFunc func(time.Duration)
-	timer     int
+	timer     time.Duration
+	boxSize   float64
 }
 
-func NewClient(fetcher BusFetcher) *Client {
+func NewClient(cfg buses.Config, fetcher buses.BusFetcher) *Client {
 	return &Client{
 		fetcher:   fetcher,
 		sleepFunc: time.Sleep,
-		timer:     20,
+		timer:     cfg.Timer.Duration,
+		boxSize:   cfg.BoxSizeMeters,
 	}
 }
 
-func (c *Client) GetNearest(ctx context.Context, dot Dot) ([]Bus, error) {
+func (c *Client) GetNearest(ctx context.Context, dot buses.Dot) ([]buses.Bus, error) {
 	// Fetch Buses
 	fetchedBuses, err := c.fetcher.FetchBuses(ctx)
 	if err != nil {
@@ -45,59 +34,59 @@ func (c *Client) GetNearest(ctx context.Context, dot Dot) ([]Bus, error) {
 	}
 
 	// Calculate 1km bounding box
-	latDelta := 1.0 / 111.0
-	lonDelta := 1.0 / (111.0 * math.Cos(dot.Lat*math.Pi/180))
+	latDelta := c.boxSize / 111000.0
+	longDelta := c.boxSize / (111000.0 * math.Cos(dot.Lat*math.Pi/180))
 
 	latMin := dot.Lat - latDelta
 	latMax := dot.Lat + latDelta
-	lonMin := dot.Long - lonDelta
-	lonMax := dot.Long + lonDelta
+	longMin := dot.Long - longDelta
+	longMax := dot.Long + longDelta
 
 	// Filter fetched list if in bounds
-	var initialBuses []Bus
+	var initialBuses []buses.Bus
 	for _, bus := range fetchedBuses {
 		if bus.Position.Lat >= latMin && bus.Position.Lat <= latMax &&
-			bus.Position.Long >= lonMin && bus.Position.Long <= lonMax {
+			bus.Position.Long >= longMin && bus.Position.Long <= longMax {
 			initialBuses = append(initialBuses, bus)
 		}
 	}
 
 	// Wait c.time seconds
-	c.sleepFunc(time.Second * time.Duration(c.timer))
+	c.sleepFunc(c.timer)
 
 	// Second fetch
-	newFetchedBuses, err := c.fetcher.FetchBuses(ctx)
+	secondFetchedBuses, err := c.fetcher.FetchBuses(ctx)
 	if err != nil {
 		return nil, fmt.Errorf("second fetch failed: %w", err)
 	}
 
 	// Filter fetched list if in bounds
-	var currentBuses []Bus
-	for _, bus := range newFetchedBuses {
+	var currentBuses []buses.Bus
+	for _, bus := range secondFetchedBuses {
 		if bus.Position.Lat >= latMin && bus.Position.Lat <= latMax &&
-			bus.Position.Long >= lonMin && bus.Position.Long <= lonMax {
+			bus.Position.Long >= longMin && bus.Position.Long <= longMax {
 			currentBuses = append(currentBuses, bus)
 		}
 	}
 
 	// Create current bus map
-	currentMap := make(map[string]Bus)
-	for _, bus := range currentBuses {
-		currentMap[bus.ID] = bus
+	initialMap := make(map[string]buses.Bus)
+	for _, bus := range initialBuses {
+		initialMap[bus.ID] = bus
 	}
 
 	// Filter approaching buses
-	var filteredBuses []Bus
-	for _, initialBus := range initialBuses {
-		currentBus, exists := currentMap[initialBus.ID]
+	var filteredBuses []buses.Bus
+	for _, currentBus := range currentBuses {
+		initialBus, exists := initialMap[currentBus.ID]
 		if !exists {
-			filteredBuses = append(filteredBuses, currentBus)
+			//filteredBuses = append(filteredBuses, currentBus) // This line may cause adding filteredBuses with a departing Bus, if GPS data is flowed in a margin larger than a tolerance treshold
 			continue
 		}
 
 		// Compare distances
-		initialDist := calculateDistance(dot, initialBus.Position)
-		currentDist := calculateDistance(dot, currentBus.Position)
+		initialDist := CalculateDistance(dot, initialBus.Position)
+		currentDist := CalculateDistance(dot, currentBus.Position)
 		if currentDist < initialDist {
 			filteredBuses = append(filteredBuses, currentBus)
 		}
@@ -105,14 +94,14 @@ func (c *Client) GetNearest(ctx context.Context, dot Dot) ([]Bus, error) {
 
 	// Sort by current distance
 	sort.Slice(filteredBuses, func(i, j int) bool {
-		return calculateDistance(dot, filteredBuses[i].Position) < calculateDistance(dot, filteredBuses[j].Position)
+		return CalculateDistance(dot, filteredBuses[i].Position) < CalculateDistance(dot, filteredBuses[j].Position)
 	})
 
 	return filteredBuses, nil
 }
 
-func calculateDistance(a, b Dot) float64 {
-	const earthRadius = 6371e3
+func CalculateDistance(a, b buses.Dot) float64 {
+	const earthRadius = 6378137
 	phi1 := a.Lat * math.Pi / 180
 	phi2 := b.Lat * math.Pi / 180
 	deltaPhi := (b.Lat - a.Lat) * math.Pi / 180

@@ -1,0 +1,831 @@
+﻿route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_color,route_text_color
+10030011,6,3,Agios Athanasios - Mesa Geitonia - Leontiou EMEL Station,,3,0000FF,FFFFFF
+10030012,6,3,Leontiou EMEL Station - Mesa Geitonia - Agios Athanasios,,3,0000FF,FFFFFF
+10040011,6,4,Road & Traffic Authority - Leontiou EMEL Station,,3,FF0080,FFFFFF
+10040012,6,4,Leontiou EMEL Station - Road & Traffic Authority,,3,FF0080,FFFFFF
+10040021,6,4,Technical School C (Hotel School) - Leontiou EMEL St.,,3,FF0080,FFFFFF
+10040022,6,4,Leontiou EMEL St. - Technical School C (Hotel School),,3,FF0080,FFFFFF
+10050021,6,5,General Hospital - Agios Ioannis - Leontiou EMEL Station,,3,008000,FFFFFF
+10050022,6,5,Leontiou EMEL Station - Agios Ioannis - General Hospital,,3,008000,FFFFFF
+10070011,6,7,My Mall- Ypsonas Industrial Area - Leontiou EMEL Station,,3,804040,FFFFFF
+10070012,6,7,Leontiou EMEL Station - Ypsonas Industrial Area - My Mall,,3,804040,FFFFFF
+10090011,6,9,Palodeia - Agia Fyla - Leontiou EMEL Station,,3,0000A0,FFFFFF
+10090012,6,9,Leontiou EMEL Station - Agia Fyla - Palodeia,,3,0000A0,FFFFFF
+10090022,6,9,Leontiou EMEL Station - Agia Fyla - Agia Fyla Lyceum - Palodeia,,3,0000A0,FFFFFF
+10110011,6,11,Ag. Athanasios Housing Finance Agency - Enaerios - Ag. Athanasios Industrial Area - Leontiou EMEL Station,,3,66FFFF,000000
+10110012,6,11,Leontiou EMEL Station - Ag. Athanasios Industrial Area - Enaerios - Ag. Athanasios Housing Finance Agency,,3,66FFFF,000000
+10120011,6,12,Moutagiaka - Leontiou EMEL Station,,3,33FF33,000000
+10120012,6,12,Leontiou EMEL Station - Moutagiaka,,3,33FF33,000000
+10130011,6,13,Germasogia - Leontiou EMEL Station,,3,80FF00,000000
+10130012,6,13,Leontiou EMEL Station - Germasogia,,3,80FF00,000000
+10140011,6,14,Estias (Agios Athanasios) - Leontiou EMEL Station,,3,FF0000,FFFFFF
+10140012,6,14,Leontiou EMEL Station - Estias (Agios Athanasios),,3,FF0000,FFFFFF
+10150011,6,15,General Hospital - Makariou - Leontiou EMEL Station,,3,CC6600,000000
+10150012,6,15, Leontiou EMEL Station - Makariou - General Hospital,,3,CC6600,000000
+10160021,6,16,Kourion Beach - Agios Ermogenis - Episkopi - Episkopiana Hotel - Leontiou EMEL Station,,3,00FFFF,000000
+10160022,6,16,Leontiou EMEL Station - Episkopiana Hotel - Episkopi - Agios Ermogenis - Kourion Beach,,3,00FFFF,000000
+10170011,6,17,Kolossi (Castle) - Leontiou EMEL Station,,3,FFFF00,000000
+10170012,6,17,Leontiou EMEL Station - Kolossi (Castle),,3,FFFF00,000000
+10180021,6,18,Kourion Beach - Agios Ermogenis - Ipsonas - Agios Silas - General Hospital - My Mall,,3,6699FF,FFFFFF
+10180022,6,18,My Mall - General Hospital - Agios Silas - Ypsonas - Agios Ermogenis - Kourion Beach,,3,6699FF,FFFFFF
+10190011,6,19,Ellados (Trachoni) - Leontiou EMEL Station,,3,33CC33,000000
+10190012,6,19,Leontiou EMEL Station - Ellados (Trachoni),,3,33CC33,000000
+10200011,6,20,Taki Christodoulou - My Mall - Agios Nikolaos Fire Brigate,,3,800080,FFFFFF
+10200012,6,20,My Mall - Taki Christodoulou,,3,800080,FFFFFF
+10210011,6,21,My Mall - Makariou Avenue - Kolonakiou,,3,FF0000,FFFFFF
+10210012,6,21,Kolonakiou - Makariou Avenue - My Mall,,3,FF0000,FFFFFF
+10230011,6,23,Ypsonas High School - Ypsonas Centre,,3,FF8080,000000
+10230012,6,23,Ypsonas Centre - Ypsonas High School,,3,FF8080,000000
+10230021,6,23,Ypsonas Municipality - Ypsonas,,3,FF8080,000000
+10240011,6,24,Akrotiri - Asomatos -Trachoni - Leontiou EMEL Station,,3,80FF80,000000
+10240012,6,24,Leontiou EMEL Station - Trachoni - Akrotiri,,3,80FF80,000000
+10250011,6,25,Agios Tychonas - Leontiou EMEL Station,,3,FF33CC,FFFFFF
+10250012,6,25,Leontiou EMEL Station - Agios Tychonas,,3,FF33CC,FFFFFF
+10250021,6,25,Agios Tychonas - Enaerios - Leontiou EMEL Station,,3,FF33CC,FFFFFF
+10250022,6,25,Leontiou EMEL Station - Enaerios - Agios Tychonas,,3,FF33CC,FFFFFF
+10260011,6,26,Agios Tychonas - Mouttagiaka - Leontiou EMEL Station,,3,FF80C0,000000
+10260012,6,26,Leontiou EMEL Station - Mouttagiaka - Agios Tychonas,,3,FF80C0,000000
+10260021,6,26,Agios Tychonas - Armenochori - Mouttagiaka - Leontiou EMEL Station,,3,FF80C0,000000
+10260022,6,26,Leontiou EMEL Station - Mouttagiaka - Armenochori - Agios Tychonas,,3,FF80C0,000000
+10270011,6,27,Erimi - Kolossi - Leontiou EMEL Station,,3,804040,FFFFFF
+10270012,6,27,Leontiou EMEL Station - Kolossi - Erimi,,3,804040,FFFFFF
+10270021,6,27,Erimi - Kolossi - Ypsonas - Leontiou EMEL Station,,3,804040,FFFFFF
+10270022,6,27,Leontiou EMEL Station - Ypsonas - Kolossi - Erimi,,3,804040,FFFFFF
+10300011,6,30,My Mall - New Port - Parklane Ηotel,,3,808000,FFFFFF
+10300012,6,30,Parklane Hotel - New Port - My Mall,,3,808000,FFFFFF
+10300021,6,30,Municipal Art Gallery - Parklane Hotel,,3,808000,FFFFFF
+10300031,6,30,Old Port - Parklane Ηotel,,3,808000,FFFFFF
+10320011,6,32,City Centre,,3,66CCFF,FFFFFF
+10330011,6,33,Limassol Marina - My Mall - Waterpark - Kolossi (Castle) - Kourion Beach - Episkopi (UK Sov. Bases),,3,000000,FFFFFF
+10330012,6,33,Episkopi (UK Sov. Bases) - Kourion Beach - Kolossi (Castle) - Waterpark - My Mall - Limassol Marina,,3,000000,FFFFFF
+10350011,6,35,New Port - Old Port,,3,004080,FFFFFF
+10350012,6,35,Old Port - New Port,,3,004080,FFFFFF
+10400011,6,40,Omodos - Pachna - Ag. Amvrosios - Kantou - Lemesos,,3,804040,FFFFFF
+10400012,6,40,Lemesos - Kantou - Ag. Amvrosios - Pachna - Omodos,,3,804040,FFFFFF
+10400021,6,40,Omodos- Pachna- Ag. Amvrosios- Kantou- Ypsonas- Lemesos,,3,804040,FFFFFF
+10400022,6,40,Lemesos- Ypsonas- Kantou- Ag. Amvrosios- Pachna- Omodos,,3,804040,FFFFFF
+10400031,6,40,Omodos-Pachna-Ag. Amvrosios-Kantou-New Hospital-Lemesos,,3,804040,FFFFFF
+10400032,6,40,Lemesos-New Hospital-Kantou-Ag. Amvrosios-Pachna-Omodos,,3,804040,FFFFFF
+10500011,6,50,Agros - Agios Ioannis - Kalo Chorio - Lemesos,,3,600951,FFFFFF
+10500012,6,50,Lemesos - Kalo Chorio - Agios Ioannis - Agros,,3,600951,FFFFFF
+10600011,6,60,Pelendri - Saittas - Lemesos,,3,00C55E,000000
+10600012,6,60,Lemesos - Saittas - Pelendri,,3,00C55E,000000
+10600021,6,60,Pelendri - Saittas - Ypsonas Ind. Area - Lemesos,,3,00C55E,000000
+10600022,6,60,Lemesos - Ypsonas Ind. Area - Saittas - Pelendri,,3,00C55E,000000
+10600031,6,60,Pelendri - Saittas - Doros - Lemesos,,3,00C55E,000000
+10600041,6,60,Pelendri - Polemidia - Ypsonas Industrial Area - Fragklinou Rousvelt - Leontiou EMEL Station,,3,00C55E,000000
+10600042,6,60,Leontiou EMEL Station - Fragklinou Rousvelt - Ypsonas Industrial Area - Polemidia - Pelendri,,3,00C55E,000000
+10610011,6,61,Saittas - Lemesos,,3,42F518,000000
+10610012,6,61,Lemesos - Saittas,,3,42F518,000000
+10620011,6,62,Platres - Lemesos,,3,808040,000000
+10620012,6,62,Lemesos - Platres,,3,808040,000000
+10640011,6,64,Botanic Garden - Troodos - Saittas - Lemesos,,3,66BDF3,FFFFFF
+10640012,6,64,Lemesos - Saittas - Troodos - Botanic Garden,,3,66BDF3,FFFFFF
+10650011,6,65,Agios Mamas - Limnati - Korfi - Apesia - Lemesos,,3,4C610A,FFFFFF
+10650012,6,65,Lemesos - Apesia - Korfi - Limnati - Agios Mamas,,3,4C610A,FFFFFF
+10650021,6,65,Agios Mamas - Limnati - Korfi - Apesia - Agia Fyla High School - Lemesos,,3,4C610A,FFFFFF
+10650022,6,65,Lemesos - Agia Fyla High School - Apesia - Korfi - Limnati - Agios Mamas,,3,4C610A,FFFFFF
+10660011,6,66,Saittas - Pelendri - Agros - Lefkosia,,3,1B9403,FFFFFF
+10660012,6,66,Lefkosia - Agros - Pelendri - Saittas,,3,1B9403,FFFFFF
+10700011,6,70,Pissouri - Avdimou - Lemesos,,3,D6AA80,000000
+10700012,6,70,Lemesos - Avdimou - Pissouri,,3,D6AA80,000000
+10710011,6,71,Prastio - Avdimou - Lemesos,,3,004080,FFFFFF
+10710012,6,71,Lemesos - Avdimou - Prastio,,3,004080,FFFFFF
+10800011,6,80,Arakapas - Eptagoneia - Kellaki - Parekklisia - Kolonakiou - Lemesos,,3,E97113,000000
+10800012,6,80,Lemesos - Kolonakiou - Parekklisia - Kellaki - Eptagoneia - Arakapas,,3,E97113,000000
+10900011,6,90,Sanida - Asgata - Moni - Pyrgos - Lemesos,,3,65350B,FFFFFF
+10900012,6,90,Lemesos - Pyrgos - Moni - Asgata - Sanida,,3,65350B,FFFFFF
+10910011,6,91,Monagrouli - Moni - Lemesos,,3,FF0080,FFFFFF
+10910012,6,91,Lemesos - Moni - Monagrouli,,3,FF0080,FFFFFF
+10950011,6,95,Kalavasos - Zygi - Pentakomo - Lemesos,,3,004080,FFFFFF
+10950012,6,95,Lemesos - Pentakomo - Zygi - Kalavasos,,3,004080,FFFFFF
+10960011,6,96,Zygi - Lemesos,,3,8080FF,FFFFFF
+10960012,6,96,Lemesos - Zygi,,3,8080FF,FFFFFF
+15030011,6,9A,Palodeia - Kallithea - Agia Fyla - Leontiou EMEL Station,,3,00CC99,000000
+15030012,6,9A,Leontiou EMEL Station - Agia Fyla - Kallithea - Palodeia,,3,00CC99,000000
+15040011,6,13A,Akrounta - Germasogia - Leontiou EMEL Station,,3,806232,000000
+15070011,6,19A,Akrotiri - Asomatos -Trachoni - Leontiou EMEL Station,,3,1C8600,FFFFFF
+15070012,6,19A,Leontiou EMEL Station - Trachoni - Akrotiri,,3,1C8600,FFFFFF
+15080011,6,25A,Armenochori - Agios Tychonas - Leontiou EMEL Station,,3,2B6B00,FFFFFF
+15080012,6,25A,Leontiou EMEL Station - Agios Tychonas - Armenochori,,3,2B6B00,FFFFFF
+15080021,6,25A,Armenochori - Linopetra High School & Lyceum - Leontiou EMEL Station,,3,2B6B00,FFFFFF
+15080022,6,25A,Armenochori - Linopetra High School & Lyceum - Leontiou EMEL Station,,3,2B6B00,FFFFFF
+15080031,6,25A,Armenochori - Agios Tychonas - Enaerios - Leontiou EMEL Station,,3,2B6B00,FFFFFF
+15080032,6,25A,Leontiou EMEL Station - Enaerios - Agios Tychonas - Armenochori,,3,2B6B00,FFFFFF
+15100011,6,30N,My Mall - New Port - Parklane Hotel,,3,C4E112,000000
+15100012,6,30N,Parklane Hotel - New Port - My Mall,,3,C4E112,000000
+15110011,6,90A,Lemesos - Moni - Pentakomo,,3,0080FF,FFFFFF
+15110012,6,90A,Pentakomo - Moni - Lemesos,,3,0080FF,FFFFFF
+15110021,6,90A,Pentakomo - Moni - Lemesos,,3,0080FF,FFFFFF
+15110022,6,90A,Lemesos - Moni - Pentakomo,,3,0080FF,FFFFFF
+15120011,6,95A,Lemesos - Governors Beach,,3,004080,FFFFFF
+15120012,6,95A,Governors Beach - Lemesos,,3,004080,FFFFFF
+15140011,6,13B,Foinikaria - Germasogia - Leontiou EMEL Station,,3,004080,FFFFFF
+15140012,6,13B,Leontiou EMEL Station - Germasogia - Foinikaria,,3,004080,FFFFFF
+15150011,6,13E,Foinikaria - Akrounta - Germasogia - Leontiou EMEL Station,,3,408080,FFFFFF
+15150012,6,13E,Leontiou EMEL Station - Germasogia - Foinikaria - Akrounta,,3,408080,FFFFFF
+15220011,6,14B,Mathikoloni - Agios Athanasios - Leontiou EMEL Station,,3,FF8040,000000
+15220012,6,14B,Leontiou EMEL Station - Agios Athanasios - Mathikoloni,,3,FF8040,000000
+15240011,6,32B,Apollonia student halls - Old Market - TEPAK,,3,004080,FFFFFF
+15240012,6,32B,Old Market - TEPAK - Apollonia student halls,,3,004080,FFFFFF
+15250011,6,40A,Agios Nikolaos - Arsos - Malia,,3,FF8040,000000
+15250012,6,40A,Malia - Arsos - Agios Nikolaos,,3,FF8040,000000
+15250021,6,40A,Agios Nikolaos - Arsos - Malia - Vasa - Malia,,3,FF8040,000000
+15250022,6,40A,Malia - Vasa - Malia - Arsos - Agios Nikolaos,,3,FF8040,000000
+15260011,6,40B,Dora - Malia,,3,0080C0,FFFFFF
+15260012,6,40B,Malia - Dora,,3,0080C0,FFFFFF
+15260021,6,40B,Dora - Malia - Potamiou - Malia,,3,0080C0,FFFFFF
+15260022,6,40B,Malia - Potamiou - Malia - Dora ,,3,0080C0,FFFFFF
+15270011,6,40E,Potamiou - Vasa,,3,FF80C0,000000
+15270012,6,40E,Vasa - Potamiou,,3,FF80C0,000000
+15280011,6,40H,Lofou - Agios Therapon,,3,FF80FF,000000
+15280012,6,40H,Agios Therapon - Lofou,,3,FF80FF,000000
+15280021,6,40H,Lofou - Agios Therapon - Souni - Kantou,,3,FF80FF,000000
+15280022,6,40H,Kantou - Souni - Agios Therapon - Lofou ,,3,FF80FF,000000
+15290011,6,40K,Zanakia - Souni - Sotira (Circular),,3,008080,FFFFFF
+15300011,6,40M,Vouni - Agios Amvrosios (Circular),,3,FF8000,000000
+15300021,6,40M,Vouni -  Agios Amvrosios - Zanakia - Sotira - Kantou,,3,FF8000,000000
+15300022,6,40M,Kantou - Sotira - Zanakia -  Agios Amvrosios - Vouni,,3,FF8000,000000
+15310011,6,40P,Kyvides - Pachna Health Centre,,3,000000,FFFFFF
+15310012,6,40P,Pachna Health Centre - Kyvides ,,3,000000,FFFFFF
+15320011,6,50A,Kato Milos - Agios Ioannis - Agios Theodoros - Papoutsa,,3,FFFF80,000000
+15320012,6,50A,Papoutsa - Agios Theodoros - Agios Ioannis - Kato Milos,,3,FFFF80,000000
+15330011,6,50B,Kyperounta - Dymes - Potamitissa - Kato Mylos,,3,408080,FFFFFF
+15330012,6,50B,Kato Mylos - Potamitissa - Dymes - Kyperounta,,3,408080,FFFFFF
+15340011,6,50E,Kato Mylos - Agios Ioannis - Agros - Agridia - Kyperounta Hospital,,3,FF0080,FFFFFF
+15340012,6,50E,Kyperounta Hospital - Agridia - Agros - Agios Ioannis - Kato Mylos,,3,FF0080,FFFFFF
+15350011,6,50H,Agios Theodoros - Zoopigi - Kalo Chorio,,3,8080FF,FFFFFF
+15350012,6,50H,Kalo Chorio - Zoopigi - Agios Theodoros ,,3,8080FF,FFFFFF
+15350021,6,50H,Agios Theodoros - Zoopigi - Kalo Chorio,,3,8080FF,FFFFFF
+15350022,6,50H,Kalo Chorio - Zoopigi,,3,8080FF,FFFFFF
+15360011,6,50K,Agios Konstantinos - Agios Pavlos - Louvaras - Kalo Chorio,,3,804040,FFFFFF
+15360012,6,50K,Kalo Chorio - Louvaras - Ag. Pavlos - Ag. Konstantinos,,3,804040,FFFFFF
+15360022,6,50K,Kalo Chorio - Louvaras - Kalo Chorio - Ag. Pavlos - Ag. Konstantinos,,3,804040,FFFFFF
+15370011,6,50M,Apsiou - Gerasa,,3,808040,000000
+15370012,6,50M,Gerasa - Apsiou ,,3,808040,000000
+15380011,6,50P,Fasoula - Spitali - Paramytha,,3,FF0000,FFFFFF
+15380012,6,50P,Paramytha - Spitali - Fasoula,,3,FF0000,FFFFFF
+15390011,6,50T,Agridia - Kyperounta,,3,00FFFF,000000
+15390012,6,50T,Kyperounta - Agridia,,3,00FFFF,000000
+15400011,6,60A,Pelendri - Saittas,,3,0080C0,FFFFFF
+15400012,6,60A,Saittas - Pelendri,,3,0080C0,FFFFFF
+15410011,6,60B,Kouka - Silikou - Ag. Georgios - Monagri - Doros - Distrato Doros-Laneia,,3,FF80FF,000000
+15410012,6,60B,Doros - Silikou - Kouka,,3,FF80FF,000000
+15420011,6,60E,Koilani - Pera Pedi - Moniatis - Saittas,,3,008040,FFFFFF
+15420012,6,60E,Saittas - Moniatis - Pera Pedi - Koilani,,3,008040,FFFFFF
+15430011,6,60H,Potamitissa - Pelendri - Fylagra - Kyperounta Hospital,,3,0000A0,FFFFFF
+15430012,6,60H,Kyperounta Hospital - Fylagra - Pelendri - Potamitissa,,3,0000A0,FFFFFF
+15440011,6,60K,Chandria - Kyperounta - Saittas,,3,FF8000,000000
+15440012,6,60K,Saittas - Kyperounta - Chandria,,3,FF8000,000000
+15460011,6,60P,Saittas - Moniatis - Pera Pedi - Koilani - Mandria - Kato Platres - Pano Platres - Foini,,3,FF0000,FFFFFF
+15460012,6,60P,Foini - Pano Platres - Kato Platres - Mandria - Koilani - Pera Pedi - Moniatis - Saittas,,3,FF0000,FFFFFF
+15470011,6,62A,Kaminaria - Treis Elies - Agios Dimitrios,,3,804000,FFFFFF
+15470012,6,62A,Agios Dimitrios - Treis Elies - Kaminaria,,3,804000,FFFFFF
+15480011,6,62B,Prodromos - Lemythou - Foini - Pano Platres - Mandria - Saittas,,3,004040,FFFFFF
+15480012,6,62B,Saittas - Mandria - Pano Platres - Foini - Lemythou - Prodromos,,3,004040,FFFFFF
+15490011,6,62E,Prodromos - Lemythou - Saittas,,3,00FF40,000000
+15490012,6,62E,Saittas - Lemythou - Prodromos,,3,00FF40,000000
+15500011,6,62H,Foini - Platres - Mandria - Pera Pedi - Moniatis - Saittas - Amiantos - Kyperounta Hospital,,3,8000FF,FFFFFF
+15500012,6,62H,Kyperounta Hospital - Amiantos - Saittas - Moniatis - Pera Pedi - Mandria - Platres - Foini,,3,8000FF,FFFFFF
+15510011,6,62K,Kaminaria - Treis Elies - Ag. Dimitrios - Paliomylos - Lemythou - Prodromos - Troodos - Kyperounta Hospital,,3,008080,FFFFFF
+15510012,6,62K,Kyperounta Hospital - Troodos - Prodromos - Lemythou - Paliomylos - Ag. Dimitrios - Treis Elies - Kaminaria,,3,008080,FFFFFF
+15520011,6,62M,Prodromos - Lemythou - Kaminaria - Treis Elies - Agios Dimitrios - Saittas,,3,FF8000,000000
+15520012,6,62M,Saittas - Agios Dimitrios - Treis Elies - Kaminaria - Lemythou - Prodromos,,3,FF8000,000000
+15530011,6,62P,Prodromos - Lemythou - Distrato Ag. Dimitriou - Kaminaria,,3,800000,FFFFFF
+15530012,6,62P,Kaminaria - Distrato Ag. Dimitriou - Lemythou - Prodromos,,3,800000,FFFFFF
+15540011,6,62T,Platres - Saittas,,3,FFFF80,000000
+15540012,6,62T,Saittas - Platres,,3,FFFF80,000000
+15550011,6,62X,Distrato Ag. Dimitriou - Lemythou - Prodromos,,3,800040,FFFFFF
+15550012,6,62X,Prodromos - Lemythou - Distrato Ag. Dimitriou,,3,800040,FFFFFF
+15560011,6,62Y,Saittas - Platania,,3,C0C0C0,FFFFFF
+15560012,6,62Y,Platania - Saittas,,3,C0C0C0,FFFFFF
+15580011,6,63A,Amiantos - Saittas,,3,004040,FFFFFF
+15580012,6,63A,Saittas - Amiantos,,3,004040,FFFFFF
+15590011,6,64A,Saittas - Platres - Troodos,,3,0080FF,FFFFFF
+15590012,6,64A,Troodos - Platres - Saittas,,3,0080FF,FFFFFF
+15600011,6,66A,Dymes - Potamitissa,,3,808040,000000
+15600012,6,66A,Potamitissa - Dymes,,3,808040,000000
+15610011,6,70A,Avdimou - Anogyra,,3,008000,FFFFFF
+15610012,6,70A,Anogyra - Avdimou,,3,008000,FFFFFF
+15620011,6,70B,Pissouri - Avdimou,,3,400040,FFFFFF
+15620012,6,70B,Avdimou - Pissouri,,3,400040,FFFFFF
+15630011,6,70E,Alektora - Agios Thomas - Platanistia - Avdimou,,3,80FF00,000000
+15630012,6,70E,Avdimou - Platanistia - Agios Thomas - Alektora,,3,80FF00,000000
+15640011,6,70H,Pissouri - Cyta - Columbia,,3,8080FF,FFFFFF
+15640012,6,70H,Columbia - Cyta - Pissouri,,3,8080FF,FFFFFF
+15650011,6,70K,Avdimou - Petra tou Romiou,,3,800080,FFFFFF
+15650012,6,70K,Petra tou Romiou - Avdimou,,3,800080,FFFFFF
+15660011,6,70M,Avdimou - Pachna Health Centre,,3,FF0000,FFFFFF
+15660012,6,70M,Pachna Health Centre - Avdimou,,3,FF0000,FFFFFF
+15670011,6,80A,Profitis Ilias - Sykopetra - Arakapas,,3,0080C0,FFFFFF
+15670012,6,80A,Arakapas - Sykopetra - Profitis Ilias,,3,0080C0,FFFFFF
+15680011,6,80B,Akapnou - Eptagoneia,,3,00FFFF,000000
+15680012,6,80B,Eptagoneia - Akapnou,,3,00FFFF,000000
+15690011,6,80E,Melini - Eptagoneia,,3,808080,FFFFFF
+15690012,6,80E,Eptagoneia - Melini,,3,808080,FFFFFF
+15700011,6,80H,Prastio - Panagia Glossa - Kellaki,,3,FF8080,000000
+15700012,6,80H,Kellaki - Panagia Glossa - Prastio,,3,FF8080,000000
+15710011,6,80K,Vikla - Klonari - Kellaki,,3,808080,FFFFFF
+15710012,6,80K,Kellaki - Klonari - Vikla,,3,808080,FFFFFF
+15720011,6,90B,Pentakomo - Moni,,3,808000,FFFFFF
+15720012,6,90B,Moni - Pentakomo,,3,808000,FFFFFF
+15740011,6,62AA,Prodromos - Lemythou - Palaiomylos - Foini - Kato Platres,,3,FF8000,000000
+15740012,6,62AA,Kato Platres - Foini - Palaiomylos - Lemythou - Prodromos,,3,FF8000,000000
+15750011,6,80M,Dierona - Arakapas,,3,000000,FFFFFF
+15750012,6,80M,Arakapas - Dierona,,3,000000,FFFFFF
+15760011,6,5B,General Hospital - Pylones - Agios Ioannis - Leontiou EMEL Station,,3,008040,FFFFFF
+15760012,6,5B,Leontiou EMEL Station - Agios Ioannis - Pylones - General Hospital,,3,008040,FFFFFF
+15760021,6,5B,General Hospital - Pylones - Elaion Park - Agios Ioannis - Leontiou EMEL Station,,3,008040,FFFFFF
+15760022,6,5B,Leontiou EMEL Station - Agios Ioannis - Pylones - Elaion Park - General Hospital,,3,008040,FFFFFF
+15770011,6,60T,Pelendri Circle Line,,3,800080,FFFFFF
+15780011,6,23A,Ypsonas Circular Green,,3,808000,FFFFFF
+15780021,6,23A,Ypsonas Municipality Circular Green,,3,808000,FFFFFF
+15790011,6,16A,Episkopi - Episkopiana Hotel - Leontiou EMEL Station,,3,808040,000000
+15790012,6,16A,Leontiou EMEL Station - Episkopiana Hotel - Episkopi,,3,808040,000000
+15800011,6,70N,Pissouri - Pissouri Police Station,,3,000000,FFFFFF
+15800012,6,70N,Pissouri Police Station - Pissouri,,3,000000,FFFFFF
+30000011,2,601,Karavella Station - Geroskipou - Timi - Anarita - Mandria,,3,408080,FFFFFF
+30000012,2,601,Mandria - Anarita - Timi - Geroskipou - Karavella Station,,3,408080,FFFFFF
+30000021,2,601,Karavella Station - Technical School - Geroskipou - Timi - Anarita - Mandria,,3,408080,FFFFFF
+30000022,2,601,Mandria - Anarita - Timi - Geroskipou -Technical School- Karavella Station,,3,408080,FFFFFF
+30010011,2,602,Karavella Station - Hospital - Tech. School - Museum - Government offices - Karavella Station,,3,0000A0,FFFFFF
+30020011,2,603,Karavella Station - Government offices - Universal Area - Agapinoros - Tombs of the Kings Station,,3,80FFFF,000000
+30020012,2,603,Tombs of the Kings Station - Agapinoros - Universal Area - Government offices - Karavella Station,,3,80FFFF,000000
+30030011,2,603B,Tombs of the Kings Station - Agapinoros - Universal Area - Al. Papagou (Alfamega),,3,FF0000,FFFFFF
+30030012,2,603B,Al. Papagou (Alfamega) - Universal Area - Agapinoros - Tombs of the Kings Station,,3,FF0000,FFFFFF
+30040011,2,604,Karavella Station - Chloraka - Emba - Tala - Agios Neofytos Monastery,,3,CC6600,000000
+30040012,2,604,Agios Neofytos Monastery - Tala - Emba - Chloraka - Karavella Station,,3,CC6600,000000
+30050011,2,606,Geroskipou (Pafiako) - Geroskipou Beach - Posidonos - Neapolis - Kings Av. Mall - Harbour Station,,3,FF33CC,FFFFFF
+30050012,2,606,Harbour Station - Kings Av. Mall - Neapolis - Posidonos - Geroskipou Beach - Geroskipou (Pafiako),,3,FF33CC,FFFFFF
+30050021,2,606,Geroskipou (Pafiako) - Posidonos - Kings Av. Mall - Harbour Station,,3,FF33CC,FFFFFF
+30050022,2,606,Harbour Station - Kings Av. Mall - Posidonos - Geroskipou (Pafiako),,3,FF33CC,FFFFFF
+30060011,2,607,Karavella Station - Chloraka - Lemba - Κissonerga - Pegia,,3,800080,FFFFFF
+30060012,2,607,Pegia - Κissonerga - Lemba - Chloraka - Κaravella Station,,3,800080,FFFFFF
+30070011,2,608,Karavella Station - Immigration - Citizen Service Center - General Hospital - Anavargos,,3,FF8040,000000
+30070012,2,608,Anavargos - General Hospital - Citizen Service Center - Immigration - Κaravella Station,,3,FF8040,000000
+30080011,2,609,Karavella Station - Konia - Marathounta - Armou - Episkopi,,3,66FF66,000000
+30080012,2,609,Episkopi - Armou - Marathounta - Konia - Karavella Station,,3,66FF66,000000
+30090011,2,610,Harbour Station - Ap. Pavlou - Agapinoros - Municipal Market,,3,008000,FFFFFF
+30090012,2,610,Municipal Market - Agapinoros - Ap. Pavlou - Harbour Station,,3,008000,FFFFFF
+30090021,2,610,Harbour Station - Ap. Pavlou - Tombs of the Kings Station - Agapinoros - Municipal Market,,3,008000,FFFFFF
+30100011,2,611,Tombs of the Kings Station - Harbour Station - Posidonos - Geroskipou Beach (Waterpark),,3,75610B,FFFFFF
+30100012,2,611,Geroskipou Beach (Waterpark) - Posidonos - Harbour Station - Tombs of the Kings Station,,3,75610B,FFFFFF
+30100021,2,611,Tombs of the Kings Station - Harbour Station - Posidonos - Geroskipou Beach,,3,75610B,FFFFFF
+30100022,2,611,Geroskipou Beach - Posidonos - Harbour Station - Tombs of the Kings Station,,3,75610B,FFFFFF
+30110011,2,612,Tombs of the Kings Station - Posidonos - Giannaki Talioti Lyceum - Geroskipou - Timi - Pafos Airport,,3,808080,FFFFFF
+30110012,2,612,Pafos Airport - Timi - Geroskipou - Giannaki Talioti Lyceum - Posidonos - Tombs of the Kings Station,,3,808080,FFFFFF
+30120011,2,613,Karavella Station - Geroskipou - Achelia - Timi - Pafos Airport,,3,33CC33,000000
+30120012,2,613,Pafos Airport - Timi - Achelia - Geroskipou - Karavella Station,,3,33CC33,000000
+30130011,2,614,Karavella Station - Tremithousa - Mesogi - Mesa Xorio - Tsada - Koili,,3,8080FF,FFFFFF
+30130012,2,614,Koili - Tsada - Mesa Xorio - Mesogi - Tremithousa - Karavella Station,,3,8080FF,FFFFFF
+30140011,2,615,Tombs of the Kings Station - Potima - Coral Bay,,3,00FF00,000000
+30140012,2,615,Coral Bay - Potima - Tombs of the Kings Station,,3,00FF00,000000
+30150011,2,616,Coral Bay - Pegia - Agios Georgios Pegias,,3,00CC99,000000
+30150012,2,616,Agios Georgios Pegias - Pegia - Coral Bay,,3,00CC99,000000
+30160011,2,618,Karavella Station - Kennedy Square - Tombs of the Kings Station,,3,4C610A,FFFFFF
+30160012,2,618,Tombs of the Kings Station - Kennedy Square - Karavella Station,,3,4C610A,FFFFFF
+30170011,2,622,Polis Chrysochous - Prodromi - Latchi - Baths of Aphrodite,,3,8080FF,FFFFFF
+30170012,2,622,Baths of Aphrodite - Latchi - Prodromi - Polis Chrysochous,,3,8080FF,FFFFFF
+30180011,2,623,Polis Chrysochous - Prodromi - Neo Chorio,,3,FF8000,000000
+30180012,2,623,Neo Chorio - Prodromi - Polis Chrysochous,,3,FF8000,000000
+30190011,2,624,Polis Chrysochous - Pelathousa,,3,65350B,FFFFFF
+30190012,2,624,Pelathousa - Polis Chrysochous,,3,65350B,FFFFFF
+30200011,2,625,Polis Chrysochous - Makounta - Kinousa,,3,CC00E0,FFFFFF
+30200012,2,625,Kinousa - Makounta - Polis Chrysochous,,3,CC00E0,FFFFFF
+30210011,2,630,Karavella Station - Geroskipou - Timi - Kouklia - Petra tou Romiou - Pissouri,,3,33CC33,000000
+30210012,2,630,Pissouri - Petra tou Romiou - Kouklia - Timi - Geroskipou - Karavella Station,,3,33CC33,000000
+30220011,2,631,Harbour Station - Posidonos - Geroskipou - Kouklia - Petra tou Romiou,,3,D6AA80,000000
+30220012,2,631,Petra tou Romiou - Kouklia - Geroskipou - Posidonos - Harbour Station,,3,D6AA80,000000
+30220021,2,631,Harbour Station - Posidonos - Geroskipou - Kouklia - Petra tou Romiou - Aphrodite Hills,,3,D6AA80,000000
+30220022,2,631,Aphrodite Hills - Kouklia - Geroskipou - Posidonos - Harbour Station - Tombs of the Kings Station,,3,D6AA80,000000
+30220031,2,631,Tombs of the Kings Station - Harbour Station - Posidonos - Geroskipou - Kouklia - Petra tou Romiou - Aphrodite Hills,,3,D6AA80,000000
+30230011,2,632,Paphos - Geroskipou - Kouklia - Archimandrita,,3,FF80C0,000000
+30230012,2,632,Archimandrita - Kouklia - Geroskipou - Paphos,,3,FF80C0,000000
+30230021,2,632,Karavella St. - Tombs of the Kings St. - Geroskipou - Aphrodite Hills   - Kouklia - Archimandrita,,3,FF80C0,000000
+30240011,2,633,Karavella Station - Nikoklia - Fasoula - Mamonia - Prastio - Kedares - Pretori - Filousa - Agios Nikolaos,,3,CC6600,000000
+30240012,2,633,Agios Nikolaos - Filousa - Pretori - Kedares - Prastio - Mamonia - Fasoula - Nikoklia - Karavella Station,,3,CC6600,000000
+30250011,2,634,Karavella Station - Choletria - Stavrokonnou - Kelokedara - Salamiou - Mesana - Arminou,,3,004000,FFFFFF
+30250012,2,634,Arminou - Mesana - Salamiou - Kelokedara - Stavrokonnou - Choletria - Karavella Station,,3,004000,FFFFFF
+30250021,2,634,Karavella Station - Technical School - Choletria - Stavrokonnou - Kelokedara - Salamiou - Mesana - Arminou,,3,004000,FFFFFF
+30250022,2,634,Arminou - Mesana - Salamiou - Kelokedara - Stavrokonnou - Choletria - Technical School - Karavella Station,,3,004000,FFFFFF
+30260011,2,635,Agios Ioannis - Trachipedoula - Stavrokonnou,,3,ACAE39,000000
+30260012,2,635,Stavrokonnou - Trachipedoula - Agios Ioannis,,3,ACAE39,000000
+30270011,2,636,Karavella St. - Ag. Varvara - Nata - Amargeti - Ag. Marina - Pentalia - Galataria - Kilinia - Statos - Agios Fotios,,3,1B9403,FFFFFF
+30270012,2,636,Agios Fotios - Statos - Kilinia - Galataria - Pentalia - Ag. Marina - Amargeti - Nata - Ag. Varvara - Karavella St.,,3,1B9403,FFFFFF
+30270021,2,636,Karavella St. - Ag. Varvara - Nata - Amargeti - Nea Pentalia - Pentalia - Galataria - Kilinia - Statos - Agios Fotios,,3,1B9403,FFFFFF
+30270022,2,636,Agios Fotios - Statos - Kilinia - Galataria - Pentalia - Nea Pentalia - Amargeti - Nata - Ag. Varvara - Karavella St.,,3,1B9403,FFFFFF
+30270031,2,636,Karavella St. - Technical School - Ag. Varvara - Nata - Nea Pentalia - Pentalia - Galataria - Statos - Agios Fotios,,3,1B9403,FFFFFF
+30270032,2,636,Agios Fotios - Statos - Galataria - Pentalia - Nea Pentalia - Nata - Ag. Varvara - Technical School - Karavella St.,,3,1B9403,FFFFFF
+30270042,2,636,Agios Fotios - Statos - Koilineia - Galataria - Pentalia - Nea Pentalia - Amargeti,,3,1B9403,FFFFFF
+30280011,2,637,Karavella Station - Tsada - Polemi - Psathi - Ag. Dimitrianos - Kannaviou - Asprogia - Panagia,,3,FF33CC,FFFFFF
+30280012,2,637,Panagia - Asprogia - Kannaviou - Ag. Dimitrianos - Psathi - Polemi - Tsada - Karavella Station,,3,FF33CC,FFFFFF
+30280021,2,637,Karavella Station - Tsada - Polemi - Psathi - Ag. Dimitrianos - Kannaviou - Asprogia - Panagia,,3,FF33CC,FFFFFF
+30280022,2,637,Panagia - Asprogia - Kannaviou - Ag. Dimitrianos - Psathi - Polemi - Tsada - Karavella Station,,3,FF33CC,FFFFFF
+30280032,2,637,Panagia - Asprogia (village) - Kannaviou - Ag. Dimitrianos - Psathi - Polemi - Tsada - Karavella Station,,3,FF33CC,FFFFFF
+30290011,2,638,Ag. Dimitrianos - Milia - Drinia - Drimou - Simou - Lasa - Fiti - Kritou Marottou - Ag. Dimitrianos,,3,DF32FF,FFFFFF
+30300011,2,639,Karavella Station - Tsada - Kallepia - Letimpou - Lemona - Choulou,,3,0000A0,FFFFFF
+30300012,2,639,Choulou - Lemona - Letimpou - Kallepia - Tsada (Main Road) - Karavella Station,,3,0000A0,FFFFFF
+30310011,2,640,Polis Chrysochous - Steni - Peristerona - Filousa - Lysos,,3,8080FF,FFFFFF
+30310012,2,640,Lysos - Filousa - Peristerona - Steni - Polis Chrysochous,,3,8080FF,FFFFFF
+30320011,2,641,Polis Chrysochous - Terra - Kritou Terra - Inia - Droushia - Arodes - Kathikas - Theletra - Karavella Station,,3,400080,FFFFFF
+30320012,2,641,Paphos - Theletra - Kathikas - Arodes - Droushia - Inia - Kritou Terra - Terra - Polis Chrysochous,,3,400080,FFFFFF
+30330011,2,643A,Pachyammos - Pomos - Nea Dimmata - Ag. Marina - Argaka - Polis Chrysochous,,3,808040,000000
+30330012,2,643A,Polis Chrysochous - Argaka - Ag. Marina - Nea Dimmata - Pomos - Pachyammos,,3,808040,000000
+30340011,2,643B,Pachyammos - Pomos - Nea Dimmata - Ag. Marina - Pano Gialia - Argaka - Pano Argaka - Polis Chrysochous,,3,FF0000,FFFFFF
+30340012,2,643B,Polis Chrysochous - Pano Argaka - Argaka - Pano Gialia - Ag. Marina - Nea Dimmata - Pomos - Pachyammos,,3,FF0000,FFFFFF
+30350011,2,645,Polis Chrysochous - Chrysochou - Goudi - Choli - Skoulli - Giolou - Stroumbi - Tsada - Karavella Station,,3,FFFF80,000000
+30350012,2,645,Karavella Station - Tsada - Stroumbi - Giolou - Skoulli - Choli - Goudi - Chrysochou - Polis Chrysochous,,3,FFFF80,000000
+30350021,2,645,Polis Chrysochous - Chrysochou - Goudi - Choli - Skoulli - Giolou - Stroumbi - Tsada - Government Offices - Karavella St,,3,FFFF80,000000
+30350022,2,645,Karavella St.- Government Offices - Tsada - Stroumbi - Giolou - Skoulli - Choli - Goudi - Chrysochou - Polis Chrysochous,,3,FFFF80,000000
+30350031,2,645,Polis Chrysochous - Polis Schools - Chrysochou - Goudi - Choli - Skoulli - Giolou - Stroumbi - Tsada - Karavella St.,,3,FFFF80,000000
+30350032,2,645,Karavella St. - Tsada - Stroumbi - Giolou - Skoulli - Choli - Goudi - Chrysochou - Polis Schools - Polis Chrysochous,,3,FFFF80,000000
+30360011,2,646,Polis Chrysochous - Chrysochou - Goudi - Skoulli - Choli - Akourdalia - Miliou - Giolou,,3,FF80FF,000000
+30360012,2,646,Giolou - Miliou - Akourdalia - Choli - Skoulli - Goudi - Chrysochou - Polis Chrysochous,,3,FF80FF,000000
+30370011,2,647,Polis Chrysochous - Prodromi - Androlykou,,3,0000FF,FFFFFF
+30370012,2,647,Androlykou - Prodromi - Polis Chrysochous,,3,0000FF,FFFFFF
+30380011,2,648,Coral Bay - Pegia - Kathikas - Arodes - Inia - Droushia - Polis Chrysochous,,3,800080,FFFFFF
+30380012,2,648,Polis Chrysochous - Droushia - Inia - Arodes - Kathikas - Pegia - Coral Bay,,3,800080,FFFFFF
+30390011,2,649,Polis Chrysochous - Chrysochou - Skoulli - Giolou - Stroumpi - Tsada - L. Mesogis - Geroskipou - Timi - Pafos Airport,,3,A05A01,FFFFFF
+30390012,2,649,Pafos Airport - Timi - Geroskipou - L. Mesogis - Tsada - Stroumpi - Giolou - Skoulli - Chrysochou - Polis Chrysochous,,3,A05A01,FFFFFF
+30400011,2,621,Polis Chrysochous - Polis Hospital,,3,007324,FFFFFF
+30400012,2,621,Polis Hospital - Polis Chrysochous,,3,007324,FFFFFF
+30410011,2,607B,Karavella Station  - Chloraka - Lemba - Κissonerga - Pegeia (Akoursos),,3,8C008C,FFFFFF
+30410012,2,607B,Pegeia (Akoursos) - Κissonerga -  Lemba  - Chloraka - Karavella,,3,8C008C,FFFFFF
+40000011,4,101,Agia Napa (Waterpark) - Cape Greco - Konnos - Protaras - Pernera - Paralimni,,3,804040,FFFFFF
+40010011,4,102,Paralimni - Pernera - Protaras - Konnos - Cape Greco - Agia Napa (Waterpark),,3,408080,FFFFFF
+40020011,4,201,Luna Park-Thalassa Mus.-Ag. Napa Sq.-Nissi Ave.-Marina-Waterpark-T. Anthia-M. Kasialou-Thalassa-Ag. Napa Sq.-Luna Park,,3,0000A0,FFFFFF
+40030011,4,301,Par. Sq. Station-1 Apriliou (N)-G. Papad/lou-Kappari Av.-Protara Av.-Ag Varvara Ch.-Stadiou-1 Apriliou (S)-Par. Sq. St.,,3,FF0080,FFFFFF
+40040011,4,501,Deryneia (Green Line) - Frenaros - Liopetri - Waterpark - Ag. Napa - Paralimni - Gen. Hospital - Deryneia (Green Line),,3,FF0000,FFFFFF
+40050011,4,502,Deryneia (Green Line) - Gen. Hospital - Paralimni - Ag. Napa - Waterpark - Liopetri - Frenaros - Deryneia (Green Line),,3,CC6600,000000
+40060011,4,701,Ormideia - Xylofagou - Liopetri - Sotira - Deryneia - Famagusta Gen. Hospital - Paralimni,,3,FF33CC,FFFFFF
+40060012,4,701,Paralimni - Famagusta Gen.Hospital - Deryneia - Sotira - Liopetri - Xylofagou - Ormideia,,3,FF33CC,FFFFFF
+40070011,4,702,Xylotympou - Dasaki Achnas - Avgorou - Frenaros - Deryneia - Famagusta General Hospital - Paralimni,,3,FF8040,000000
+40070012,4,702,Paralimni - Famagusta General Hospital - Deryneia - Frenaros - Avgorou - Dasaki Achnas - Xylotympou,,3,FF8040,000000
+40080011,4,703,E.A.C. Dhekelia - Ormideia - Xylofagou - Liopetri - Sotira - Paralimni - Protaras - Konnos,,3,66FF66,000000
+40080012,4,703,Konnos - Protaras - Paralimni - Sotira - Liopetri - Xylofagou - Ormideia - E.A.C. Dhekelia,,3,66FF66,000000
+40090011,4,704,E.A.C. Dhekelia - Xylotympou - Ormideia - Xylofagou - Agia Napa ,,3,008000,FFFFFF
+40090012,4,704,Agia Napa - Xylofagou - Ormideia - Xylotympou - E.A.C. Dhekelia,,3,008000,FFFFFF
+40100011,4,705,Dasaki Achnas - Avgorou - Liopetri - Agia Napa,,3,75610B,FFFFFF
+40100012,4,705,Agia Napa - Liopetri - Avgorou - Dasaki Achnas,,3,75610B,FFFFFF
+40110011,4,706,Xylotympou - Dasaki Achnas - Avgorou - Frenaros - Deryneia - Paralimni - Protaras - Konnos,,3,808080,FFFFFF
+40110012,4,706,Konnos - Protaras - Paralimni - Deryneia - Frenaros - Avgorou - Dasaki Achnas - Xylotympou,,3,808080,FFFFFF
+40120011,4,708,Strovilia (Green Line) - Vrysoulles - Frenaros - Deryneia - Famagusta General Hospital - Paralimni - Protaras - Konnos,,3,33CC33,000000
+40120012,4,708,Konnos - Protaras - Paralimni - Famagusta General Hospital - Deryneia - Frenaros - Vrysoulles - Strovilia (Green Line),,3,33CC33,000000
+40130011,4,709,Strovilia (Green Line) - Vrysoulles - Frenaros - Sotira - Agia Napa,,3,8080FF,FFFFFF
+40130012,4,709,Agia Napa - Sotira - Frenaros - Vrysoulles - Strovilia (Green Line),,3,8080FF,FFFFFF
+40140011,4,710,Deryneia - Sotira - Agia Napa,,3,00CC99,000000
+40140012,4,710,Agia Napa - Sotira - Deryneia,,3,00CC99,000000
+40150011,4,711,Paralimni-Kapparis-Protaras-Konnos-Ag. Napa-Ag. Thekla Beach-Xylofagou-Ormideia-Larnaka-New Hospital-Metropolis Mall,,3,4C610A,FFFFFF
+40150012,4,711,Metropolis Mall-New Hospital-Larnaka-Ormideia-Xylofagou-Ag. Thekla Beach-Ag. Napa-Konnos-Protaras-Kapparis-Paralimni,,3,4C610A,FFFFFF
+40160011,4,712,Paralimni-Gen. Hospital-Deryneia-Frenaros-Vrysoulles-Avgorou-Dasaki-Xylotympou-Larnaka-New Hospital-Metropolis Mall,,3,46A5EB,FFFFFF
+40160012,4,712,Metropolis Mall-New Hospital-Larnaka-Xylotympou-Dasaki-Avgorou-Vrysoulles-Frenaros-Deryneia-Gen. Hospital-Paralimni,,3,46A5EB,FFFFFF
+40170011,4,714,Paralimni-Famagusta Hospital-Deryneia-Sotira-Liopetri-Xylofagou-Dhekelia-Larnaka-New Hospital-Metropolis Mall,,3,800000,FFFFFF
+40170012,4,714,Metropolis Mall-New Hospital-Larnaka-Dhekelia-Xylofagou-Liopetri-Sotira-Deryneia-Famagusta Hospital-Paralimni,,3,800000,FFFFFF
+40180011,4,510,Gen. Hospital - Paralimni Lyceum - Kapparis - Paralimni - Ag. Napa - Waterpark - Ag. Thekla Beach,,3,0080C0,FFFFFF
+40180012,4,510,Ag. Thekla Beach - Waterpark - Ag. Napa - Paralimni - Kapparis - Paralimni Lyceum,,3,0080C0,FFFFFF
+40190011,4,302,Paralimni - Pernera - Kapparis Circle Line,,3,6E9BE6,FFFFFF
+40200011,4,303,Paralimni - Kapparis - Pernera - Protaras - Konnos,,3,A0A0A0,FFFFFF
+40200012,4,303,Konnos - Protaras - Pernera - Kapparis - Paralimni,,3,A0A0A0,FFFFFF
+40210011,4,304,Paralimni - Pernera - Protaras - Konnos,,3,FF8200,000000
+40210012,4,304,Konnos - Protaras - Pernera - Paralimni,,3,FF8200,000000
+40220011,4,202,Luna Park-Thalassa-Ag. Napa Sq-Nissi Av.-Ag. Napa Marina-T. Anthia-M. Kasialou-Thalassa-Ag. Napa Sq-Luna Park,,3,FF8264,000000
+40230011,4,704A,E.A.C. Dhekelia - Xylofagou - Agia Napa,,3,824100,FFFFFF
+40230012,4,704A,Agia Napa - Xylofagou - E.A.C. Dhekelia,,3,824100,FFFFFF
+40240011,4,704B,Xylotympou - Ormideia - Xylofagou - Agia Napa,,3,FF6EBE,000000
+40240012,4,704B,Agia Napa - Xylofagou - Ormideia - Xylotympou,,3,FF6EBE,000000
+40250011,4,704C,Xylofagou - Agia Napa,,3,E6554B,FFFFFF
+40250012,4,704C,Agia Napa - Xylofagou,,3,E6554B,FFFFFF
+40260011,4,701A,Xylofagou - Liopetri - Sotira - Paralimni - Famagusta General Hospital,,3,8282FF,FFFFFF
+40260012,4,701A,Paralimni - Sotira - Liopetri - Xylofagou,,3,8282FF,FFFFFF
+40270011,4,712A,Paralimni - Gen. Hospital - Deryneia - Frenaros - Vrysoulles - Xylotympou - Larnaka - New Hospital,,3,0000E1,FFFFFF
+40280011,4,714A,Paralimni-Famagusta Hospital-Deryneia-Sotira-Liopetri-Xylofagou-Dhekelia-Larnaka-New Hospital-Metropolis Mall,,3,EB46C8,FFFFFF
+40290011,4,702A,Xylotympou - Dasaki Achnas - Avgorou - Liopetri -Frenaros - Deryneia - Famagusta General Hospital - Paralimni,,3,69AA55,FFFFFF
+40290012,4,702A,Paralimni - Famagusta General Hospital - Deryneia - Frenaros - Liopetri - Avgorou - Dasaki Achnas - Xylotympou,,3,69AA55,FFFFFF
+40300012,4,707,Paralimni - Deryneia - Frenaros - Vrysoulles - Avgorou,,3,008000,FFFFFF
+40310011,4,709A,Vrysoulles - Frenaros - Deryneia - Paralimni - Agia Napa,,3,0080C0,FFFFFF
+40320011,4,705A,Avgorou - Frenaros - Sotira - Agia Napa,,3,808040,000000
+50000011,5,26,Nicosia - Pafos,,3,66FF66,000000
+50000012,5,26,Pafos - Nicosia,,3,66FF66,000000
+50000021,5,26,Nicosia - Choirokoitia - Pafos,,3,66FF66,000000
+50000022,5,26,Pafos - Choirokoitia - Nicosia,,3,66FF66,000000
+50000031,5,26,Nicosia - Agios Georgios Chavouzas - Episkopiana - CUT - Pafos,,3,66FF66,000000
+50000041,5,26,Nicosia - Alampra - Pafos,,3,66FF66,000000
+50000042,5,26,Pafos - Alampra - Nicosia,,3,66FF66,000000
+50000051,5,26,Nicosia - Alampra - Choirokoitia - Ag. Georgios Chavouzas - Episkopiana - EAC - Pafos,,3,66FF66,000000
+50000052,5,26,Pafos - CUT - EAC - Nicosia,,3,66FF66,000000
+50000061,5,26,L. Akrita - Nicosia - Pafos,,3,66FF66,000000
+50000062,5,26,Pafos - Nicosia - L. Akrita,,3,66FF66,000000
+50000071,5,26,Nicosia - CUT - Pafos,,3,66FF66,000000
+50000072,5,26,Pafos - CUT - Nicosia,,3,66FF66,000000
+50010011,5,23,Nicosia - Agia Napa - Paralimni,,3,008000,FFFFFF
+50010012,5,23,Paralimni - Agia Napa - Nicosia,,3,008000,FFFFFF
+50010021,5,23,Nicosia - Agia Napa - Protaras - Paralimni,,3,008000,FFFFFF
+50010022,5,23,Paralimni - Protaras - Agia Napa - Nicosia,,3,008000,FFFFFF
+50010031,5,23,Nicosia - Alampra - Paralimni,,3,008000,FFFFFF
+50010032,5,23,Paralimni - Protaras - Alampra - Nicosia,,3,008000,FFFFFF
+50010042,5,23,Paralimni - Agia Napa - Alampra - Nicosia,,3,008000,FFFFFF
+50010052,5,23,Paralimni - Agia Napa - Nicosia (except Gen. Hospital),,3,008000,FFFFFF
+50020011,5,43,Larnaca - Agia Napa - Paralimni,,3,75610B,FFFFFF
+50020012,5,43,Paralimni - Agia Napa - Larnaca,,3,75610B,FFFFFF
+50030011,5,56,Limassol - Pafos,,3,FFFF00,000000
+50030012,5,56,Pafos - Limassol,,3,FFFF00,000000
+50030021,5,56,Limassol - Episkopiana - Pafos,,3,FFFF00,000000
+50030022,5,56,Pafos - CUT - Episkopiana - Limassol,,3,FFFF00,000000
+50030032,5,56,Pafos - EAC - Episkopiana - Limassol,,3,FFFF00,000000
+50030041,5,56,Limassol - CUT - Pafos,,3,FFFF00,000000
+50030042,5,56,Pafos - CUT - Limassol,,3,FFFF00,000000
+50040011,5,45,Larnaca - Limassol,,3,8000FF,FFFFFF
+50040012,5,45,Limassol - Larnaca,,3,8000FF,FFFFFF
+50050011,5,36,Paralimni - Ayia Napa - Larnaca - Pafos,,3,FF8000,000000
+50050012,5,36,Pafos - Larnaca - Ayia Napa - Paralimni,,3,FF8000,000000
+50060011,5,25,Nicosia - Limassol,,3,FF0000,FFFFFF
+50060012,5,25,Limassol - Nicosia,,3,FF0000,FFFFFF
+50060021,5,25,Nicosia - Alampra - Limassol,,3,FF0000,FFFFFF
+50060022,5,25,Limassol - Alampra - Nicosia,,3,FF0000,FFFFFF
+50060031,5,25,Nicosia Presid. - North Limassol,,3,FF0000,FFFFFF
+50060032,5,25,North Limassol - Presid. Nicosia,,3,FF0000,FFFFFF
+50060041,5,25,Nicosia - North Limassol,,3,FF0000,FFFFFF
+50060042,5,25,North Limassol - Nicosia,,3,FF0000,FFFFFF
+50070011,5,42,Larnaca - Nicosia,,3,0000FF,FFFFFF
+50070012,5,42,Nicosia - Larnaca,,3,0000FF,FFFFFF
+50070021,5,42,Larnaca (Saint George) - Nicosia,,3,0000FF,FFFFFF
+50070022,5,42,Nicosia - Larnaca (Saint George),,3,0000FF,FFFFFF
+50070031,5,42,Larnaca - Alampra - Nicosia,,3,0000FF,FFFFFF
+50070032,5,42,Nicosia - Alampra - Larnaca,,3,0000FF,FFFFFF
+50070041,5,42,Larnaca (Port) - Presidential Palace - Nicosia,,3,0000FF,FFFFFF
+50070042,5,42,Nicosia - Presidential Palace - Larnaca,,3,0000FF,FFFFFF
+50070051,5,42,Larnaca - University of Cyprus - Nicosia,,3,0000FF,FFFFFF
+50070052,5,42,Nicosia - University of Cyprus - Larnaca,,3,0000FF,FFFFFF
+50080011,5,46,Larnaca - Limassol - Pafos,,3,800000,FFFFFF
+50080012,5,46,Pafos - Limassol - Larnaca,,3,800000,FFFFFF
+50080021,5,46,Larnaca - Limassol - CUT - Pafos,,3,800000,FFFFFF
+50090011,5,64,Larnaca - Pafos,,3,FF8000,000000
+50090012,5,64,Pafos - Larnaca,,3,FF8000,000000
+11,9,GSP.1,GSP-Ministry of Finance,,3,00FFFF,000000
+12,9,GSP.1,Ministry of Finance - GSP,,3,00FFFF,000000
+100011,9,10,Makario Stadium -  Kok/thia - Makario Stadium,,3,800000,FFFFFF
+110011,9,11,Isokratous - Makario Stadium - Solomou Sq.,,3,BF8F00,000000
+110012,9,11,Solomou Sq. - Makario Stadium - Isokratous,,3,BF8F00,000000
+120011,9,12,Al. Panagouli - Makario Stadium - Solomou Sq.,,3,99CC00,000000
+120012,9,12,Solomou Sq. - Makario Stadium - Al. Panagouli,,3,99CC00,000000
+130011,9,13,Makario Stadium - Solomou Sq.,,3,996600,FFFFFF
+130012,9,13,Solomou Sq. - Makario Stadium,,3,996600,FFFFFF
+130021,9,13,Makario Stadium - Solomou Sq,,3,996600,FFFFFF
+130022,9,13,Solomou Sq - Makario Stadium,,3,996600,FFFFFF
+140011,9,14,Makario Stadium - Europ. Univ. - Solomou Sq.,,3,993366,FFFFFF
+140012,9,14,Solomou Sq. - European Univ. - Makario Stadium,,3,993366,FFFFFF
+150011,9,15,Lakatameia - Archangelos - Makario Stadium,,3,FB4040,000000
+150012,9,15,Makario Stadium - Archangelos - Lakatameia,,3,FB4040,000000
+160011,9,16,Makario Stadium - Nicosia Mall,,3,FF8000,000000
+160012,9,16,Nicosia Mall - Makario Stadium,,3,FF8000,000000
+170021,9,17,Anthoupoli - Archangel Michael (via UNDERPASS) - Makario Stadium ,,3,BDCD24,000000
+170022,9,17,Makario Stadium - Archangel Michael - TECHNICAL SCHOOL - Anthoupoli,,3,BDCD24,000000
+190011,9,19,Strovolos Station - Prodromou - Solomou Square,,3,832D7D,FFFFFF
+190012,9,19,Solomou Square - Prodromou - Strovolos Station,,3,832D7D,FFFFFF
+220021,9,22,Strovolos Station - P.Lakatamia - Strovolos Station,,3,009900,FFFFFF
+230031,9,23,Strovolos - Salaminos/Tseri - Strovolos,,3,9966FF,FFFFFF
+240011,9,24,Ouranou - Konstantinoupoleos - Strovolos Station,,3,FF99FF,000000
+240012,9,24,Strovolou Station - Konstantinoupoleos - Ouranou,,3,FF99FF,000000
+250011,9,25,Strovolos Station - Gen. Hospital Bus Station,,3,CC3399,FFFFFF
+250012,9,25,Gen. Hospital Bus Station - Strovolos Station,,3,CC3399,FFFFFF
+250021,9,25,Strovolos Station - General Hospital,,3,CC3399,FFFFFF
+250022,9,25,General Hospital- Strovolos Station,,3,CC3399,FFFFFF
+260011,9,26,Gen. Hospital - Solomos Square,,3,FB7011,000000
+260012,9,26,Solomos Square -  Gen. Hospital,,3,FB7011,000000
+270011,9,27,Strovolos Station - Gen. Hospital Bus Station,,3,FF3300,FFFFFF
+270012,9,27,Gen. Hospital Bus Station - Strovolos Station,,3,FF3300,FFFFFF
+280011,9,28,CYTA Headquarters - Tzon Kenendy - Solomou Square,,3,FF33CC,FFFFFF
+280012,9,28,Solomou Square - Tzon Kenendy - CYTA Headquarters,,3,FF33CC,FFFFFF
+280021,9,28,Solomou Square - CYTA Headquarters - Solomou Square,,3,FF33CC,FFFFFF
+290011,9,29,Gen. Hospital - Cyprus Pedagogical Institute / University of Cyprus,,3,663300,FFFFFF
+290012,9,29,Cyprus Pedagogical Institute / University of Cyprus -  Gen. Hospital,,3,663300,FFFFFF
+290021,9,29,Gen. Hospital - Cyprus Pedagogigcal Instittue - Morningside School.,,3,663300,FFFFFF
+290022,9,29,Morningside school - Cyprus Pedagogical  Institute - General Hospital,,3,663300,FFFFFF
+310031,9,31,Solomou Square - Kantaras/Kaimakli - Solomou Square,,3,66CCFF,FFFFFF
+320011,9,32,SOPAZ - John Kennedy Avenue - Stasinou Avenue - Solomos Square,,3,52DA10,000000
+320012,9,32,Solomou square - Stasinou Avenue - John Kenedy Avenue - SOPAZ,,3,52DA10,000000
+330011,9,33,University of Cyprus / Aglantzia - Solomou Square,,3,6699FF,FFFFFF
+330012,9,33,Solomou Square - University of Cyprus / Aglantzia,,3,6699FF,FFFFFF
+360011,9,36,Geriou - Gen. Hospital Bus Station,,3,AC00AC,FFFFFF
+360012,9,36,Gen. Hospital Bus Station - Geriou,,3,AC00AC,FFFFFF
+360021,9,36,Geriou - Agios Eleftherios - Gen. Hospital Bus Station,,3,AC00AC,FFFFFF
+360022,9,36,Gen. Hospital Bus Station - Agios Eleftherios - Geriou,,3,AC00AC,FFFFFF
+380011,9,38,Gen. Hospital - Univ. of Cyprus,,3,FF33CC,FFFFFF
+380012,9,38,Univ. of Cyprus - Gen. Hospital,,3,FF33CC,FFFFFF
+380021,9,38,Geri Industrial Area - Gen. Hospital - University of Cyprus,,3,FF33CC,FFFFFF
+380022,9,38,University of Cyprus - Gen. Hospital - Geri Industrial Area,,3,FF33CC,FFFFFF
+390011,9,39,Geri - Univ. of Cyprus,,3,808000,FFFFFF
+390012,9,39,Univ. of Cyprus - Geri,,3,808000,FFFFFF
+410011,9,41,Makario Stadium - Univ. of Cyprus,,3,3399FF,FFFFFF
+410012,9,41,Univ. of Cyprus - Makario Stadium,,3,3399FF,FFFFFF
+410021,9,41,Makario Stadium - Univ. of Cyprus (via SCHOOL),,3,3399FF,FFFFFF
+410022,9,41,Univ. of Cyprus - Makario Stadium (via SCHOOL),,3,3399FF,FFFFFF
+420011,9,42,Makario Stadium - SOPAZ,,3,CC6600,000000
+420012,9,42,SOPAZ - Makario Stadium,,3,CC6600,000000
+420021,9,42,Makario Stadium - SOPAZ - University Of Cyprus,,3,CC6600,000000
+420022,9,42,University Of Cyprus - SOPAZ - Makario Stadium,,3,CC6600,000000
+430011,9,43,Strovolos Station - Univ. of Cyprus,,3,CC3300,FFFFFF
+430012,9,43,University Of Cyprus - Strovolos Station,,3,CC3300,FFFFFF
+440011,9,44,Strovolos St. - Univ. Of Cyprus,,3,FF5050,000000
+440012,9,44,Univ. of Cyprus - Strovolos St.,,3,FF5050,000000
+440021,9,44,Makario Stadium - Strovolos - University Of Cyprus,,3,FF5050,000000
+440022,9,44,University Of Cyprus - Strovolos - Makario Stadium,,3,FF5050,000000
+440031,9,44,Makario Stadium - Strovolos - University Of Cyprus,,3,FF5050,000000
+440032,9,44,University Of Cyprus - Strovolos - Makario Stadıum,,3,FF5050,000000
+460011,9,46,Makario Bus Station - Strovolos St.- Univ. of Cyprus,,3,00CC00,000000
+460012,9,46,Univ. of Cyprus - Strovolos St.- Makario Bus Station,,3,00CC00,000000
+470011,9,47,Makario Stadium - Gen. Hospital,,3,7030A0,FFFFFF
+470012,9,47,Gen. Hospital - Makario Stadium,,3,7030A0,FFFFFF
+480011,9,48,Anthoupoli - Univ. of Cyprus,,3,00CC99,000000
+480012,9,48,Univ. of Cyprus - Anthoupoli,,3,00CC99,000000
+500011,9,50,Agia Anna - Psevda - Alampra Bus Station,,3,0000FF,FFFFFF
+500012,9,50,Alampra Bus Station - Psevda - Agia Anna,,3,0000FF,FFFFFF
+510011,9,51,Sia - Mosfiloti - Alampra - Alampra Bus Station,,3,FF0080,FFFFFF
+510012,9,51,Alampra Bus Station - Alampra - Mosfiloti - Sia,,3,FF0080,FFFFFF
+520011,9,52,Potamia - Dali - Alampra Bus Station,,3,0080C0,FFFFFF
+520012,9,52,Alampra Bus Station - Dali - Potamia,,3,0080C0,FFFFFF
+520021,9,52,Potamia - Dali - Pera Chorio - Alampra Bus Station,,3,0080C0,FFFFFF
+520022,9,52,Alampra - Pera Chorio - Dali - Potamia ,,3,0080C0,FFFFFF
+530011,9,53,Pyrga - Kornos - Alampra Bus Station,,3,FF80FF,000000
+530012,9,53,Alampra Bus Station - Kornos - Pyrga,,3,FF80FF,000000
+540011,9,54,Lythrodontas - Mathiatis - Ag. Varvara - Alampra Bus Station,,3,808000,FFFFFF
+540012,9,54,Alampra Bus Station - Ag. Varvara - Mathiatis - Lythrodontas,,3,808000,FFFFFF
+540021,9,54,Lythrodontas  (Dorou Loizou) - Mathiatis - Ag. Varvara - Alampra Bus St,,3,808000,FFFFFF
+540022,9,54,Alampra Bus St- Ag. Varvara - Mathiatis - Lythrodontas (Dorou Loizou),,3,808000,FFFFFF
+560011,9,56,Athienou - Lympia - Alampra Bus Station,,3,408080,FFFFFF
+560012,9,56,Alampra Bus Station - Lympia - Athienou,,3,408080,FFFFFF
+560021,9,56,Athienou - Alampra Bus Station (via HIGHWAY),,3,408080,FFFFFF
+560022,9,56,Alampra Bus Station - Athienou (via HIGHWAY),,3,408080,FFFFFF
+570011,9,57,Dali - Alampra Bus Station,,3,008080,FFFFFF
+570012,9,57,Alampra Bus Station - Dali,,3,008080,FFFFFF
+590011,9,59,Marki - Kotsiatis - Alampra Bus Station,,3,FF8080,000000
+590012,9,59,Alampra Bus Station - Kotsiatis - Marki,,3,FF8080,000000
+600011,9,60,Mitsero - Agrokipia - Ag. Ioannis - Tamasos Bus Station,,3,808080,FFFFFF
+600012,9,60,Tamasos Bus Station - Ag. Ioannis - Agrokipia - Mitsero,,3,808080,FFFFFF
+610011,9,61,Alithinou - Polystypos - Mitsero - Tamasos Bus Station,,3,8080FF,FFFFFF
+610012,9,61,Tamasos Bus Station - Mitsero - Polystypos - Alithinou,,3,8080FF,FFFFFF
+620011,9,62,Palaichori - Ag Sotira - Apliki - Ag. Epifanios - Tamasos Bus Station,,3,008000,FFFFFF
+620012,9,62,Tamasos Bus Station - Ag. Epifanios - Apliki - Ag Sotira - Palaichori,,3,008000,FFFFFF
+620021,9,62,Palaichori - Apliki - Ag Epifanios - Tamasos Bus Station,,3,008000,FFFFFF
+620022,9,62,Tamasos Station - Ag Epifanios - Apliki - Palaichori,,3,008000,FFFFFF
+630011,9,63,Fterikoudi - Askas - Palaichori,,3,800000,FFFFFF
+630012,9,63,Palaichori - Askas - Fterikoudi,,3,800000,FFFFFF
+630021,9,63,Fterikoudi - Askas - Palaichori - Apliki - Ag Epifanios - Tamasos Station,,3,800000,FFFFFF
+630022,9,63,Tamasos Station - Ag. Epifanios - Apliki - Palaichori - Aksas - Fterikoudi,,3,800000,FFFFFF
+630031,9,63,Fterikoudi - Askas - Palaichori - Ag Sotira - Apliki - Ag Epifanios - Tamasos Station,,3,800000,FFFFFF
+630032,9,63,Tamasos Station - Ag. Epifanios - Apliki -Ag Sotira - Palaichori - Aksas - Fterikoudi,,3,800000,FFFFFF
+640011,9,64,Agros - Palaichori,,3,8000FF,FFFFFF
+640012,9,64,Palaichori - Agros,,3,8000FF,FFFFFF
+640021,9,64,Agros - Palaichori - Apliki - Ag. Epifanios - Tamasos Station,,3,8000FF,FFFFFF
+640022,9,64,Tamasos Station - Ag Epifanios - Apliki - Palaichori - Agros,,3,8000FF,FFFFFF
+640031,9,64,Agros - Palaichori - Ag Sotira - Apliki - Ag. Epifanios - Tamasos Station,,3,8000FF,FFFFFF
+640032,9,64,Tamasos Station - Ag Epifanios - Apliki - Ag Sotira - Palaichori - Agros,,3,8000FF,FFFFFF
+650011,9,65,Kampi - Farmakas - Gourri - Kalo Chorio - Tamasos Bus Station,,3,8000FF,FFFFFF
+650012,9,65,Tamasos Bus St. - Kalo Chorio - Gourri - Farmakas - Kampi,,3,8000FF,FFFFFF
+660011,9,66,Gourri - Kalo Chorio - Malounta - Tamasos Bus Station,,3,804000,FFFFFF
+660012,9,66,Tamasos Bus Station - Malounta - Kalo Chorio - Gourri,,3,804000,FFFFFF
+670011,9,67,Kalo Chorio - Klirou - Malounta - Tamasos Bus Station,,3,808000,FFFFFF
+670012,9,67,Tamasos Bus Station - Malounta - Klirou - Kalo Chorio,,3,808000,FFFFFF
+680011,9,68,Kapedes - Kampia - Pera Oreinis - Politiko - Episkopip - Psimolofou - Deftera,,3,808000,FFFFFF
+680012,9,68,Deftera - Psimolofou - Episkopio - Politiko - Pera Oreinis - Kampia - Kapedes,,3,808000,FFFFFF
+680021,9,68,Kapedes - Pera Oreinis - Episkopio - Deftera,,3,808000,FFFFFF
+680022,9,68,Deftera -Psimolofou -Episkopio -Pera Oreinis -Kapedes,,3,808000,FFFFFF
+690011,9,69,Ergates - Anagia,,3,FF80C0,000000
+690012,9,69,Anagia - Ergates,,3,FF80C0,000000
+690021,9,69,Ergates - Anagia,,3,FF80C0,000000
+690022,9,69,Anagia - Ergates,,3,FF80C0,000000
+700011,9,70,Deneia - Kokkinotrimithia A Setl. - Kokkinotrimithia,,3,00FF00,000000
+700012,9,70,Kokkinotrimithia - Kokkinotrimithia A Setl. - Deneia,,3,00FF00,000000
+710011,9,71,Mammari - Mammari Setl. - Kokkinotrimithia,,3,0080FF,FFFFFF
+710012,9,71,Kokkinotrimithia - Mammari Setl. - Mammari,,3,0080FF,FFFFFF
+720011,9,72,Meniko - Akaki,,3,0080FF,FFFFFF
+720012,9,72,Akaki - Meniko,,3,0080FF,FFFFFF
+730011,9,73,Paliometocho Setl. - Kokkinotrimithia,,3,804040,FFFFFF
+730012,9,73,Kokkinotrimithia - Paliometocho Setl.,,3,804040,FFFFFF
+740011,9,74,Ave. Agiou Georgiou/Lakatamia - Anthoupoli - Kokkinotrimitia,,3,008080,FFFFFF
+740012,9,74,Kokkinotrimithia - Anthoupoli - Ave. Agiou Georgiou/Lakatamia,,3,008080,FFFFFF
+750011,9,75,Lagoudera - Xyliatos - Kato Moni - Peristerona,,3,FF8080,000000
+750012,9,75,Peristerona - Kato Moni - Xyliatos - Lagoudera,,3,FF8080,000000
+760011,9,76,Xyliatos - Kato Moni - Peristerona,,3,0080FF,FFFFFF
+760012,9,76,Peristerona - Kato Moni - Xyliatos,,3,0080FF,FFFFFF
+770011,9,77,Nikitari - Vyzakia - Potami - Astromeritis,,3,FF0000,FFFFFF
+770012,9,77,Astromeritis - Potami - Vyzakia - Nikitari,,3,FF0000,FFFFFF
+780011,9,78,Ag. Eirini - Kannavia - Vyzakia - Potami - Astromeritis,,3,8080C0,FFFFFF
+780012,9,78,Astromeritis - Potami - Vyzakia - Kannavia - Ag. Eirini,,3,8080C0,FFFFFF
+800011,9,80,Flasou - Linou - Atsas,,3,0080FF,FFFFFF
+800012,9,80,Atsas - Linou - Flasou,,3,0080FF,FFFFFF
+810011,9,81,Prodromos - Pedoulas - Kalopanagiotis - Atsas,,3,FF0080,FFFFFF
+810012,9,81,Atsas - Kalopanagiotis - Pedoulas - Prodromos,,3,FF0080,FFFFFF
+810021,9,81,Prodromos - Pedoulas - Kalopanagiotis - Flasou - Atsas,,3,FF0080,FFFFFF
+810022,9,81,Atsas - Flasou - Kalopanagiotis - Pedoulas - Prodromos,,3,FF0080,FFFFFF
+820011,9,82,Kampos - Tsakkistra - Kikkos - Gerakies - Atsas,,3,008080,FFFFFF
+820012,9,82,Atsas - Gerakies - Kikkos - Tsakkistra - Kampos,,3,008080,FFFFFF
+830011,9,83,Ag. Theodoros - Evrychou,,3,8080C0,FFFFFF
+830012,9,83,Evrychou - Ag. Theodoros,,3,8080C0,FFFFFF
+840011,9,84,Galata - Evrychou,,3,0080C0,FFFFFF
+840012,9,84,Evrychou - Galata,,3,0080C0,FFFFFF
+840021,9,84,Galata - Kaliana - Evrychou,,3,0080C0,FFFFFF
+840022,9,84,Evrychou - Kaliana - Galata,,3,0080C0,FFFFFF
+850011,9,85,Chandria - Kyperounta - Kakopetria,,3,FF00FF,FFFFFF
+850012,9,85,Kakopetria - Kyperounta - Chandria,,3,FF00FF,FFFFFF
+860011,9,86,Kourdali - Spilia - Kakopetria,,3,800040,FFFFFF
+860012,9,86,Kakopetria - Spilia - Kourdali,,3,800040,FFFFFF
+870011,9,87,Troodos - Kakopetria,,3,FF8000,000000
+870012,9,87,Kakopetria - Troodos,,3,FF8000,000000
+1010011,9,101,Tamasos Bus Station - Makario Stadium Bus Station,,3,0052A4,FFFFFF
+1010012,9,101,Makario Stadium Bus Station - Tamasos Bus Station,,3,0052A4,FFFFFF
+1560011,9,56L,Lympia - Alampra Ind. Area - Alampra Bus Station,,3,FF0000,FFFFFF
+1560012,9,56L,Alampra Bus Station - Alampra Ind. Area - Lympia,,3,FF0000,FFFFFF
+1680011,9,68B,Pera Oreinis - Politiko - Episkopio - Psimilofou - Deftera,,3,FF0080,FFFFFF
+1680012,9,68B,Deftera - Psimilofou - Episkopio - Politiko - Pera Oreinis,,3,FF0080,FFFFFF
+2230011,9,23A,Analiontas - Tseri,,3,FF80C0,000000
+2230012,9,23A,Tseri - Analiontas,,3,FF80C0,000000
+4000011,9,400,Astromeritis - Peristerona - Akaki - Kokkinotrimithia - Makario Bus Station - Solomou Square,,3,FF0000,FFFFFF
+4000012,9,400,Solomou Square - Makario Bus Station - Nicosia Mall - Kokkinotrimithia - Akaki - Peristerona - Astromeritis,,3,FF0000,FFFFFF
+4000021,9,400,Astromeritis - Makario Stadium Bus Station,,3,FF0000,FFFFFF
+4000022,9,400,Makario Stadium Bus Station - Astromeritis,,3,FF0000,FFFFFF
+4050011,9,405,Kakopetria -Evrychou(MR) - Akaki/Peristerona/Astromeritis(MR) -Kok/mithia-Makario Station-Solomou Sq.-Nicosia/Kolokasi,,3,804040,FFFFFF
+4050012,9,405,Nicosia/Kolokasi-Diagorou-Makario St.-Nicosia Mall-Kok/thia - Akaki/Peristerona/Astromeritis(MR)-Evrychou(MR)-Kakopetria,,3,804040,FFFFFF
+4050041,9,405,Kakopetria - Astromeritis - Makario Stadium Bus St.,,3,804040,FFFFFF
+4050042,9,405,Makario Stadium Bus St. - Astromeritis - Kakopetria,,3,804040,FFFFFF
+4070011,9,407,Chandria - Kakopetria - Astromeritis - Gen. Hospital,,3,808000,FFFFFF
+4070012,9,407,Gen. Hospital - Astromeritis - Kakopetria - Chandria,,3,808000,FFFFFF
+4080021,9,408,Troodos - Kakopetria,,3,804040,FFFFFF
+4080022,9,408,Makario St - Kakopetria - Troodos,,3,804040,FFFFFF
+5010011,9,1,Makario Stadium - Strovolos St. - Solomou Sq.,,3,FF9900,000000
+5010012,9,1,Solomou Sq. - Strovolos St. - Makario Stadium,,3,FF9900,000000
+5020011,9,2,Tamasos Bus Station - Strovolos Station - Solomou Square,,3,3366FF,FFFFFF
+5020012,9,2,Solomou Square - Strovolos St. - Tamasos Bus Station,,3,3366FF,FFFFFF
+5020021,9,2,Lakatameia - Strovolos Station - Solomou Square,,3,3366FF,FFFFFF
+5020022,9,2,Solomou Square - Strovolos St. - Lakatameia,,3,3366FF,FFFFFF
+5030011,9,3,Alampra Bus St. - Gen. Hospital Bus St. - Solomou Square,,3,0000FF,FFFFFF
+5030012,9,3,Solomou Sq. - Alampra Bus St.,,3,0000FF,FFFFFF
+5040011,9,4,Gen. Hospital - Solomou Square,,3,CCCC00,000000
+5040012,9,4,Solomou Square - Gen. Hospital,,3,CCCC00,000000
+5040021,9,4, Calsberg - General - Hospital - Solomou Square.,,3,CCCC00,000000
+5040022,9,4,Solomou Square - General Hospital - Calsberg,,3,CCCC00,000000
+5050011,9,5,Alampra Bus Station - Solomou Square,,3,339969,000000
+5050012,9,5,Solomou Square - Alampra Bus Station,,3,339969,000000
+5050021,9,5,Alambra Station - Industrial Dali - Carlsberg - Highway - Solomos Square,,3,339969,000000
+5050022,9,5,Solomou Square - Highway - Carlsberg - Industrial Dali - Alampra Bus Station,,3,339969,000000
+7000011,9,X400,Chandria - Kyperounta - Makario Stadium -  Nicosia General Hospital,,3,808080,FFFFFF
+7000012,9,X400,General Hospital - Makario Stadium -  Kyperounta - Chandria,,3,808080,FFFFFF
+7010011,9,X200,Tamasos Station - GSP Stadium - General Hospital,,3,345C5A,FFFFFF
+7010012,9,X200,General Hospital - GSP Stadium - Tamasos Station,,3,345C5A,FFFFFF
+8010011,9,N1,Nicosia Mall - Makario Stadium - Solomou Sq.,,3,0000FF,FFFFFF
+8010012,9,N1,Solomou Sq. - Makario Stadium - Nicosia Mall,,3,0000FF,FFFFFF
+8020011,9,N2,Makario Stadium - Solomou Sq. - Univ. of Cyprus,,3,FF8000,000000
+8020012,9,N2,Univ. of Cyprus - Solomou Sq. - Makario Stadium,,3,FF8000,000000
+8030011,9,N3,Makario Stadium - Strovolos St. - Gen. Hospital Station,,3,008080,FFFFFF
+8030012,9,N3,Gen. Hospital Station - Strovolos St. - Makario Stadium,,3,008080,FFFFFF
+8040011,9,N4,Alampra Bus Station - Gen. Hospital Bus Station - Solomou Square,,3,0080FF,FFFFFF
+8040012,9,N4,Solomou Square - Gen. Hospital Bus Station - Alampra Bus Station,,3,0080FF,FFFFFF
+8050011,9,N5,Tamasos Bus Station - Strovolos St - Solomou Square,,3,FF00FF,FFFFFF
+8050012,9,N5,Solomou Sq. - Strovolos St. - Tamasos Bus Station,,3,FF00FF,FFFFFF
+9010021,9,L1,Solomos Sq. - City Hall - Ektoros - Palouriotissa - Famagusta Gate - Archbishopric - Solomos Sq.,,3,740074,FFFFFF
+20000011,10,430,Larnaca Station - Airport - Kiti - Pervolia,,3,CCCC00,000000
+20000012,10,430,Pervolia - Kiti - Airport - Larnaca station,,3,CCCC00,000000
+20000021,10,430,Larnaca Station - Pervo,,3,CCCC00,000000
+20000031,10,430,Larnaca - Pervolia,,3,CCCC00,000000
+20000032,10,430,Pevolia,,3,CCCC00,000000
+20010011,10,417,Larnaca Station - Aradippou,,3,1C8600,FFFFFF
+20010012,10,417,Aradippou - Larnaca Station,,3,1C8600,FFFFFF
+20010021,10,417,Larnaca Station - Industrial Area - Aradippou,,3,1C8600,FFFFFF
+20010022,10,417,Aradippou - Industrial Area - Larnaca Station,,3,1C8600,FFFFFF
+20030011,10,431,Larnaca Station-Airport -  Meneou - Dromolaxia,,3,CC00E0,FFFFFF
+20030012,10,431,Dromolaxia - Meneou - Airport - Larnaca St.,,3,CC00E0,FFFFFF
+20040011,10,418,Larnaca Station - Lividia - Kellia - Troulloi,,3,33CC33,000000
+20040012,10,418,Troulloi - Kellia - Livadia - Larnaca Station,,3,33CC33,000000
+20050011,10,419,Larnaca Station - Oroklini,,3,FF33CC,FFFFFF
+20050012,10,419,Oroklini - Larnaca Station,,3,FF33CC,FFFFFF
+20050022,10,419,Oroklini - Larnaca Station,,3,FF33CC,FFFFFF
+20060011,10,432,Larnaca Station - Airport - Dromoloxia - Kiti - Tersefanou,,3,FF0000,FFFFFF
+20060012,10,432,Tersefanou - Kiti - Dromolaxia - Airport - Larnaca Station,,3,FF0000,FFFFFF
+20070011,10,420,Larnaca Station - Kamares - Kalo Chorio,,3,D6AA80,000000
+20070012,10,420,Kalo Chorio - Kamares - Larnaca Station,,3,D6AA80,000000
+20070021,10,420,Larnaca Station - Kamares - Kalo Chorio,,3,D6AA80,000000
+20070022,10,420,Kalo Chorio - Kamares - (Lyceem) - Larnaca Station,,3,D6AA80,000000
+20070041,10,420,Larnaka - Kalo Chorio,,3,D6AA80,000000
+20070042,10,420,Kalo Chorio - Larnaka,,3,D6AA80,000000
+20080011,10,421,Larnaca Station - Fire Station - Kamares,,3,FF80C0,000000
+20080012,10,421,Kamares - Fire Station - Larnaca Station,,3,FF80C0,000000
+20080021,10,421,Larnaca Station - Kamares - Free Trade Zone - Larnaca Station,,3,FF80C0,000000
+20080031,10,421,Larnaca Station - Kamares - Free Trade Zone - Larnaca Station,,3,FF80C0,000000
+20090011,10,422,Larnaca St. -New Hospital - Vergina ,,3,CC6600,000000
+20090012,10,422,Kamares 2 -Zinonas -Vergina -New Hospital - Larnaca St.,,3,CC6600,000000
+20090022,10,422,Kamares 2 -Zinonas-Vergina-New Hospital - Larnaca St.,,3,CC6600,000000
+20090032,10,422,Kamares 2 - Zinonas - Vergina - New Hospital - Larnaca Station,,3,CC6600,000000
+20100011,10,418L,Larnaca Station - Chrysopolitissa -  Αg. Anargyroi - Livadia,,3,004000,FFFFFF
+20100012,10,418L,Livadia - Ag. Anargyroi - Chrysopolotissa - Larnaca,,3,004000,FFFFFF
+20100021,10,418L,Larnaca Station - Chrysopolitissa - Ag. Anargyroi-Livadia-Larnaca Station,,3,004000,FFFFFF
+20110011,10,423,Larnaca Station- Faneromeni - Drosia Area -Mall,,3,FF80FF,000000
+20110012,10,423,New Hospital - Drosia Area - Faneromeni - Larnaca Station,,3,FF80FF,000000
+20120011,10,424,Larnaca St.- Old Hospital-CTO - Pyla,,3,94462C,FFFFFF
+20120012,10,424,Pyla - CTO - Larnaca Station,,3,94462C,FFFFFF
+20120021,10,424,Larnaca Station -  Old Hospital-CTO - Pyla,,3,94462C,FFFFFF
+20120022,10,424,Pyla - CTO - Larnaca Station,,3,94462C,FFFFFF
+20120032,10,424,Pyla - Larnaka,,3,94462C,FFFFFF
+20120041,10,424,Larnaca St  - Pyla,,3,94462C,FFFFFF
+20120042,10,424,Pyla - Larnaca St,,3,94462C,FFFFFF
+20150011,10,425,Dekeleia - C.T.O. - Larnaca Station - Foinikoudes- Makenzy - Airport,,3,791D6E,FFFFFF
+20150012,10,425,Airport - Makenzy - Old Hospital - C.T.O. - Dekeleia,,3,791D6E,FFFFFF
+20150021,10,425,Larnaca Station - Foinikoudes - Makenzy - Airport,,3,791D6E,FFFFFF
+20150022,10,425,Airport - Makenzy - Larnaca Station,,3,791D6E,FFFFFF
+20150031,10,425,Dekeleia - C.T.O. - Larnaca Station,,3,791D6E,FFFFFF
+20150032,10,425,Larnaca Station - Harbour - KOT - Dekeleia,,3,791D6E,FFFFFF
+20160011,10,426,Larnaca Station - Kalogera - E.A.C. - New Hospital - Kokkines - Tsiakkilero - Aradippou,,3,DF32FF,FFFFFF
+20160012,10,426,Aradippou - Tsiakkilero - Kokkines - New Hospital - E.A.C. - Kalogera - Larnaca Station,,3,DF32FF,FFFFFF
+20170011,10,427,Larnaca St. - Harbour - Fire Station - Old Hospital - Foinikoudes - New Hospital - Cineplex - Faneromeni - Larnaca St.,,3,0000A0,FFFFFF
+20170021,10,427,Larnaca.St - Old Hospiital - Foinikoudes - Larnaca St.,,3,0000A0,FFFFFF
+20180011,10,428,Larnaca St. - Tsiakkilero- Aradippou - Pascal Area,,3,8080FF,FFFFFF
+20180012,10,428,Pascal School - Aradippou -Tsiakkilero - Larnaca St. ,,3,8080FF,FFFFFF
+20190011,10,429,Larnaca Station - Airport - Faros,,3,400080,FFFFFF
+20190012,10,429,Faros - Meneou - Airport - Larnaca Station,,3,400080,FFFFFF
+20190022,10,429,Faros - Meneou - Tekke -  Airport - Larnaca Station,,3,400080,FFFFFF
+20210011,10,442,Nightly Larnaca Station - Livadia - Kellia - Troulloi,,3,00FFFF,000000
+20210012,10,442,Nightly Troulloi - Kellia - Livadia - Larnaca station,,3,00FFFF,000000
+20220011,10,443,Nightly Larnaca St. -Harbour - Fire St. - Old Hospital -Foinikoudes - New Hospital - Cineplex - Faneromeni - Larnaca St.,,3,808080,FFFFFF
+20230011,10,444,Nightly Larnaca St. - Mitropoli - Trifilia - Tsiakkilero- G.S.Z. Stadium- Vergina- Aradippou ,,3,804040,FFFFFF
+20230012,10,444,Nightly Aradippou - Vergina - G.S.Z. Stadium - Tsiakkilero - Trifilia - Mitropoli - Larnaca Station,,3,804040,FFFFFF
+20240011,10,445,Nightly Oroklini - Pyla - Κ.Ο.Τ - Foinikoudes - Makenzy - Larnaca Station,,3,FE5841,000000
+20240012,10,445,Nightly Larnaca Station - Makenzy - Foinikoudes - Κ.Ο.Τ. - Pyla - Oroklini,,3,FE5841,000000
+20250011,10,446,Nightly Larnaca Station - Makenzy - Dromoloxia - Tersefanou - Kiti - Pervolia,,3,66CCFF,FFFFFF
+20250012,10,446,Nightly Pervolia - Kiti - Tersefanou - Dromoloxia - Airport- Makenzy - Larnaca St.,,3,66CCFF,FFFFFF
+20260011,10,401,Mari - Vasiliko - Zygi - Kalavasos - Tochni - Choirokoitia - Kofinou Station,,3,4ACFFF,000000
+20260012,10,401,Kofinou Station - Choirokoitia - Tochni - Kalavasos - Zygi - Vasiliko - Mari,,3,4ACFFF,000000
+20260021,10,401,Mari-Vasiliko-Zygi-Kalavasos-Tochni- Kofinou Station,,3,4ACFFF,000000
+20260022,10,401,Kofinou Station-Tochni-Kalavasos-Zygi-Vasiliko-Mari,,3,4ACFFF,000000
+20270011,10,402,Maroni - Psematismenos - Choirokoitia - Kofinou - Kofinou Station,,3,E151C5,FFFFFF
+20270012,10,402,Kofinou Station-  Kofinou - Choirokoitia- Psematismenos- Maroni,,3,E151C5,FFFFFF
+20280011,10,403,Odou - Melini - Ora - Lagia - Choirokoitia - Kofinou Station,,3,39BB41,000000
+20280012,10,403,Kofinou Station - Choirokoitia - Lagia - Ora - Melini - Odou,,3,39BB41,000000
+20290011,10,404,Agioi Vavatsinias - Lagia - Vavla - Kato Drys - Skarinou - Kofinou Station,,3,632401,FFFFFF
+20290012,10,404,Kofinou Station - Skarinou - Kato Drys - Vavla - Lagia - Agioi Vavatsinias,,3,632401,FFFFFF
+20300011,10,405,Vavatsinia - Pano Lefkara - Kato Lefkara - Skarinou - Kofinou Station,,3,0FF804,000000
+20300012,10,405,Kofinou Station - Skarinou - Kato Lefkara - Pano Lefkara - Vavatsinia,,3,0FF804,000000
+20300021,10,405,Vavatsinia - Pano Lefkara - Kato Lefkara - Skarinou - Kofinou Station - Alampra Station,,3,0FF804,000000
+20300022,10,405,Kofinou Station - Kato Lefkara - Pano Lefkara - Vavatsinia,,3,0FF804,000000
+20310011,10,405A,Pano Lefkara - Kato Lefkara - Skarinou - Kofinou Station,,3,BB0A0D,FFFFFF
+20310012,10,405A,Kofinou Station - Skarinou - Kato Lefkara - Pano Lefkara,,3,BB0A0D,FFFFFF
+20320011,10,406,Tourist Area Pentaschinos - Agios Theodoros - Kofinou St.,,3,40110F,FFFFFF
+20320012,10,406,Kofinou St. - Agios Theodoros - Tourist Area Pentaschinos,,3,40110F,FFFFFF
+20330011,10,407,Larnaca St. - Airport - Meneou - Kiti - Mazotos - Tourist Area Pentaschinos - Zygi - Vasiliko ,,3,399001,FFFFFF
+20330012,10,407,Zygi -Tourist Area Pentaschinos - Mazotos - Kiti - Meneou - Airport - Larnaca Station,,3,399001,FFFFFF
+20340011,10,408,Larnaca Station - Alethriko - Anglisides - Kofinou Station,,3,49580D,FFFFFF
+20340012,10,408,Kofinou Station - Anglisides - Alethriko - Larnaca Station,,3,49580D,FFFFFF
+20350011,10,408B,Kofinou Station - Anglisides - Vergina- Rizoelia,,3,B94605,000000
+20350012,10,408B,Rizoelia - Vergina- Anglisides -Menogeia-Kofinou Station,,3,B94605,000000
+20360011,10,409,Larnaca St. - Lympia - Dali - Pera Chorio - Alampra St.,,3,5A82A0,FFFFFF
+20360012,10,409,Alampra Station Pera Chorio - Dali - Lympia - Larnaca Station,,3,5A82A0,FFFFFF
+20360021,10,409,Larnaca Station-Vergina School -Lympia-Dali-Pera Chorio-Alampra Station,,3,5A82A0,FFFFFF
+20360022,10,409,Alampra Station-Pera Chorio-Dali-Lympia-Kosi-Vergina School-Larnaca Station,,3,5A82A0,FFFFFF
+20360031,10,409,Larnaca Station - Kosi - Lympia - Dali - Pera Xorio - Alampra Station,,3,5A82A0,FFFFFF
+20360032,10,409,Alampra Station - Pera Xorio - Dali - Lympia - Kosi - Larnaca Station,,3,5A82A0,FFFFFF
+20370011,10,410,Larnaca Station - Kalo Chorio - Agia Anna - Psevdas - Pyrga - Kornos - Delikipos,,3,75610B,FFFFFF
+20370012,10,410,Delikipos - Kornos - Pyrga - Psevdas - Agia Anna - Kalo Chorio - Larnaca Station,,3,75610B,FFFFFF
+20370021,10,410,Larnaca Station - Vergina Lyceum- Kalo Chorio- Delikipos,,3,75610B,FFFFFF
+20370022,10,410,Delikipos-Kornos-Kalo Chorio-Vergina Lyceum- Larnaca St,,3,75610B,FFFFFF
+20370031,10,410,Larnaka  - Kalo Chorio - Agia anna - Psevdas- Pyrga - Kornos - Delikipos,,3,75610B,FFFFFF
+20370032,10,410,Delikipos - Kornos - Pyrga - Psvedas - Agia Anna - Kalo Chorio - Larnaca Station,,3,75610B,FFFFFF
+20380011,10,412,Larnaca Station - Alethriko - Anglisides - Anafotia - Alaminos,,3,001C9B,FFFFFF
+20380012,10,412,Alaminοs - Anafotia - Anglisides - Alethriko - Larnaca Station,,3,001C9B,FFFFFF
+20380031,10,412,Larnaca Station - Alethriko - Anglisides - Anafotia - Alaminos,,3,001C9B,FFFFFF
+20380032,10,412,Alaminos - Anafotia - Anglisides - Alethriko - Larnaca Station,,3,001C9B,FFFFFF
+20380041,10,412,Larnaca Station - Alethriko - Anglisidies - Anafotia - Alaminos,,3,001C9B,FFFFFF
+20380042,10,412,Alaminos - Anafotida - Anglisides - Alethriko - Larnaca Station,,3,001C9B,FFFFFF
+20390011,10,413,Kivisili - Alethriko - Klavdia - Larnaca Station,,3,0553E2,FFFFFF
+20390012,10,413,Larnaca Station - Klavdia - Alethriko - Kivisili,,3,0553E2,FFFFFF
+20390021,10,413,Kivisili - Alethriko - Klavdia - Vergina SC - Larnaca Station,,3,0553E2,FFFFFF
+20390022,10,413,Larnaca Station - Vergina SC  - Klavdia - Alethriko - Kivisili,,3,0553E2,FFFFFF
+20390031,10,413,Kivisili - Alethriko - Klavdia - Larnaca Station,,3,0553E2,FFFFFF
+20390032,10,413,Larnaca Station - Klavdia - Alethriko - Kivisili,,3,0553E2,FFFFFF
+20400011,10,414,Larnaca Station - Alethriko - Aplanta  - Anglisides - Menogeia - Kofinou Station,,3,FF0080,FFFFFF
+20400012,10,414,Kofinou Station - Menogeia - Anglisides - Aplanta - Alethriko - Larnaca Station,,3,FF0080,FFFFFF
+20400021,10,414,Larnaca Station - Alethriko-Aplanta-Anglisides-Menogeia-Politiko A- Kofinou Station,,3,FF0080,FFFFFF
+20400022,10,414,Kofinou Station - Politiko A - Menogia - Anglisides- Aplanta-Alethriko- Larnaca Station,,3,FF0080,FFFFFF
+20410011,10,415,Athienou - Avdellero - Aradippou - Larnaca Station,,3,9D2B14,FFFFFF
+20410012,10,415,Larnaca Station - Aradippou - Avdellero - Athienou,,3,9D2B14,FFFFFF
+20410021,10,415,Athienou-Avdellero-Aradippou-Vergina School-Larnaca Station,,3,9D2B14,FFFFFF
+20410022,10,415,Larnaca Station-Vergina School-Aradippou-Avdellero-Athienou,,3,9D2B14,FFFFFF
+20410031,10,415,Athienou - Aradippou - Lyceum Vergina - Larnaca Station,,3,9D2B14,FFFFFF
+20410032,10,415,Larnaca - Vergina Lyceum - Aradippou - Athienou,,3,9D2B14,FFFFFF
+20420011,10,448,"Nightly Kofinou Station - Larnaca Station (Connection With Routes: 449 450 451)",,3,5BD312,000000
+20420012,10,448,"Nightly Larnaca Station - Kofinou Station (Connection With Routes: 449 450 451)",,3,5BD312,000000
+20430011,10,449,Nightly Vavatsinia - Pano Lefkara - Kato Lefkara - Kato Drys - Skarinou - Kofinou Station,,3,DFB27F,000000
+20430012,10,449,Nightly Kofinou Station - Skarinou - Kato Drys - Kato Lefkara - Pano Lefkara - Vavatsinia,,3,DFB27F,000000
+20440011,10,450,Nightly Kalavasos - Tochni - Psematismenos - Maroni - Agios Theodoros - Kofinou - Kofinou Station,,3,990033,FFFFFF
+20440012,10,450,Nightly Kofinou Station - Kofinou - Agios Theodoros - Maroni - Psematismenos - Tochni - Kalavasos,,3,990033,FFFFFF
+20450011,10,451,Nightly Odou - Melini - Agioi Vavatsinias - Ora - Lagia - Vavla - Choirokoitia - Kofinou Station,,3,FF8080,000000
+20450012,10,451,Nightly Kofinou Station - Choirokoitia - Vavla - Lagia - Ora - Agioi Vavatsinias - Melini - Odou,,3,FF8080,000000
+20460011,10,452,Nightly Alaminos - Anafotia - Aplanta - Kivisili - Alethriko - Klavdia - Larnaca Station,,3,008000,FFFFFF
+20460012,10,452,Nightly Larnaca Station - Klavdia - Alethriko - Kivisili - Aplanta - Anafotia - Alaminos,,3,008000,FFFFFF
+20470011,10,454,Nightly Athienou - Avdellero - Aradippou - Larnaca Station,,3,FF99FF,000000
+20470012,10,454,Nightly Larnaca Station - Aradippou - Avdellero -Athienou,,3,FF99FF,000000
+20480011,10,455,Nightly Kornos - Pyrga - Mosfiloti - Psevdas - Agia Anna - Kalo Chorio - Larnaca Station,,3,0080FF,FFFFFF
+20480012,10,455,Nightly Larnaca Station - Kalo Chorio - Agia Anna - Psevdas - Mosfiloti - Pyrga - Kornos,,3,0080FF,FFFFFF
+20490011,10,456,Nightly Vasiliko - Mari - Zygi - Tourist Area Pentaschinos - Mazotos - Kiti - Meneou - Airport - Larnaka Station,,3,C53B66,FFFFFF
+20490012,10,456,Nightly Larnaka Station - Airport - Meneou - Kiti - Mazotos - Tourist Area Pentaschinos - Zygi - Mari - Vasiliko,,3,C53B66,FFFFFF
+20500011,10,440,Larnaca St. - Mackenzie - Mall - Larnaca St.,,3,FF8000,000000
+9990011,11,GSP1,GSP - Ministry of Finance,,3,408080,FFFFFF
+9990012,11,GSP1,Ministry of Finance -Omirou - GSP,,3,408080,FFFFFF
+9990999,11,GSP1,GSP-Ministry of Finance - Omirou - GSP,,3,408080,FFFFFF
