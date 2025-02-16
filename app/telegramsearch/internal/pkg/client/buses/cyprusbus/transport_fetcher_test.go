@@ -105,9 +105,14 @@ func TestNewRouteCache(t *testing.T) {
 
 func TestProtobufFetcher(t *testing.T) {
 	cfg := DefaultConfig()
+
 	fetcher := newProtobufFetcher(cfg)
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
+	err := fetcher.Ready(ctx)
+	if err != nil {
+		t.Fatalf("Failed to initialize the routes cache: %v", err)
+	}
 
 	t.Run("should fetch bus positions", func(t *testing.T) {
 		fetchedBuses, err := fetcher.FetchBuses(ctx)

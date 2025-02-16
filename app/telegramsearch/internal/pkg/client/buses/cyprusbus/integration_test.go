@@ -2,8 +2,10 @@ package cyprusbus
 
 import (
 	"context"
-	"github.com/yanakipre/bot/internal/testtooling"
 	"testing"
+	"time"
+
+	"github.com/yanakipre/bot/internal/testtooling"
 
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/buses"
 )
@@ -12,6 +14,14 @@ func TestFullWorkflow(t *testing.T) {
 	testtooling.SetNewGlobalLoggerQuietly()
 	cfg := DefaultConfig()
 	client := NewClient(cfg)
+
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	err := client.fetcher.Ready(ctx)
+	if err != nil {
+		t.Fatalf("Failed to initialize the routes cache: %v", err)
+	}
 
 	testDot := buses.Dot{
 		Lat:  34.700474470158184,

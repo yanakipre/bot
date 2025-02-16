@@ -36,6 +36,11 @@ func (m *MockFetcher) FetchBuses(ctx context.Context) ([]buses.Bus, error) {
 	return m.responses[m.callCount], nil
 }
 
+// Ready implements check for readinesschecker
+func (pf *MockFetcher) Ready(ctx context.Context) error {
+	return nil
+}
+
 func TestGetNearest_MovementScenarios(t *testing.T) {
 	testDot := buses.Dot{Lat: 34.707, Long: 33.022}
 

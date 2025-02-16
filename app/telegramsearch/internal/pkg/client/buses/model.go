@@ -4,6 +4,7 @@ import "context"
 
 type BusFetcher interface {
 	FetchBuses(ctx context.Context) ([]Bus, error)
+	Ready(ctx context.Context) error
 }
 
 type Dot struct {

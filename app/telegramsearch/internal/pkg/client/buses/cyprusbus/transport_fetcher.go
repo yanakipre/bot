@@ -41,6 +41,18 @@ func (rc *routeCache) getRoutes(routeID string) (buses.Route, bool) {
 	return route, ok
 }
 
+// Ready checks if cache is properly initialized and initializes it if not
+func (pf *protobufFetcher) Ready(ctx context.Context) error {
+	if pf.routeCache == nil {
+		cache, err := newRouteCache()
+		if err != nil {
+			return fmt.Errorf("failed to initialize route cache %w", err)
+		}
+		pf.routeCache = cache
+	}
+	return nil
+}
+
 func newRouteCache() (*routeCache, error) {
 	rc := &routeCache{
 		routes: make(map[string]buses.Route),
@@ -104,15 +116,6 @@ func newRouteCache() (*routeCache, error) {
 }
 
 func (f *protobufFetcher) FetchBuses(ctx context.Context) ([]buses.Bus, error) {
-
-	// Initialize route cache if not already done
-	if f.routeCache == nil {
-		cache, err := newRouteCache()
-		if err != nil {
-			return nil, fmt.Errorf("failed to initialize route cache %w", err)
-		}
-		f.routeCache = cache
-	}
 
 	req, err := http.NewRequestWithContext(ctx, "GET", f.baseURL+"/api/gtfs-realtime", nil)
 	if err != nil {
