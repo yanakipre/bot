@@ -18,6 +18,7 @@ services:
       LOG_FORMAT: console
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       DATABASE_URL: "postgres://postgres:password@telegramsearch-pg:5432/bot"
+
     extra_hosts:
       - "host.docker.internal:host-gateway"
       - "telegramsearch-pg:10.30.41.52"
@@ -34,7 +35,7 @@ services:
     ports:
       - "11432:5432"
     environment:
-      POSTGRES_DB: example
+      POSTGRES_DB: bot
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     extra_hosts:

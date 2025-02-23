@@ -37,7 +37,7 @@ func (c *Config) CheckAndSetDefaults() error {
 func DefaultConfig() Config {
 	return Config{
 		DSN: secret.NewString(
-			"postgres://postgres:password@localhost:5432/postgres",
+			"postgres://postgres:password@telegramsearch-pg:5432/postgres",
 		),
 		MaxConnLifetime:        encodingtooling.Duration{Duration: time.Hour},
 		MaxOpenConns:           50,

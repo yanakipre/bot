@@ -74,7 +74,7 @@ dc_resource(
 )
 
 local_resource(
-    "migrate telegramsearch-pg ",
+  "migrate telegramsearch-pg",
     cmd="DOCKER_BUILDKIT=1 docker build . -f app/telegramsearch/telegramsearch-db/telegramsearch-db.Dockerfile -t yanakipre/telegramsearch-migrations:local && docker run --network yanakipre_net --env DATABASE_URL='postgres://postgres:password@10.30.41.52:5432/telegramsearch' yanakipre/telegramsearch-migrations:local",
     labels=["bot"],
     auto_init=False,
