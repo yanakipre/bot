@@ -1,0 +1,60 @@
+# Adding new services here without explicitly defining the ipv4_address
+# breaks the k8s cluster assumption, that k3d is running on 10.30.42.2.
+# So, specify an address explicitly, do not use 10.30.42.2.
+version: "3.9"
+
+services:
+  telegramsearch:
+    image: yanakipre/telegramsearch:local
+    build:
+      context: .
+      dockerfile: app/telegramsearch/cmd/telegramsearch/telegramsearch.Dockerfile
+    command:
+      - "telegram"
+      - "bot"
+    ports: [ ]
+    hostname: telegramsearch.yanakipre.local
+    environment:
+      LOG_FORMAT: console
+      DATABASE_URL: "postgres://postgres:password@telegramsearch-pg:5432/bot"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      - "telegramsearch-pg:10.30.41.52"
+    networks:
+      yanakipre_net:
+        ipv4_address: 10.30.41.53
+    depends_on:
+      - telegramsearch-pg
+    secrets: [ ]
+
+  telegramsearch-pg:
+    # ankane/pgvector:v0.5.1
+    image: ankane/pgvector@sha256:d3a9d8ac27bb7e05e333ef25b634d2625adaa85336ab729954b9e94859bf6fa7
+    ports:
+      - "11432:5432"
+    environment:
+      POSTGRES_DB: example
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      yanakipre_net:
+        ipv4_address: 10.30.41.52
+
+# We use pre-created subnet to make it
+# more reliable.
+networks:
+  yanakipre_net:
+    name: yanakipre_net
+    ipam:
+      config:
+        - subnet: "10.30.41.0/24"
+          gateway: 10.30.41.1
+
+volumes:
+  reserved:
+
+secrets: { }
+
+configs: { }

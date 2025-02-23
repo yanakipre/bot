@@ -1,0 +1,8 @@
+# Extracted volume settings.
+# See https://docs.docker.com/compose/extends/#adding-and-overriding-configuration
+
+version: "3.9"
+services:
+  telegramsearch-pg:
+    volumes:
+      - "${RUNNER_DIR:-.}/tmp/example-pg:/var/lib/postgresql/data"
