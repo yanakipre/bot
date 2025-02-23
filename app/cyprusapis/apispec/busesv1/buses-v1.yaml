@@ -25,20 +25,35 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Bus'
-        '400':
-          description: Bad request (e.g., invalid/missing parameters)
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+        default:
+          $ref: "#/components/responses/GeneralError"
 components:
+  responses:
+    GeneralError:
+      description: General Error
+      content:
+        application/json:
+          examples:
+            unknown_error:
+              summary: Example of an unknown error.
+              value: {
+                "request_id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "error": "An unknown error occurred"
+              }
+          schema:
+            $ref: '#/components/schemas/GeneralError'
   schemas:
+    GeneralError:
+      type: object
+      required:
+        - error
+      properties:
+        request_id:
+          type: string
+        error:
+          description: "Error description"
+          type: string
+
     Dot:
       type: object
       properties:
