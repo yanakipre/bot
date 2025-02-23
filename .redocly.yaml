@@ -1,0 +1,145 @@
+organization: Yanakipre
+apis:
+#  example-app@v1:
+#    root: app/example-app/apispec/exampleapiv1/example-api-v1.yaml
+
+rules:
+  no-server-example.com: off
+  no-unused-components: error
+  no-invalid-media-type-examples: error
+  operation-4xx-response: off
+  operation-summary: off
+  info-license-strict: off
+  operation-2xx-response: error
+  # Custom rules for Yanakipre. See https://redocly.com/docs/cli/rules/configurable-rules for more.
+  rule/require-description-on-operation:
+    message: |
+      Operation description must be present and contain something meaningful.
+      
+      There is no better place for the documentation then the OpenAPI spec file.
+      It is crucial to keep the documentation on the API with extensive guidance on how to use the API.
+      This makes usage of the APIs simpler and more efficient for everyone.
+
+    subject:
+      type: Operation
+      property: description
+    assertions:
+      minLength: 15
+      defined: true
+
+  rule/require-summary-on-operation:
+    message: |
+      Operation summary must be present and contain something meaningful.
+
+    subject:
+      type: Operation
+      property: summary
+    assertions:
+      minLength: 5
+      defined: true
+  rule/require-examples-on-responses:
+    message: |
+      Response must include at least one example.
+      
+      This is a good practice to provide examples for all response to help consumers understand how to use the API.
+      Among the other reasons: 
+      1. redocly will keep the examples in sync with the schema, so if the example will always be up to date.
+      2. examples are used in the documentation to show how the API works.
+      3. it is convenient to quickly share a meaningful example by providing a link to the code.
+    where:
+      - subject:
+          type: Responses
+        assertions:
+          defined: true
+      - subject:
+          type: Response
+        assertions:
+          defined: true
+      - subject:
+          type: MediaType
+        assertions:
+          defined: true
+    subject:
+      type: MediaType
+      property: examples
+    assertions:
+      defined: true
+  rule/require-examples-on-request:
+    message: |
+      Request must include at least one example.
+      
+      This is a good practice to provide examples for all requests to help consumers understand how to use the API.
+      Among the other reasons: 
+      1. redocly will keep the examples in sync with the schema, so if the example will always be up to date.
+      2. examples are used in the documentation to show how the API works.
+      3. it is convenient to quickly share a meaningful example by providing a link to the code.
+    where:
+      - subject:
+          type: Operation
+        assertions:
+          defined: true
+      - subject:
+          type: RequestBody
+        assertions:
+          defined: true
+      - subject:
+          type: MediaType
+        assertions:
+          defined: true
+    subject:
+      type: MediaType
+      property: examples
+    assertions:
+      defined: true
+  rule/yanakipre-forbid-array-in-query:
+    message: |
+      - Arrays encoded as URL parameters can easily exceed URL length limits in proxies and load balancers, causing untraceable failures.
+      - There are several conflicting standards for encoding arrays as URL query parameters, so clients may be confused about which to use.
+
+      Instead:
+      1. use a JSON request body with POST, PUT, DELETE, etc.
+      2. Or, introduce a limited number of parameters instead of the array, like myParam1=1&myParam2=2&myParam3=3
+      and construct the array yourself, in the presenter or controller.
+    where:
+      - subject:
+          type: Parameter
+          property: in
+        assertions:
+          defined: true
+          const: query
+    subject:
+      type: Schema
+      property: type
+    assertions:
+      notPattern: /^array$/
+  rule/yanakipre-forbid-top-level-array:
+    where:
+      - subject:
+          type: Response
+        assertions:
+          defined: true
+      - subject:
+          type: MediaType
+        assertions:
+          defined: true
+      - subject:
+          type: Schema
+        assertions:
+          defined: true
+    subject:
+      type: Schema
+      property: type
+    message: |
+      Top-level arrays are not allowed in responses.
+      * In all get, delete and some synchronous requests we always return objects inside some
+        top-level key, e.g. `{ projects: [ list_of_entities ] }` or
+        `{ entity: { entity_attrs } }`.
+
+      * For asynchronous operations we always return object and the list of operations in a form of
+        `{ item: { item_attrs }, operations: [ list_of_operations ] }`.
+
+    assertions:
+      notPattern: /^array$/
+
+extends:
+  - recommended-strict
