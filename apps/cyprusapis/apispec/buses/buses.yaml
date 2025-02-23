@@ -1,0 +1,84 @@
+openapi: 3.0.0
+info:
+  title: Buses API
+  description: API for retrieving information about approaching buses based on a geographic position
+  version: 1.0.0
+paths:
+  /find-approaching-routes:
+    get:
+      summary: Find approaching buses
+      description: Get a list of approaching buses
+      parameters:
+        - name: position
+          in: query
+          description: Geographic position
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dot'
+      responses:
+        '200':
+          description: List of approaching buses with route details and distance
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bus'
+        '400':
+          description: Bad request (e.g., invalid/missing parameters)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Dot:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: float
+          minimum: -90
+          maximum: 90
+        lon:
+          type: number
+          format: float
+          minimum: -180
+          maximum: 180
+
+    Bus:
+      type: object
+      properties:
+        bus_id:
+          type: string
+        route:
+          $ref: '#/components/schemas/Route'
+        distance:
+          type: number
+          format: float
+          description: Distance from the input position in meters
+
+    Route:
+      type: object
+      properties:
+        route_id:
+          type: string
+        short_name:
+          type: string
+        long_name:
+          type: string
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
