@@ -135,9 +135,6 @@ rules:
         top-level key, e.g. `{ projects: [ list_of_entities ] }` or
         `{ entity: { entity_attrs } }`.
 
-      * For asynchronous operations we always return object and the list of operations in a form of
-        `{ item: { item_attrs }, operations: [ list_of_operations ] }`.
-
     assertions:
       notPattern: /^array$/
 
