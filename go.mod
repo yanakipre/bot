@@ -1,6 +1,6 @@
 module github.com/yanakipre/bot
 
-go 1.22.2
+go 1.22.12
 
 replace (
 	k8s.io/api => k8s.io/api v0.26.15
