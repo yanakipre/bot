@@ -18,6 +18,7 @@ func (b Backend) Unmarshal(_ context.Context, to any) error {
 	}
 
 	cfg.PostgresRW.RDB.DSN.FromEnv("DATABASE_URL")
+	cfg.OpenAI.ApiKey.FromEnv("OPENAI_API_KEY")
 
 	return nil
 }

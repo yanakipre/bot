@@ -16,6 +16,7 @@ services:
     hostname: telegramsearch.yanakipre.local
     environment:
       LOG_FORMAT: console
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
       DATABASE_URL: "postgres://postgres:password@telegramsearch-pg:5432/bot"
     extra_hosts:
       - "host.docker.internal:host-gateway"

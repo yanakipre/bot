@@ -32,3 +32,6 @@ The following command must be enough to run minimal setup:
 ```bash
 tilt up
 ```
+
+If you see warnings in the console about missing environment keys,
+that means your setup is not complete. You need to provide the missing keys.
