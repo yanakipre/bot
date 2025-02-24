@@ -1,0 +1,78 @@
+openapi: 3.0.0
+info:
+  title: Telegram search API
+  description: API for searching through selected telegram chats
+  version: 0.0.1
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: http://localhost:8080/search/v1
+    description: development
+
+paths:
+  /search-through-chats:
+    post:
+      summary: Perform search on chats.
+      operationId: searchThroughChats
+      description: |
+        This endpoints allows to search through chats via vector search.
+      responses:
+        '200':
+          $ref: "#/components/responses/SearchThroughChatsResponse"
+        default:
+          $ref: "#/components/responses/GeneralError"
+components:
+  responses:
+    SearchThroughChatsResponse:
+      description: List of responses that are similar to the requested information.
+      content:
+        application/json:
+          examples:
+            successful:
+              value: {
+                "chat_threads": [
+                  {
+                    "chat_id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "chat_name": "John Doe"
+                  }
+                ]
+              }
+          schema:
+            "$ref": "#/components/schemas/SearchThroughChatsResponse"
+
+    GeneralError:
+      description: General Error
+      content:
+        application/json:
+          examples:
+            unknown_error:
+              summary: Example of an unknown error.
+              value: {
+                "request_id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "error": "An unknown error occurred"
+              }
+          schema:
+            $ref: '#/components/schemas/GeneralError'
+  schemas:
+    ChatThread:
+      type: object
+    SearchThroughChatsResponse:
+      type: object
+      properties:
+        chat_threads:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChatThread"
+    GeneralError:
+      type: object
+      required:
+        - error
+      properties:
+        request_id:
+          type: string
+        error:
+          description: "Error description"
+          type: string
+
+security: [ ]
