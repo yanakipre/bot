@@ -3,10 +3,10 @@ info:
   title: Buses API
   description: |
     API for retrieving information about approaching buses based on a geographic position.
-    This is originally based on 
+    This is originally based on
     * https://www.data.gov.cy/en/dataset/1069
     * https://www.motionbuscard.org.cy/opendata
-    
+
     The goal is to be as close as possible to the original data.
 
   version: 1.0.0
@@ -23,14 +23,21 @@ paths:
       operationId: findApproachingBuses
       description: Get a list of approaching buses
       security: []
-      parameters:
-        - name: position
-          in: query
-          description: Geographic position
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Dot'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                position:
+                  $ref: '#/components/schemas/Dot'
+            examples:
+              defaultPosition:
+                summary: Example position in Limassol, Cyprus
+                value:
+                  position:
+                    lat: 34.684422
+                    lon: 33.037147
       responses:
         '200':
           description: List of approaching buses with route details and distance
@@ -87,7 +94,6 @@ components:
         error:
           description: "Error description"
           type: string
-
     Dot:
       type: object
       properties:
@@ -101,7 +107,6 @@ components:
           format: float
           minimum: -180
           maximum: 180
-
     Bus:
       type: object
       properties:
@@ -113,7 +118,6 @@ components:
           type: number
           format: float
           description: Distance from the input position in meters
-
     Route:
       type: object
       properties:
