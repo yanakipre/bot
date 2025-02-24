@@ -7,7 +7,7 @@ import (
 	"sort"
 	"time"
 
-	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/buses"
+	"github.com/yanakipre/bot/internal/buses"
 )
 
 type Client struct {

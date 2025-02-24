@@ -11,7 +11,7 @@ import (
 	"strings"
 
 	"github.com/MobilityData/gtfs-realtime-bindings/golang/gtfs"
-	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/buses"
+	"github.com/yanakipre/bot/internal/buses"
 	"github.com/yanakipre/bot/internal/resttooling"
 	"google.golang.org/protobuf/proto"
 )
