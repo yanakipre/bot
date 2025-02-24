@@ -7,6 +7,11 @@ Pull requests are welcomed.
 This repository uses [CodeAssigner](https://github.com/apps/codeassigner) app for the reviews.
 Add yourself to http://62.84.113.17/ to get notified about changes.
 
+## OpenAPI schema
+
+The OpenAPI schema is usually defined in the `apispec` directory.
+It must abide to the .redocly.yaml configuration file.
+
 ## Local environment
 
 This describes how to run the repo locally.
