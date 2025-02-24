@@ -4,6 +4,7 @@ groups:
     members:
       - oblassov
       - chaporgin
+      - noiidor
   - name: owners
     members:
       - chaporgin
