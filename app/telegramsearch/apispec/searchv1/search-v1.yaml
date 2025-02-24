@@ -17,12 +17,30 @@ paths:
       operationId: searchThroughChats
       description: |
         This endpoints allows to search through chats via vector search.
+      requestBody:
+        $ref: "#/components/requestBodies/SearchThroughChatsRequest"
       responses:
         '200':
           $ref: "#/components/responses/SearchThroughChatsResponse"
         default:
           $ref: "#/components/responses/GeneralError"
 components:
+  requestBodies:
+    SearchThroughChatsRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              query:
+                type: string
+          examples:
+            successful:
+              summary: Example of a successful search through chats request.
+              value: {
+                "query": "What is the best child doctor in Limassol?"
+              }
   responses:
     SearchThroughChatsResponse:
       description: List of responses that are similar to the requested information.
@@ -30,11 +48,22 @@ components:
         application/json:
           examples:
             successful:
+              description: Example of a successful search through chats response.
               value: {
                 "chat_threads": [
                   {
                     "chat_id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
-                    "chat_name": "John Doe"
+                    "messages": [
+                      {
+                        "message": "Hey do you know doctors for children in Limassol?"
+                      },
+                      {
+                        "message": "Doctor X is the best child doctor in Limassol."
+                      },
+                      {
+                        "message": "Yes, I confirm that Doctor X is the best child doctor in Limassol."
+                      }
+                    ]
                   }
                 ]
               }
@@ -55,8 +84,20 @@ components:
           schema:
             $ref: '#/components/schemas/GeneralError'
   schemas:
+    ChatThreadMessage:
+      type: object
+      properties:
+        message:
+          type: string
     ChatThread:
       type: object
+      properties:
+        chat_id:
+          type: string
+        messages:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChatThreadMessage"
     SearchThroughChatsResponse:
       type: object
       properties:
