@@ -1,7 +1,7 @@
 organization: Yanakipre
 apis:
-#  example-app@v1:
-#    root: app/example-app/apispec/exampleapiv1/example-api-v1.yaml
+  cyprus-buses@v1:
+    root: app/cyprusapis/apispec/busesv1/buses-v1.yaml
 
 rules:
   no-server-example.com: off
@@ -134,9 +134,6 @@ rules:
       * In all get, delete and some synchronous requests we always return objects inside some
         top-level key, e.g. `{ projects: [ list_of_entities ] }` or
         `{ entity: { entity_attrs } }`.
-
-      * For asynchronous operations we always return object and the list of operations in a form of
-        `{ item: { item_attrs }, operations: [ list_of_operations ] }`.
 
     assertions:
       notPattern: /^array$/

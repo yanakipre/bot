@@ -20,6 +20,7 @@ type Bus struct {
 }
 
 type Route struct {
+	// ID - route identification e.g 10300012
 	ID        string
 	ShortName string
 	LongName  string

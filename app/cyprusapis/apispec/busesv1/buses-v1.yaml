@@ -1,0 +1,118 @@
+openapi: 3.0.0
+info:
+  title: Buses API
+  description: API for retrieving information about approaching buses based on a geographic position
+  version: 1.0.0
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://api.example.com/v1
+    description: Example server
+paths:
+  /find-approaching-routes:
+    post:
+      summary: Find approaching buses
+      operationId: findApproachingBuses
+      description: Get a list of approaching buses
+      security: []
+      parameters:
+        - name: position
+          in: query
+          description: Geographic position
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dot'
+      responses:
+        '200':
+          description: List of approaching buses with route details and distance
+          content:
+            application/json:
+              examples:
+                busesExample:
+                  value:
+                    buses:
+                      - bus_id: "123"
+                        route:
+                          route_id: "10030011"
+                          short_name: "3"
+                          long_name: "Agios Athanasios - Mesa Geitonia - Leontiou EMEL Station"
+                        distance: 150.5
+                      - bus_id: "456"
+                        route:
+                          route_id: "15040011"
+                          short_name: "13A"
+                          long_name: "Akrounta - Germasogia - Leontiou EMEL Station"
+                        distance: 300.0
+              schema:
+                type: object
+                properties:
+                  buses:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Bus'
+        default:
+          $ref: "#/components/responses/GeneralError"
+components:
+  responses:
+    GeneralError:
+      description: General Error
+      content:
+        application/json:
+          examples:
+            unknown_error:
+              summary: Example of an unknown error.
+              value: {
+                "request_id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "error": "An unknown error occurred"
+              }
+          schema:
+            $ref: '#/components/schemas/GeneralError'
+  schemas:
+    GeneralError:
+      type: object
+      required:
+        - error
+      properties:
+        request_id:
+          type: string
+        error:
+          description: "Error description"
+          type: string
+
+    Dot:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: float
+          minimum: -90
+          maximum: 90
+        lon:
+          type: number
+          format: float
+          minimum: -180
+          maximum: 180
+
+    Bus:
+      type: object
+      properties:
+        bus_id:
+          type: string
+        route:
+          $ref: '#/components/schemas/Route'
+        distance:
+          type: number
+          format: float
+          description: Distance from the input position in meters
+
+    Route:
+      type: object
+      properties:
+        route_id:
+          type: string
+        short_name:
+          type: string
+        long_name:
+          type: string
