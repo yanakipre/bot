@@ -3,11 +3,19 @@ info:
   title: Buses API
   description: API for retrieving information about approaching buses based on a geographic position
   version: 1.0.0
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://api.example.com/v1
+    description: Example server
 paths:
   /find-approaching-routes:
-    get:
+    post:
       summary: Find approaching buses
+      operationId: findApproachingBuses
       description: Get a list of approaching buses
+      security: []
       parameters:
         - name: position
           in: query
@@ -21,10 +29,29 @@ paths:
           description: List of approaching buses with route details and distance
           content:
             application/json:
+              examples:
+                busesExample:
+                  value:
+                    buses:
+                      - bus_id: "123"
+                        route:
+                          route_id: "10030011"
+                          short_name: "3"
+                          long_name: "Agios Athanasios - Mesa Geitonia - Leontiou EMEL Station"
+                        distance: 150.5
+                      - bus_id: "456"
+                        route:
+                          route_id: "15040011"
+                          short_name: "13A"
+                          long_name: "Akrounta - Germasogia - Leontiou EMEL Station"
+                        distance: 300.0
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Bus'
+                type: object
+                properties:
+                  buses:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Bus'
         default:
           $ref: "#/components/responses/GeneralError"
 components:
@@ -88,12 +115,4 @@ components:
         short_name:
           type: string
         long_name:
-          type: string
-
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
           type: string
