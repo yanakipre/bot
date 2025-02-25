@@ -1,5 +1,7 @@
 organization: Yanakipre
 apis:
+  telegram-search@v1:
+    root: app/telegramsearch/apispec/searchv1/search-v1.yaml
   cyprus-buses@v1:
     root: app/cyprusapis/apispec/busesv1/buses-v1.yaml
 

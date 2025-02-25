@@ -1,0 +1,119 @@
+openapi: 3.0.0
+info:
+  title: Telegram search API
+  description: API for searching through selected telegram chats
+  version: 0.0.1
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: http://localhost:8080/search/v1
+    description: development
+
+paths:
+  /search-through-chats:
+    post:
+      summary: Perform search on chats.
+      operationId: searchThroughChats
+      description: |
+        This endpoints allows to search through chats via vector search.
+      requestBody:
+        $ref: "#/components/requestBodies/SearchThroughChatsRequest"
+      responses:
+        '200':
+          $ref: "#/components/responses/SearchThroughChatsResponse"
+        default:
+          $ref: "#/components/responses/GeneralError"
+components:
+  requestBodies:
+    SearchThroughChatsRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              query:
+                type: string
+          examples:
+            successful:
+              summary: Example of a successful search through chats request.
+              value: {
+                "query": "What is the best child doctor in Limassol?"
+              }
+  responses:
+    SearchThroughChatsResponse:
+      description: List of responses that are similar to the requested information.
+      content:
+        application/json:
+          examples:
+            successful:
+              description: Example of a successful search through chats response.
+              value: {
+                "chat_threads": [
+                  {
+                    "chat_id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "messages": [
+                      {
+                        "message": "Hey do you know doctors for children in Limassol?"
+                      },
+                      {
+                        "message": "Doctor X is the best child doctor in Limassol."
+                      },
+                      {
+                        "message": "Yes, I confirm that Doctor X is the best child doctor in Limassol."
+                      }
+                    ]
+                  }
+                ]
+              }
+          schema:
+            "$ref": "#/components/schemas/SearchThroughChatsResponse"
+
+    GeneralError:
+      description: General Error
+      content:
+        application/json:
+          examples:
+            unknown_error:
+              summary: Example of an unknown error.
+              value: {
+                "request_id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "error": "An unknown error occurred"
+              }
+          schema:
+            $ref: '#/components/schemas/GeneralError'
+  schemas:
+    ChatThreadMessage:
+      type: object
+      properties:
+        message:
+          type: string
+    ChatThread:
+      type: object
+      properties:
+        chat_id:
+          type: string
+        messages:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChatThreadMessage"
+    SearchThroughChatsResponse:
+      type: object
+      properties:
+        chat_threads:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChatThread"
+    GeneralError:
+      type: object
+      required:
+        - error
+      properties:
+        request_id:
+          type: string
+        error:
+          description: "Error description"
+          type: string
+
+security: [ ]

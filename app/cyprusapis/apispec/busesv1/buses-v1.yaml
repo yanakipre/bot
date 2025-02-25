@@ -127,3 +127,5 @@ components:
           type: string
         long_name:
           type: string
+
+security: [ ]
