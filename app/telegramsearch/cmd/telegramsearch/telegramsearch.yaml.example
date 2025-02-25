@@ -1,0 +1,68 @@
+ctlv1:
+  help_text: |
+    Добрый день! Это - бот, который поможет вам найти ответы на ваши вопросы.
+
+    Чтобы задать вопрос, просто напишите его в чат. Он постарается найти наиболее подходящий ответ на ваш вопрос.
+    Бот не выдумывает от себя, все его данные собраны от живых людей.
+
+    Я, разработчик, буду очень признателен, если вы поделитесь своими впечатлениями о боте и порекомендуете его своим друзьям, если он вам полезен.
+
+    Вот тут можно связаться с разработчиком: https://substack.com/home/post/p-148053843
+  news_text: |
+    Новости:
+
+    Мы открыли чат, в котором все вопросы можно задавать и боту, и людям. Присоединяйтесь: https://t.me/+8trW_-0GEFI1NTE0
+    Мы планируем добавить в бота функцию показа ссылок на чаты, где было найдена эта информация.
+    Это позволит вам быстро найти чаты, где обсуждаются интересные вам темы.
+    Если вам есть что прокомментировать или добавить - пишите в чате https://t.me/+8trW_-0GEFI1NTE0 или в https://substack.com/home/post/p-148053843
+  no_explained_answer: К сожалению, у меня нет информации об этом сообщении. Возможно
+    оно было задано слишком давно и я о нем забыл.
+  noresultsanswer: К сожалению, у меня недостаточно информации чтобы ответить на данный
+    вопрос. Но я учусь и, вероятно, смогу ответить на него позже.
+  staleresponsestext: В ответе не использовано информации свежее чем от %s
+  freshresponsestext: 'Обсуждений: %d'
+  stalethreshold: 17520h0m0s
+postgres_rw:
+  rdb:
+    search_path: ""
+    database_type: ""
+    database_url: xxx
+    max_conn_lifetime: 1h0m0s
+    max_open_conns: 50
+    collect_metrics_interval: 5s
+openai:
+  embeddingconfig:
+    model: text-embedding-3-small
+  apikey: xxx
+  transport:
+    client_name: openapi
+    timeout: 0s
+    dial_timeout: 1m0s
+    dial_keep_alive: 5m0s
+    idle_conn_timeout: 3m0s
+    tls_handshake_timeout: 10s
+    expect_continue_timeout: 1s
+    response_header_timeout: 1m0s
+    disable_keep_alives: false
+    max_idle_conns: 100
+    max_idle_conns_per_host: 2
+    max_conns_per_host: 0
+  retries:
+    backoff: 100ms
+    attempts: 10
+  rate_limiters: []
+  asking_about: Cyprus
+  donothighlight: Cyprus
+logging:
+  sink: stdout
+  log_level: DEBUG
+  log_format: json
+  filters:
+    by_logger_name: []
+    by_exact_name: []
+telegram_transport:
+  token: xxx
+  greeting: ""
+telegram_v2:
+  appid: xxx
+  apphash: xxx
