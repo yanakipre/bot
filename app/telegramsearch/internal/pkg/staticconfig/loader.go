@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-
 	"github.com/heetch/confita"
 	"github.com/heetch/confita/backend"
 )
@@ -12,11 +11,15 @@ import (
 // Backend specifies custom logic for config loading
 type Backend struct{}
 
-func (b Backend) Unmarshal(ctx context.Context, to any) error {
-	_, ok := to.(*Config)
+func (b Backend) Unmarshal(_ context.Context, to any) error {
+	cfg, ok := to.(*Config)
 	if !ok {
 		return fmt.Errorf("cannot unmarshall to Config: %+v", to)
 	}
+
+	cfg.PostgresRW.RDB.DSN.FromEnv("DATABASE_URL")
+	cfg.OpenAI.ApiKey.FromEnv("OPENAI_API_KEY")
+	cfg.TelegramTransport.Token.FromEnv("TELEGRAM_BOT_TOKEN")
 
 	return nil
 }
