@@ -2,6 +2,7 @@ package internal
 
 import (
 	"fmt"
+
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/staticconfig"
 
 	"github.com/spf13/cobra"

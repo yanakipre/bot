@@ -39,3 +39,11 @@ type ReqDumpChatHistory struct {
 
 type RespDumpChatHistory struct {
 }
+
+type ReqDumpChatHistoryFromDB struct {
+	ChatID string
+}
+
+type RespDumpChatHistoryFromDB struct {
+	ThreadsCreated int
+}

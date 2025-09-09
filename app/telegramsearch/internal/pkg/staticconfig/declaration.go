@@ -8,6 +8,7 @@ import (
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1"
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/transport/bottransport"
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/transport/bottransportv2"
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/transport/usertransport"
 
 	"github.com/yanakipre/bot/internal/logger"
 )
@@ -19,14 +20,16 @@ type Config struct {
 	Logging           logger.Config           `yaml:"logging"`
 	TelegramTransport bottransport.Config     `yaml:"telegram_transport"`
 	TelegramV2        bottransportv2.Config   `yaml:"telegram_v2"`
+	UserTransport     usertransport.Config    `yaml:"user_transport"`
 }
 
 func DefaultConfig() Config {
 	return Config{
-		Ctlv1:      controllerv1.DefaultConfig(),
-		OpenAI:     httpopenaiclient.DefaultConfig(),
-		Logging:    logger.DefaultConfig(),
-		TelegramV2: bottransportv2.DefaultConfig(),
+		Ctlv1:         controllerv1.DefaultConfig(),
+		OpenAI:        httpopenaiclient.DefaultConfig(),
+		Logging:       logger.DefaultConfig(),
+		TelegramV2:    bottransportv2.DefaultConfig(),
+		UserTransport: usertransport.DefaultConfig(),
 	}
 }
 
@@ -34,5 +37,6 @@ func DefaultConfig() Config {
 func (c *Config) Validate() error {
 	return errors.Join(
 		c.TelegramV2.Validate(),
+		c.UserTransport.Validate(),
 	)
 }

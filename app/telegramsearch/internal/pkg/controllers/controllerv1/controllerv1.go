@@ -1,9 +1,10 @@
 package controllerv1
 
 import (
+	"time"
+
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/openaiclient/httpopenaiclient"
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/postgres"
-	"time"
 
 	"github.com/jellydator/ttlcache/v3"
 )

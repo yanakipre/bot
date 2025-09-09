@@ -3,6 +3,7 @@ package ctl
 import (
 	"context"
 	"fmt"
+
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/openaiclient/httpopenaiclient"
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/postgres"
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1"

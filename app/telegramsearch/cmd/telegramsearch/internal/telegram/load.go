@@ -2,8 +2,9 @@ package telegram
 
 import (
 	"fmt"
-	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
 	"os"
+
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
 
 	"github.com/spf13/cobra"
 	"github.com/yanakipre/bot/internal/yamlfromstruct"
@@ -19,7 +20,7 @@ var load = &cobra.Command{
 Create a chat and load all messages into it:
 
 	telegramsearch telegram load --filename ~/chat/result.json --chat-id kiprchat --create
-`,
+`, //
 	RunE: func(cmd *cobra.Command, args []string) error {
 		ctx := cmd.Context()
 

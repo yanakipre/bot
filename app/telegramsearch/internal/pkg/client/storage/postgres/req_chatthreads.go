@@ -3,6 +3,8 @@ package postgres
 import (
 	"context"
 	"encoding/json"
+	"strconv"
+
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/postgres/internal/dbmodels"
 	models "github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/storagemodels"
 
@@ -13,7 +15,7 @@ import (
 var queryFetchChatThreadToGenerateEmbedding = sqltooling.NewStmt(
 	"FetchChatThreadToGenerateEmbedding",
 	`
-SELECT * FROM chatthreads WHERE thread_id NOT IN (SELECT thread_id FROM embeddings) LIMIT 2000;
+SELECT thread_id, chat_id, body FROM chatthreads WHERE most_recent_message_at > fresh_embeddings_at LIMIT 2000;
 `,
 	dbmodels.ChatThread{},
 )
@@ -40,7 +42,7 @@ var queryCreateChatThread = sqltooling.NewStmt(
 INSERT INTO chatthreads
 	(chat_id, body)
 VALUES (
-        :chat_id, CAST(:body as JSONB)
+        $1, CAST($2 as JSONB)
 );
 `,
 	nil,
@@ -52,10 +54,38 @@ func (s *Storage) CreateChatThread(ctx context.Context, req models.ReqCreateChat
 		return models.RespCreateChatThread{}, err
 	}
 
-	_, err = s.db.ExecContext(ctx, queryCreateChatThread.Query, map[string]any{
-		"chat_id": req.ChatID,
-		"body":    marshal,
-	})
+	_, err = s.db.ExecContext(ctx, queryCreateChatThread.Query, req.ChatID, marshal)
+	if err != nil {
+		return models.RespCreateChatThread{}, err
+	}
+	return models.RespCreateChatThread{}, nil
+}
+
+var queryCreateChatThreadNew = sqltooling.NewStmt(
+	"CreateChatThreadNew",
+	`
+INSERT INTO chatthreads
+	(chat_id, body, thread_starter_id, most_recent_message_at)
+VALUES (
+        $1, CAST($2 as JSONB), $3, NOW()
+)
+ON CONFLICT (chat_id, thread_starter_id) DO UPDATE SET
+    body = CAST($2 as JSONB),
+    most_recent_message_at = CASE 
+        WHEN chatthreads.body IS DISTINCT FROM CAST($2 as JSONB) THEN NOW() 
+        ELSE chatthreads.most_recent_message_at 
+    END;
+`,
+	nil,
+)
+
+func (s *Storage) CreateChatThreadNew(ctx context.Context, req models.ReqCreateChatThread) (models.RespCreateChatThread, error) {
+	marshal, err := json.Marshal(req.Body)
+	if err != nil {
+		return models.RespCreateChatThread{}, err
+	}
+
+	_, err = s.db.ExecContext(ctx, queryCreateChatThreadNew.Query, req.ChatID, marshal, strconv.FormatInt(req.ThreadStarterID, 10))
 	if err != nil {
 		return models.RespCreateChatThread{}, err
 	}

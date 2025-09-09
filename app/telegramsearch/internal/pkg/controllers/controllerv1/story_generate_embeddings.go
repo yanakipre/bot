@@ -3,6 +3,7 @@ package controllerv1
 import (
 	"context"
 	"encoding/json"
+
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/openaiclient/openaimodels"
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/storagemodels"
 	models "github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"

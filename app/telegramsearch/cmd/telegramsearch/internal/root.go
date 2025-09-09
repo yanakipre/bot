@@ -2,10 +2,13 @@ package internal
 
 import (
 	"fmt"
+
 	"github.com/spf13/cobra"
 	"github.com/yanakipre/bot/app/telegramsearch/cmd/telegramsearch/internal/embeddings"
 	"github.com/yanakipre/bot/app/telegramsearch/cmd/telegramsearch/internal/rootcmd"
+	scheduler "github.com/yanakipre/bot/app/telegramsearch/cmd/telegramsearch/internal/sheduler"
 	"github.com/yanakipre/bot/app/telegramsearch/cmd/telegramsearch/internal/telegram"
+	"github.com/yanakipre/bot/app/telegramsearch/cmd/telegramsearch/internal/userbot"
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/staticconfig"
 	"github.com/yanakipre/bot/internal/logger"
 )
@@ -27,5 +30,7 @@ func init() {
 		cmd.AddCommand(embeddings.Command(cfg))
 		cmd.AddCommand(versionCmd)
 		cmd.AddCommand(configgenCmd)
+		cmd.AddCommand(userbot.Command(cfg))
+		cmd.AddCommand(scheduler.NewSchedulerCmd(cfg))
 	})
 }

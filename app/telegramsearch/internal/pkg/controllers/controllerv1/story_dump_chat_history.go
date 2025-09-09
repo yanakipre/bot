@@ -6,12 +6,13 @@ import (
 	_ "embed"
 	"encoding/json"
 	"fmt"
-	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/storagemodels"
-	models "github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
 	"strconv"
 	"strings"
 	"text/template"
 	"time"
+
+	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/storagemodels"
+	models "github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
 
 	"github.com/samber/lo"
 	"github.com/sourcegraph/conc/pool"
@@ -33,7 +34,7 @@ const (
 type serializedChatMessage struct {
 	ID int64 `json:"id"`
 	// Type is service or message
-	Type         ChatMessageType `json:"type"`
+	Type         ChatMessageType `json:"type"` // ?
 	DateUnix     string          `json:"date_unixtime"`
 	FromId       string          `json:"from_id"`
 	TextEntities []TextEntity    `json:"text_entities"`
@@ -163,10 +164,11 @@ func (c *Ctl) threadsHighMem(ctx context.Context, req models.ReqDumpChatHistory)
 	if err := json.Unmarshal(req.ChatHistory, &result); err != nil {
 		return nil, err
 	}
-	// leave only "message" type
+	// leave only "message" typez
 	msgs := lo.Filter(result.Messages, func(item serializedChatMessage, index int) bool {
 		return item.Type == ChatMessageTypeMessage
 	})
+	lg.Info("Messages before findThreads", zap.Any("message_ids", lo.Map(msgs, func(item serializedChatMessage, _ int) int64 { return item.ID })))
 	threads := lo.Filter(findThreads(lg, msgs), func(item thread, index int) bool {
 		return len(item) > 1 // skip threads of len 1 because no answers means no opinions
 	})

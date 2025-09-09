@@ -3,8 +3,9 @@ package controllerv1
 import (
 	"context"
 	_ "embed"
-	models "github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
 	"testing"
+
+	models "github.com/yanakipre/bot/app/telegramsearch/internal/pkg/controllers/controllerv1/controllerv1models"
 
 	"github.com/stretchr/testify/require"
 	"github.com/yanakipre/bot/internal/logger"

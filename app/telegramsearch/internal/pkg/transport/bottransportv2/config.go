@@ -1,5 +1,6 @@
 package bottransportv2
 
+// for userbot?
 import (
 	"errors"
 
@@ -24,6 +25,6 @@ func (c *Config) Validate() error {
 func DefaultConfig() Config {
 	return Config{
 		AppID:   secret.NewValue[int](24144218),
-		AppHash: secret.NewString("b1602e8d49775f7a212037c00e29ed6d"),
+		AppHash: secret.NewString("b1602e8d49775f7a212037c00e29ed6d"), // ?
 	}
 }

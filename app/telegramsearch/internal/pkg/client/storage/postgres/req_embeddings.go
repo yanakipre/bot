@@ -2,6 +2,7 @@ package postgres
 
 import (
 	"context"
+
 	"github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/postgres/internal/dbmodels"
 	models "github.com/yanakipre/bot/app/telegramsearch/internal/pkg/client/storage/storagemodels"
 
@@ -71,6 +72,10 @@ func (s *Storage) UpsertEmbedding(ctx context.Context, req models.ReqUpsertEmbed
 		"message":   req.Message,
 		"embedding": pgvector.NewVector(req.Embedding[:2000]),
 	}); err != nil {
+		return models.RespUpsertEmbedding{}, err
+	}
+
+	if _, err := s.db.ExecContext(ctx, "UPDATE chatthreads SET fresh_embeddings_at = NOW() WHERE thread_id = $1", req.ThreadID); err != nil {
 		return models.RespUpsertEmbedding{}, err
 	}
 	return models.RespUpsertEmbedding{}, nil
